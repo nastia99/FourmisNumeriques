@@ -22,8 +22,8 @@ public class RenderableObject {
 		this.rotY = rotY;
 		this.rotZ = rotZ;
 		this.scale = scale;
-		boundingSphereRadius = scale/2;
-		this.boundingSphereOffset = new Vector3f(0, scale, 0);
+		boundingSphereRadius = scale;
+		this.boundingSphereOffset = new Vector3f(0, 0, 0);
 	}
 
 	public Vector3f getBoundingSphereOffset() {

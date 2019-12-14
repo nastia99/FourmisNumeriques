@@ -8,11 +8,11 @@ import openGL.textures.ModelTexture;
 public class Configs {
     public static final String WORLD_TEXTURE = "textures/grass";
 
-    public static final String ANT_MODEL = "models/tree";
-    public static final String ANT_TEXTURE = "textures/tree";
+    public static final String ANT_MODEL = "models/ant";
+    public static final String ANT_TEXTURE = "textures/ant";
 
     public static final String SPHERE_MODEL = "models/sphere";
-    public static final String SPHERE_TEXTURE = "textures/image";
+    public static final String SPHERE_TEXTURE = "textures/red";
 
     public static TexturedModel antTexturedModel;
     public static ModelTexture chunkModelTexture;

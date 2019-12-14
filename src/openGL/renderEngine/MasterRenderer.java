@@ -52,21 +52,20 @@ public class MasterRenderer {
 		this.world = world;
 	}
 	
-	public void render(Light sun,Camera camera){
+	public void render(Light sun,Camera camera, boolean hitbox){
 		prepare();
-		if (isWireframe) {
+		if (hitbox) {
 			hitboxShader.start();
 			hitboxShader.viewMatrix.loadMatrix(Maths.createViewMatrix(camera));
 			entityRenderer.renderHitbox(entities);
 			hitboxShader.stop();
-		} else {
-			entityShader.start();
-			entityShader.lightColour.loadVec3(sun.getColour());
-			entityShader.lightPosition.loadVec3(sun.getPosition());
-			entityShader.viewMatrix.loadMatrix(Maths.createViewMatrix(camera));
-			entityRenderer.render(entities);
-			entityShader.stop();
 		}
+		entityShader.start();
+		entityShader.lightColour.loadVec3(sun.getColour());
+		entityShader.lightPosition.loadVec3(sun.getPosition());
+		entityShader.viewMatrix.loadMatrix(Maths.createViewMatrix(camera));
+		entityRenderer.render(entities);
+		entityShader.stop();
 		worldShader.start();
 		worldShader.lightColour.loadVec3(sun.getColour());
 		worldShader.lightPosition.loadVec3(sun.getPosition());

@@ -66,7 +66,7 @@ public class MainGameLoop {
 
 			renderer.registerRenderableObjects(renderableObjects);
 
-			renderer.render(light, camera);
+			renderer.render(light, camera, Keyboard.isKeyDown(Keyboard.KEY_H));
 
 			DisplayManager.updateDisplay();
 		}
