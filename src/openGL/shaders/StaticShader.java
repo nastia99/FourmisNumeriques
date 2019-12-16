@@ -1,8 +1,6 @@
 package openGL.shaders;
 
-import openGL.shaders.Uniforms.UniformFloat;
-import openGL.shaders.Uniforms.UniformMatrix;
-import openGL.shaders.Uniforms.UniformVec3;
+import openGL.shaders.Uniforms.*;
 
 public class StaticShader extends ShaderProgram{
 	
@@ -16,10 +14,13 @@ public class StaticShader extends ShaderProgram{
 	public UniformVec3 lightColour = new UniformVec3("lightColour");
 	public UniformFloat shineDamper = new UniformFloat("shineDamper");
 	public UniformFloat reflectivity = new UniformFloat("reflectivity");
+	public UniformBoolean animated = new UniformBoolean("animated");
+	public UniformInteger animationDuration = new UniformInteger("animationDuration");
+	public UniformInteger currentTime = new UniformInteger("currentTime");
 
 	public StaticShader() {
 		super(VERTEX_SHADER, FRAGMENT_SHADER);
-		super.storeAllUniformLocations(transformationMatrix, projectionMatrix, viewMatrix, lightPosition, lightColour, shineDamper, reflectivity);
+		super.storeAllUniformLocations(transformationMatrix, projectionMatrix, viewMatrix, lightPosition, lightColour, shineDamper, reflectivity, animated, animationDuration, currentTime);
 	}
 
 	@Override

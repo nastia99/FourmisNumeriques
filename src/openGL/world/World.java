@@ -27,6 +27,14 @@ public class World extends RenderableObject {
         }
     }
 
+    public int getSizeX() {
+        return sizeX;
+    }
+
+    public int getSizeZ() {
+        return sizeZ;
+    }
+
     public World(Chunk[][] chunks) {
         super(null, new Vector3f(Chunk.SIZE * chunks.length/2, 0, Chunk.SIZE * chunks[0].length/2), 0, 0, 0, 0);
         this.chunks = chunks;
@@ -40,5 +48,11 @@ public class World extends RenderableObject {
             chunkList.addAll(Arrays.asList(row));
         }
         return chunkList;
+    }
+
+    public Chunk getChunk(int x, int z) {
+        if (x >= 0 && x < sizeX && z >= 0 && z < sizeZ)
+            return chunks[x][z];
+        return null;
     }
 }

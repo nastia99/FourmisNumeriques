@@ -13,10 +13,21 @@ uniform mat4 transformationMatrix;
 uniform mat4 projectionMatrix;
 uniform mat4 viewMatrix;
 uniform vec3 lightPosition;
+uniform int currentTime;
+uniform bool animated;
+uniform int animationDuration;
+
+const float rotationCap = 15;
 
 void main(void){
 
-	vec4 worldPosition = transformationMatrix * vec4(position,1.0);
+	vec3 rotatedPosition = position;
+	if (animated && position.y <= 0.00001) {
+		float theta = rotationCap * sin(2*3.14159265 * currentTime / animationDuration) * 3.14159265 / 180;
+		mat3 rotate = mat3(cos(theta), 0, sin(theta), 0, 1, 0, -sin(theta), 0, cos(theta));
+		rotatedPosition = rotate * position;
+	}
+	vec4 worldPosition = transformationMatrix * vec4(rotatedPosition,1.0);
 	gl_Position = projectionMatrix * viewMatrix * worldPosition;
 	pass_textureCoordinates = textureCoordinates;
 	

@@ -1,13 +1,67 @@
 package entity;
 
-import engineTester.MainGameLoop;
-import openGL.renderEngine.Loader;
-import openGL.textures.ModelTexture;
+import openGL.entities.RenderableObject;
 import openGL.world.Chunk;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Tile extends Chunk {
 
+    private List<RenderableObject> entities;
+
     public Tile(int gridX, int gridZ) {
         super(gridX, gridZ);
+        entities = new ArrayList<RenderableObject>();
+    }
+
+    public void addEntity(RenderableObject entity) {
+        entities.add(entity);
+    }
+
+    public RenderableObject getEntity(EntityTypes e) {
+        switch (e) {
+            case ANT:
+                for (RenderableObject ro : entities)
+                    if (ro instanceof Ant) {
+                        entities.remove(ro);
+                        return ro;
+                    }
+                break;
+            case FOOD:
+                for (RenderableObject ro : entities)
+                    if (ro instanceof Food) {
+                        entities.remove(ro);
+                        return ro;
+                    }
+                break;
+            case ANTHILL:
+                //Todo
+                break;
+        }
+        return null;
+    }
+
+    public RenderableObject contains(EntityTypes e) {
+        switch (e) {
+            case ANT:
+                for (RenderableObject ro : entities)
+                    if (ro instanceof Ant)
+                        return ro;
+                break;
+            case FOOD:
+                for (RenderableObject ro : entities)
+                    if (ro instanceof Food)
+                        return ro;
+                break;
+            case ANTHILL:
+                //Todo
+                break;
+        }
+        return null;
+    }
+
+    public List<RenderableObject> getEntities() {
+        return entities;
     }
 }

@@ -2,20 +2,18 @@ package openGL.renderEngine;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
-import org.lwjgl.opengl.ContextAttribs;
-import org.lwjgl.opengl.Display;
-import org.lwjgl.opengl.DisplayMode;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.PixelFormat;
+import org.lwjgl.opengl.*;
 
 public class DisplayManager {
 	
-	private static final int WIDTH = 1280;
-	private static final int HEIGHT = 720;
+	private static final int WIDTH = 1920;
+	private static final int HEIGHT = 1080;
 	private static final int FPS_CAP = 120;
 
 	private static long lastFrameTime;
 	private static float delta; //Frame time in seconds
+
+	private static long intervalTimer;
 	
 	public static void createDisplay(){		
 		ContextAttribs attribs = new ContextAttribs(3,2)
@@ -24,13 +22,15 @@ public class DisplayManager {
 		
 		try {
 			Display.setDisplayMode(new DisplayMode(WIDTH,HEIGHT));
-			Display.create(new PixelFormat(), attribs);
+			Display.create(new PixelFormat().withSamples(8), attribs);
 			Display.setTitle("Projet APO, Demo moteur graphique");
+			GL11.glEnable(GL13.GL_MULTISAMPLE);
 		} catch (LWJGLException e) {
 			e.printStackTrace();
 		}
 		GL11.glViewport(0,0, WIDTH, HEIGHT);
 		lastFrameTime = getCurrentTime();
+		intervalTimer = getCurrentTime();
 	}
 	
 	public static void updateDisplay(){
@@ -50,8 +50,19 @@ public class DisplayManager {
 		Display.destroy();
 	}
 
-	private static long getCurrentTime() {
+	public static long getCurrentTime() {
 		return Sys.getTime() * 1000 / Sys.getTimerResolution();
 	}
 
+	public static boolean intervalHasPassed(int ms) {
+		if (getCurrentTime() - intervalTimer > ms) {
+			intervalTimer = getCurrentTime();
+			return true;
+		}
+		return false;
+	}
+
+	public static long timeSinceLastInterval() {
+		return getCurrentTime() - intervalTimer;
+	}
 }

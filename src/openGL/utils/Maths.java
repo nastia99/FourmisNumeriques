@@ -1,5 +1,6 @@
 package openGL.utils;
 
+import openGL.world.Chunk;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -27,5 +28,20 @@ public class Maths {
 		Vector3f negativeCameraPos = new Vector3f(-cameraPos.x,-cameraPos.y,-cameraPos.z);
 		Matrix4f.translate(negativeCameraPos, viewMatrix, viewMatrix);
 		return viewMatrix;
+	}
+
+	public static void loopVector(Vector3f input, Vector3f size) {
+		if (input.x < 0)
+			input.x += size.x;
+		if (input.x > size.x)
+			input.x -= size.x;
+		if (input.y < 0)
+			input.y += size.y;
+		if (input.y > size.y)
+			input.y -= size.y;
+		if (input.z < 0)
+			input.z += size.z;
+		if (input.z > size.z)
+			input.z -= size.z;
 	}
 }

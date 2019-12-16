@@ -8,6 +8,7 @@ import openGL.models.Model;
 import openGL.models.TexturedModel;
 
 import openGL.shaders.HitboxShader;
+import org.lwjgl.Sys;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL20;
@@ -70,6 +71,14 @@ public class EntityRenderer {
 		ModelTexture texture = model.getTexture();
 		shader.shineDamper.loadFloat(texture.getShineDamper());
 		shader.reflectivity.loadFloat(texture.getReflectivity());
+		shader.currentTime.loadInteger((int) (DisplayManager.getCurrentTime() % 333));
+
+		if (model == Configs.antTexturedModel) {
+			shader.animated.loadBoolean(true);
+			shader.animationDuration.loadInteger(333);
+		} else {
+			shader.animated.loadBoolean(false);
+		}
 		GL13.glActiveTexture(GL13.GL_TEXTURE0);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, model.getTexture().getID());
 	}
