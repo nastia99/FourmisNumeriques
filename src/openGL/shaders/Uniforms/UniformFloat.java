@@ -6,6 +6,10 @@ public class UniformFloat extends Uniform{
 	
 	private float currentValue;
 
+	/**
+	 * Create a new Uniform of type float
+	 * @param name name of the uniform, must be the same as in the Shader program
+	 */
 	public UniformFloat(String name){
 		super(name);
 	}

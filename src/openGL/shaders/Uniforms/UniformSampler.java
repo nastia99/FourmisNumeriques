@@ -6,6 +6,10 @@ public class UniformSampler extends Uniform {
 
 	private int currentValue;
 
+	/**
+	 * Create a new Uniform of type sampler2D
+	 * @param name name of the uniform, must be the same as in the Shader program
+	 */
 	public UniformSampler(String name) {
 		super(name);
 	}

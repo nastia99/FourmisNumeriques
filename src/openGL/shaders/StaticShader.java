@@ -18,6 +18,9 @@ public class StaticShader extends ShaderProgram{
 	public UniformInteger animationDuration = new UniformInteger("animationDuration");
 	public UniformInteger currentTime = new UniformInteger("currentTime");
 
+	/**
+	 * Create a new StaticShader and store all of the Uniforms variables
+	 */
 	public StaticShader() {
 		super(VERTEX_SHADER, FRAGMENT_SHADER);
 		super.storeAllUniformLocations(transformationMatrix, projectionMatrix, viewMatrix, lightPosition, lightColour, shineDamper, reflectivity, animated, animationDuration, currentTime);

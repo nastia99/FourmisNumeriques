@@ -23,6 +23,9 @@ public class WorldShader extends ShaderProgram{
 	public UniformFloat shineDamper = new UniformFloat("shineDamper");
 	public UniformFloat reflectivity = new UniformFloat("reflectivity");
 
+	/**
+	 * Create a new WorldShader and store all of the Uniforms variables
+	 */
 	public WorldShader() {
 		super(VERTEX_SHADER, FRAGMENT_SHADER);
 		super.storeAllUniformLocations(transformationMatrix, projectionMatrix, viewMatrix, lightPosition, lightColour, shineDamper, reflectivity);

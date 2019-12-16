@@ -16,6 +16,9 @@ public class HitboxShader extends ShaderProgram{
     public UniformVec3 positionOffset = new UniformVec3("positionOffset");
     public UniformFloat radius = new UniformFloat("radius");
 
+    /**
+     * Create a new HitboxShader and store all of the Uniforms variables
+     */
     public HitboxShader() {
         super(VERTEX_SHADER, FRAGMENT_SHADER);
         super.storeAllUniformLocations(transformationMatrix, projectionMatrix, viewMatrix, positionOffset, positionOffset, radius);

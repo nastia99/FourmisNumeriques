@@ -70,6 +70,14 @@ public class Ant extends RenderableObject {
             rotY = (targetRot - lastRot) * percent + lastRot;
         }
     }
+
+    public void setTargetPosition(Vector3f targetPosition) {
+        this.targetPosition = targetPosition;
+    }
+
+    public void setTargetRot(float targetRot) {
+        this.targetRot = targetRot;
+    }
 }
 
 enum Action {

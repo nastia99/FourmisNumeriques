@@ -6,6 +6,10 @@ public class UniformBoolean extends Uniform{
 
 	private boolean currentBool;
 
+	/**
+	 * Create a new Uniform of type boolean
+	 * @param name name of the uniform, must be the same as in the Shader program
+	 */
 	public UniformBoolean(String name){
 		super(name);
 	}
