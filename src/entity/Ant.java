@@ -2,18 +2,13 @@ package entity;
 
 import configs.Configs;
 import engineTester.MainGameLoop;
+import entity.logic.Tree;
 import openGL.entities.RenderableObject;
-import openGL.models.TexturedModel;
-import openGL.renderEngine.OBJLoader;
-import openGL.textures.ModelTexture;
 import openGL.utils.Maths;
-import openGL.world.Chunk;
 import openGL.world.World;
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.util.vector.Vector3f;
 import openGL.renderEngine.DisplayManager;
 
-import java.util.Random;
 
 public class Ant extends RenderableObject {
 
@@ -23,11 +18,13 @@ public class Ant extends RenderableObject {
     private Vector3f lastPosition;
     private float lastRot;
 
-    private Action currentAction;
+    private Tree decisionTree;
+
+    private Food food;
 
     public Ant(Vector3f position, float rotY) {
         super(Configs.antTexturedModel, position, 0, rotY, 0, .3f);
-        currentAction = Action.FORWARD;
+        decisionTree = new Tree();
         targetPosition = new Vector3f(position);
         lastPosition = new Vector3f(position);
         lastRot = rotY;
@@ -35,6 +32,10 @@ public class Ant extends RenderableObject {
     }
 
     public void update(boolean newAction, World world) {
+        if (food != null) {
+            food.getPosition().x = position.x;
+            food.getPosition().z = position.z;
+        }
         if (newAction) {
             position.x = targetPosition.x;
             position.z = targetPosition.z;
@@ -43,31 +44,14 @@ public class Ant extends RenderableObject {
             Maths.loopVector(position, new Vector3f(world.getSizeX(), 0, world.getSizeZ()));
             Maths.loopVector(targetPosition, new Vector3f(world.getSizeX(), 0, world.getSizeZ()));
             Maths.loopVector(lastPosition, new Vector3f(world.getSizeX(), 0, world.getSizeZ()));
-
             rotY = targetRot;
             lastRot = rotY;
-            Random rand = new Random();
-
-            switch(rand.nextInt(3)) {
-                case 0:
-                    currentAction = Action.FORWARD;
-                    targetPosition.x = (float) (position.x + Chunk.SIZE * Math.cos(Math.toRadians(rotY)));
-                    targetPosition.z = (float) (position.z - Chunk.SIZE * Math.sin(Math.toRadians(rotY)));
-                    break;
-                case 1:
-                    currentAction = Action.ROTATE_LEFT;
-                    targetRot -= 90;
-                    break;
-                case 2:
-                    currentAction = Action.ROTATE_RIGHT;
-                    targetRot += 90;
-                    break;
-            }
+            decisionTree.makeDecision(this, world);
         } else {
             float percent = (float)DisplayManager.timeSinceLastInterval() / Configs.ACTION_DURATION;
             position.x = (targetPosition.x - lastPosition.x) * percent + lastPosition.x;
             position.z = (targetPosition.z - lastPosition.z) * percent + lastPosition.z;
-            rotY = (targetRot - lastRot) * percent + lastRot;
+            rotY = (targetRot - lastRot) * Maths.clamp((float) (2.618033*percent), 0, 1) + lastRot;
         }
     }
 
@@ -78,13 +62,25 @@ public class Ant extends RenderableObject {
     public void setTargetRot(float targetRot) {
         this.targetRot = targetRot;
     }
+
+    public Food getFood() {
+        return food;
+    }
+
+    public void setFood(Food food) {
+        this.food = food;
+    }
+
+    public boolean isCarryingFood() {
+        return food != null;
+    }
+
+    public Vector3f getTargetPosition() {
+        return targetPosition;
+    }
+
+    public float getTargetRot() {
+        return targetRot;
+    }
 }
 
-enum Action {
-    FORWARD,
-    ROTATE_LEFT,
-    ROTATE_RIGHT,
-    PICK_UP,
-    GET_HOME,
-    PUT
-}

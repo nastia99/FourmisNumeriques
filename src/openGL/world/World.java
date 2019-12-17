@@ -55,4 +55,10 @@ public class World extends RenderableObject {
             return chunks[x][z];
         return null;
     }
+
+    public Chunk getChunkInWorldCoords(float x, float z) {
+        if (x >= 0 && x < sizeX * Chunk.SIZE && z >= 0 && z < sizeZ * Chunk.SIZE)
+            return chunks[(int)(x / Chunk.SIZE)][(int)(z / Chunk.SIZE)];
+        return null;
+    }
 }

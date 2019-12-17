@@ -1,8 +1,7 @@
 package entity.logic;
 
 import entity.Ant;
-import entity.logic.action.Action;
-import entity.logic.action.ActionForward;
+import entity.logic.action.*;
 import openGL.world.World;
 
 public class Tree {
@@ -10,7 +9,7 @@ public class Tree {
     private Node head;
 
     public Tree() {
-        this.head = new Node(null, new ActionForward());
+        this.head = new Node(null, new ActionBackHome());
         //Todo Generate random tree
     }
 

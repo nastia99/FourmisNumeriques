@@ -2,6 +2,7 @@ package openGL.utils;
 
 import openGL.world.Chunk;
 import org.lwjgl.util.vector.Matrix4f;
+import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
 import openGL.entities.Camera;
@@ -50,7 +51,7 @@ public class Maths {
 	 * @param input the input vector to loop around
 	 * @param size vector representing the upper limit of each coordinates
 	 */
-	public static void loopVector(Vector3f input, Vector3f size) {
+	public static Vector3f loopVector(Vector3f input, Vector3f size) {
 		if (input.x < 0)
 			input.x += size.x;
 		if (input.x > size.x)
@@ -63,5 +64,32 @@ public class Maths {
 			input.z += size.z;
 		if (input.z > size.z)
 			input.z -= size.z;
+		return input;
+	}
+
+	/**
+	 * Make the input vector coordinates loop around the size vector
+	 * it's effectively a modulus
+	 * @param input the input vector to loop around
+	 * @param size vector representing the upper limit of each coordinates
+	 */
+	public static Vector2f loopVector(Vector2f input, Vector2f size) {
+		if (input.x < 0)
+			input.x += size.x;
+		if (input.x > size.x)
+			input.x -= size.x;
+		if (input.y < 0)
+			input.y += size.y;
+		if (input.y > size.y)
+			input.y -= size.y;
+		return input;
+	}
+
+	public static float clamp(float val, float min, float max) {
+		if (val > max)
+			val = max;
+		else if (val < min)
+			val = min;
+		return val;
 	}
 }

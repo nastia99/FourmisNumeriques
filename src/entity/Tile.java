@@ -42,23 +42,23 @@ public class Tile extends Chunk {
         return null;
     }
 
-    public RenderableObject contains(EntityTypes e) {
+    public boolean contains(EntityTypes e) {
         switch (e) {
             case ANT:
                 for (RenderableObject ro : entities)
                     if (ro instanceof Ant)
-                        return ro;
+                        return true;
                 break;
             case FOOD:
                 for (RenderableObject ro : entities)
                     if (ro instanceof Food)
-                        return ro;
+                        return true;
                 break;
             case ANTHILL:
                 //Todo
                 break;
         }
-        return null;
+        return false;
     }
 
     public List<RenderableObject> getEntities() {

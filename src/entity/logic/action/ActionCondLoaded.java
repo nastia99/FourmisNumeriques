@@ -11,11 +11,12 @@ public class ActionCondLoaded extends Action {
 
     @Override
     public void execute(Ant a, World world) {
-
+        //Do nothing
+        return;
     }
 
     @Override
     public boolean isConditionSatisfied(Ant a, World world) {
-        return false;
+        return a.isCarryingFood();
     }
 }

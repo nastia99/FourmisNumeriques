@@ -63,7 +63,7 @@ public class WorldRenderer {
 	}
 
 	/**
-	 * unbind all the VAO attributes of the current model
+	 * Unbind all the VAO attributes of the current model
 	 */
 	private void unbindTexturedModel() {
 		GL20.glDisableVertexAttribArray(0);

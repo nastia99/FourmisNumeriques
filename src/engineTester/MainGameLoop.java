@@ -43,7 +43,7 @@ public class MainGameLoop {
 
 		Random rand = new Random();
 		for (int i = 0; i < 50; i++) {
-			ants.add(new Ant(new Vector3f(rand.nextInt(world.getSizeX()) + 0.5f, 0, rand.nextInt(world.getSizeZ()) + 0.5f), 0));
+			ants.add(new Ant(new Vector3f(rand.nextInt(world.getSizeX()) + 0.5f, 0,rand.nextInt(world.getSizeZ()) + 0.5f), 0));
 		}
 
 
@@ -97,7 +97,7 @@ public class MainGameLoop {
 		for (int i = 0; i < world.getSizeX(); i++) {
 			for (int j = 0; j < world.getSizeZ(); j++) {
 				Tile tile = (Tile) world.getChunk(i, j);
-				if (tile != null && tile.contains(EntityTypes.FOOD) != null)
+				if (tile != null && tile.contains(EntityTypes.FOOD))
 					list.addAll(tile.getEntities());
 			}
 		}
@@ -110,7 +110,7 @@ public class MainGameLoop {
 			int x = random.nextInt(world.getSizeX());
 			int y = random.nextInt(world.getSizeZ());
 			Tile tile = (Tile) world.getChunk(x, y);
-			if (tile != null && tile.contains(EntityTypes.FOOD) == null)
+			if (tile != null && !tile.contains(EntityTypes.FOOD))
 				tile.addEntity(new Food(new Vector3f((x+.5f)* Chunk.SIZE, 0, (y+.5f)*Chunk.SIZE), 0, 0, 0));
 		}
 	}

@@ -23,6 +23,7 @@ public class Configs {
     public static TexturedModel foodTexturedModel;
 
     public static final int ACTION_DURATION = 1000;
+    public static final int ANT_ANIMATION_DURATION = ACTION_DURATION/3;
 
     public static void init() {
         chunkModelTexture = new ModelTexture(MainGameLoop.loader.loadTexture(WORLD_TEXTURE));
