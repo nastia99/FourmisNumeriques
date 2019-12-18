@@ -22,7 +22,7 @@ public class Configs {
     public static TexturedModel sphereTexturedModel;
     public static TexturedModel foodTexturedModel;
 
-    public static final int ACTION_DURATION = 1000;
+    public static final int ACTION_DURATION = 100;
     public static final int ANT_ANIMATION_DURATION = ACTION_DURATION/3;
 
     public static void init() {

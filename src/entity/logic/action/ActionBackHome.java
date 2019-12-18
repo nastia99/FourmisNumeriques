@@ -2,14 +2,12 @@ package entity.logic.action;
 
 import entity.Ant;
 import openGL.utils.Maths;
+import openGL.world.Chunk;
 import openGL.world.World;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ActionBackHome extends Action {
 
@@ -18,9 +16,21 @@ public class ActionBackHome extends Action {
     @Override
     public void execute(Ant a, World world) {
         Vector2f end = new Vector2f(0, 0);
-        Vector2f path = aStar(new Vector2f(a.getPosition().x - .5f, a.getPosition().z - .5f), end, world);
+        Vector2f path = aStar(new Vector2f(a.getPosition().x - Chunk.SIZE / 2, a.getPosition().z - Chunk.SIZE / 2), end, world);
+
         if (path != null) {
-            a.setTargetPosition(new Vector3f(path.x + .5f, 0, path.y + .5f));
+            float xForward = (float) (int)(Chunk.SIZE * Math.cos(Math.toRadians(a.getTargetRot())));
+            float zForward = (float) (int)(-Chunk.SIZE * Math.sin(Math.toRadians(a.getTargetRot())));
+            Vector2f forward = new Vector2f(xForward, zForward);
+
+            float xPath = path.x - a.getPosition().x + Chunk.SIZE / 2;
+            float zPath = path.y - a.getPosition().z + Chunk.SIZE / 2;
+            Vector2f relativePath = new Vector2f(xPath, zPath);
+
+            float theta = (float) Math.toDegrees(Maths.signedAngle(forward, relativePath));
+
+            a.setTargetRot(a.getTargetRot() - theta);
+            a.setTargetPosition(new Vector3f(path.x + Chunk.SIZE / 2, 0, path.y + Chunk.SIZE / 2));
         }
     }
 
@@ -85,14 +95,18 @@ public class ActionBackHome extends Action {
             };
 
             for (Vector2f vec : neighbors) {
-                float newGScore = getValue(gScore, current) + 1;
-                if (newGScore < getValue(gScore, vec)) {
+                //Todo implement no navigable tiles
+                boolean navigable = true;
+                if (navigable) {
+                    float newGScore = getValue(gScore, current) + 1;
+                    if (newGScore < getValue(gScore, vec)) {
 
-                    cameFrom.put(vec, current);
-                    gScore.put(vec, newGScore);
-                    fScore.put(vec, newGScore + h(vec, end, world));
-                    if (!openList.contains(vec)) {
-                        openList.add(vec);
+                        cameFrom.put(vec, current);
+                        gScore.put(vec, newGScore);
+                        fScore.put(vec, newGScore + h(vec, end, world));
+                        if (!openList.contains(vec)) {
+                            openList.add(vec);
+                        }
                     }
                 }
             }

@@ -85,11 +85,30 @@ public class Maths {
 		return input;
 	}
 
+	/**
+	 * Clamp a value between two bounds
+	 * @param val value to clamp
+	 * @param min lower bound (included)
+	 * @param max upper bound (included)
+	 * @return the clamped value
+	 */
 	public static float clamp(float val, float min, float max) {
 		if (val > max)
 			val = max;
 		else if (val < min)
 			val = min;
 		return val;
+	}
+
+	/**
+	 * Return the signed angle from u to v in radians
+	 * @param u base vector
+	 * @param v result vector
+	 * @return angle from u to v in radians
+	 */
+	public static float signedAngle(Vector2f u, Vector2f v)
+	{
+		Vector2f tmp = new Vector2f(-u.y, u.x);
+		return (float) Math.atan2(Vector2f.dot(tmp, v), Vector2f.dot(u, v));
 	}
 }

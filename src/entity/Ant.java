@@ -29,6 +29,7 @@ public class Ant extends RenderableObject {
         lastPosition = new Vector3f(position);
         lastRot = rotY;
         targetRot = rotY;
+        decisionTree = Tree.generateRandomTree(2, 4);
     }
 
     public void update(boolean newAction, World world) {
