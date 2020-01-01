@@ -5,9 +5,10 @@ in vec2 textureCoordinates;
 in vec3 normal;
 
 out vec2 pass_textureCoordinates;
-out vec3 surfaceNormal;
+flat out vec3 surfaceNormal;
 out vec3 toLightVector;
 out vec3 toCameraVector;
+flat out float visibility;
 
 uniform mat4 transformationMatrix;
 uniform mat4 projectionMatrix;
@@ -15,7 +16,11 @@ uniform mat4 viewMatrix;
 uniform vec3 lightPosition;
 uniform int currentTime;
 uniform bool animated;
+uniform vec3 worldCenter;
 uniform int animationDuration;
+uniform float density = 0.043;
+uniform float gradient = 30;
+
 
 const float rotationCap = 15;
 
@@ -30,10 +35,10 @@ void main(void){
 	vec4 worldPosition = transformationMatrix * vec4(rotatedPosition,1.0);
 	gl_Position = projectionMatrix * viewMatrix * worldPosition;
 	pass_textureCoordinates = textureCoordinates;
-	
 	surfaceNormal = (transformationMatrix * vec4(normal,0.0)).xyz;
 	toLightVector = lightPosition - worldPosition.xyz;
+	float distance = length(worldCenter.xz - worldPosition.xz);
 	toCameraVector = (inverse(viewMatrix) * vec4(0.0,0.0,0.0,1.0)).xyz - worldPosition.xyz;
-	
-	
+	visibility = exp(-pow(distance * density, gradient));
+	visibility = clamp(visibility, 0.0, 1.0);
 }

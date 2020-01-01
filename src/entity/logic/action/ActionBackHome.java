@@ -16,21 +16,21 @@ public class ActionBackHome extends Action {
     @Override
     public void execute(Ant a, World world) {
         Vector2f end = new Vector2f(0, 0);
-        Vector2f path = aStar(new Vector2f(a.getPosition().x - Chunk.SIZE / 2, a.getPosition().z - Chunk.SIZE / 2), end, world);
+        Vector2f path = aStar(new Vector2f(a.getPosition().x - .5f, a.getPosition().z - .5f), end, world);
 
         if (path != null) {
-            float xForward = (float) (int)(Chunk.SIZE * Math.cos(Math.toRadians(a.getTargetRot())));
-            float zForward = (float) (int)(-Chunk.SIZE * Math.sin(Math.toRadians(a.getTargetRot())));
+            float xForward = (float) (int)(Math.cos(Math.toRadians(a.getTargetRot())));
+            float zForward = (float) (int)(-Math.sin(Math.toRadians(a.getTargetRot())));
             Vector2f forward = new Vector2f(xForward, zForward);
 
-            float xPath = path.x - a.getPosition().x + Chunk.SIZE / 2;
-            float zPath = path.y - a.getPosition().z + Chunk.SIZE / 2;
+            float xPath = path.x - a.getPosition().x + .5f;
+            float zPath = path.y - a.getPosition().z + .5f;
             Vector2f relativePath = new Vector2f(xPath, zPath);
 
             float theta = (float) Math.toDegrees(Maths.signedAngle(forward, relativePath));
 
             a.setTargetRot(a.getTargetRot() - theta);
-            a.setTargetPosition(new Vector3f(path.x + Chunk.SIZE / 2, 0, path.y + Chunk.SIZE / 2));
+            a.setTargetPosition(new Vector3f(path.x + .5f, 0, path.y + .5f));
         }
     }
 

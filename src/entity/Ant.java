@@ -6,6 +6,8 @@ import entity.logic.Tree;
 import openGL.entities.RenderableObject;
 import openGL.utils.Maths;
 import openGL.world.World;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 import openGL.renderEngine.DisplayManager;
 
@@ -33,6 +35,14 @@ public class Ant extends RenderableObject {
     }
 
     public void update(boolean newAction, World world) {
+        position.y = world.getHeight(position.x, position.z);
+        if (Keyboard.isKeyDown(Keyboard.KEY_Y))
+            rotY++;
+        if (Keyboard.isKeyDown(Keyboard.KEY_Z))
+            position.x += 0.05f;
+        Vector3f normal = world.getNormal(position.x, position.z);
+        rotX = 1.5f * (float) Math.toDegrees(Maths.signedAngle(new Vector2f(normal.z, normal.y), new Vector2f(0, 1)));
+        rotZ = 1.5f * (float) Math.toDegrees(Maths.signedAngle(new Vector2f(0, 1), new Vector2f(normal.x, normal.y)));
         if (food != null) {
             food.getPosition().x = position.x;
             food.getPosition().z = position.z;
@@ -49,10 +59,10 @@ public class Ant extends RenderableObject {
             lastRot = rotY;
             decisionTree.makeDecision(this, world);
         } else {
-            float percent = (float)DisplayManager.timeSinceLastInterval() / Configs.ACTION_DURATION;
+            float percent = (float) DisplayManager.timeSinceLastInterval() / Configs.ACTION_DURATION;
             position.x = (targetPosition.x - lastPosition.x) * percent + lastPosition.x;
             position.z = (targetPosition.z - lastPosition.z) * percent + lastPosition.z;
-            rotY = (targetRot - lastRot) * Maths.clamp((float) (2.618033*percent), 0, 1) + lastRot;
+            rotY = (targetRot - lastRot) * Maths.clamp((float) (2.618033 * percent), 0, 1) + lastRot;
         }
     }
 

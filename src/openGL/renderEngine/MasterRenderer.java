@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import configs.Configs;
 import openGL.models.TexturedModel;
 
 import openGL.shaders.HitboxShader;
@@ -25,7 +26,7 @@ public class MasterRenderer {
 	
 	private static final float FOV = 70;
 	private static final float NEAR_PLANE = 0.1f;
-	private static final float FAR_PLANE = 60;
+	private static final float FAR_PLANE = 200;
 
 	private boolean isWireframe = false;
 	private boolean canToogleWireframe = true;
@@ -74,12 +75,20 @@ public class MasterRenderer {
 		entityShader.lightColour.loadVec3(sun.getColour());
 		entityShader.lightPosition.loadVec3(sun.getPosition());
 		entityShader.viewMatrix.loadMatrix(Maths.createViewMatrix(camera));
+		entityShader.skyColor.loadVec3(Configs.SKY_COLOR);
+		entityShader.density.loadFloat(Configs.FOG_DENSITY);
+		entityShader.gradient.loadFloat(Configs.FOG_GRADIENT);
+		entityShader.worldCenter.loadVec3(world.getSizeX()/2f, 0,  world.getSizeZ()/2f);
 		entityRenderer.render(entities);
 		entityShader.stop();
 		worldShader.start();
 		worldShader.lightColour.loadVec3(sun.getColour());
 		worldShader.lightPosition.loadVec3(sun.getPosition());
 		worldShader.viewMatrix.loadMatrix(Maths.createViewMatrix(camera));
+		worldShader.skyColor.loadVec3(Configs.SKY_COLOR);
+		worldShader.density.loadFloat(Configs.FOG_DENSITY);
+		worldShader.gradient.loadFloat(Configs.FOG_GRADIENT);
+		worldShader.worldCenter.loadVec3(world.getSizeX()/2f, 0,  world.getSizeZ()/2f);
 		worldRenderer.render(world);
 		worldShader.stop();
 		entities.clear();
@@ -120,7 +129,7 @@ public class MasterRenderer {
 	public void prepare() {
 		GL11.glEnable(GL11.GL_DEPTH_TEST);
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-		GL11.glClearColor(0.49f, 89f, 0.98f, 1);
+		GL11.glClearColor(Configs.SKY_COLOR.x, Configs.SKY_COLOR.y, Configs.SKY_COLOR.z, 1);
 		if (!Keyboard.isKeyDown(Keyboard.KEY_W))
 			canToogleWireframe = true;
 	}

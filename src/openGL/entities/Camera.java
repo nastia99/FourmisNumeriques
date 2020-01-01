@@ -86,8 +86,8 @@ public class Camera {
 		distanceFromFocus -= zoomLevel;
 		if (distanceFromFocus < 0.5f)
 			distanceFromFocus = 0.5f;
-		if (distanceFromFocus > 50f)
-			distanceFromFocus = 50f;
+		if (distanceFromFocus > 60f)
+			distanceFromFocus = 60f;
 	}
 
 	/**
@@ -97,8 +97,8 @@ public class Camera {
 		if (Mouse.isButtonDown(1)) {
 			float pitchChange = Mouse.getDY() * 0.1f;
 			pitch -= pitchChange;
-			if (pitch < 0)
-				pitch = 0;
+			if (pitch < 10)
+				pitch = 10;
 			if (pitch > 90)
 				pitch = 90;
 		}

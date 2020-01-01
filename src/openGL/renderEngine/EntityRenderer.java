@@ -88,8 +88,6 @@ public class EntityRenderer {
 		GL20.glEnableVertexAttribArray(1);
 		GL20.glEnableVertexAttribArray(2);
 		ModelTexture texture = model.getTexture();
-		shader.shineDamper.loadFloat(texture.getShineDamper());
-		shader.reflectivity.loadFloat(texture.getReflectivity());
 		shader.currentTime.loadInteger((int) (DisplayManager.getCurrentTime() % Configs.ANT_ANIMATION_DURATION));
 
 		if (model == Configs.antTexturedModel) {
@@ -131,7 +129,7 @@ public class EntityRenderer {
 	 * @param renderableObject entity to be rendered
 	 */
 	private void prepareInstance(RenderableObject renderableObject) {
-		Matrix4f transformationMatrix = Maths.createTransformationMatrix(renderableObject.getPosition(), renderableObject.getRotX(), renderableObject.getRotY(), renderableObject.getRotZ(), renderableObject.getScale());
+		Matrix4f transformationMatrix = Maths.createTransformationMatrixAnt(renderableObject.getPosition(), renderableObject.getRotX(), renderableObject.getRotY(), renderableObject.getRotZ(), renderableObject.getScale());
 		shader.transformationMatrix.loadMatrix(transformationMatrix);
 	}
 

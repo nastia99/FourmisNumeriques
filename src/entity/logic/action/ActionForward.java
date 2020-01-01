@@ -9,6 +9,6 @@ public class ActionForward extends Action {
 
     @Override
     public void execute(Ant a, World world) {
-        a.setTargetPosition(new Vector3f((float)(a.getPosition().x + Chunk.SIZE * Math.cos(Math.toRadians(a.getTargetRot()))), 0, (float)(a.getPosition().z - Chunk.SIZE * Math.sin(Math.toRadians(a.getTargetRot())))));
+        a.setTargetPosition(new Vector3f((float)(a.getPosition().x + Math.cos(Math.toRadians(a.getTargetRot()))), 0, (float)(a.getPosition().z - Math.sin(Math.toRadians(a.getTargetRot())))));
     }
 }

@@ -22,9 +22,31 @@ public class Maths {
 		Matrix4f matrix = new Matrix4f();
 		matrix.setIdentity();
 		Matrix4f.translate(translation, matrix, matrix);
-		Matrix4f.rotate((float) Math.toRadians(rx), new Vector3f(1,0,0), matrix, matrix);
-		Matrix4f.rotate((float) Math.toRadians(ry), new Vector3f(0,1,0), matrix, matrix);
-		Matrix4f.rotate((float) Math.toRadians(rz), new Vector3f(0,0,1), matrix, matrix);
+		Matrix4f.rotate((float) Math.toRadians(rz), new Vector3f(0, 0, 1), matrix, matrix);
+		Matrix4f.rotate((float) Math.toRadians(rx), new Vector3f(1, 0, 0), matrix, matrix);
+		Matrix4f.rotate((float) Math.toRadians(ry), new Vector3f(0, 1, 0), matrix, matrix);
+		Matrix4f.scale(new Vector3f(scale,scale,scale), matrix, matrix);
+		return matrix;
+	}
+
+	/**
+	 * Create the transformation matrix, it enable us to use the same model to render different instance in different places in the world
+	 * @param translation position of the object in the world
+	 * @param rx rotation of the object around the x-axis
+	 * @param ry rotation of the object around the y-axis
+	 * @param rz rotation of the object around the z-axis
+	 * @param scale scale of the object
+	 * @return The transformation matrix used to transform the object's local coordinates to coordinates in the world
+	 */
+	public static Matrix4f createTransformationMatrixAnt(Vector3f translation, float rx, float ry, float rz, float scale) {
+		Matrix4f matrix = new Matrix4f();
+		matrix.setIdentity();
+		Matrix4f.translate(translation, matrix, matrix);
+		Matrix4f.translate(new Vector3f(0, .15f, 0), matrix, matrix);
+		Matrix4f.rotate((float) Math.toRadians(rz), new Vector3f(0, 0, 1), matrix, matrix);
+		Matrix4f.rotate((float) Math.toRadians(rx), new Vector3f(1, 0, 0), matrix, matrix);
+		Matrix4f.rotate((float) Math.toRadians(ry), new Vector3f(0, 1, 0), matrix, matrix);
+		Matrix4f.translate(new Vector3f(0, -.15f, 0), matrix, matrix);
 		Matrix4f.scale(new Vector3f(scale,scale,scale), matrix, matrix);
 		return matrix;
 	}

@@ -11,10 +11,12 @@ import entity.EntityTypes;
 import entity.Food;
 import entity.Tile;
 import openGL.world.Chunk;
+import openGL.world.HeightsGenerator;
 import openGL.world.World;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
+import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
 import openGL.renderEngine.DisplayManager;
@@ -33,20 +35,18 @@ public class MainGameLoop {
 		DisplayManager.createDisplay();
 		loader = new Loader();
 		Configs.init();
-		World world = generateWorld(20);
+		World world = generateWorld(50);
 		addFood(world, 30);
 		Camera camera = new Camera(world);
 		MasterRenderer renderer = new MasterRenderer(world);
 		List<RenderableObject> ants = new ArrayList<RenderableObject>();
-		Light light = new Light(new Vector3f(20000,20000,2000),new Vector3f(1,1,1));
+		Light light = new Light(new Vector3f(20000,20000,20000),new Vector3f(1,1,1));
 		MousePicker mousePicker = new MousePicker(camera, renderer.getProjectionMatrix(), ants);
 
 		Random rand = new Random();
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 10; i++) {
 			ants.add(new Ant(new Vector3f(rand.nextInt(world.getSizeX()) + 0.5f, 0,rand.nextInt(world.getSizeZ()) + 0.5f), 0));
 		}
-
-
 
 		while(!Display.isCloseRequested()){
 			if (Keyboard.isKeyDown(Keyboard.KEY_W) && renderer.canToogleWireframe())
@@ -83,13 +83,15 @@ public class MainGameLoop {
 	}
 
 	private static World generateWorld(int size) {
+		HeightsGenerator generator = new HeightsGenerator(100000, size * (Chunk.VERTEX_COUNT - 1), size * (Chunk.VERTEX_COUNT - 1));
+		generator.generateHeight(new Vector2f(size/2f, size/2f));
 		Tile[][] tiles = new Tile[size][size];
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
-				tiles[i][j] = new Tile(i, j);
+				tiles[i][j] = new Tile(i, j, generator);
 			}
 		}
-		return new World(tiles);
+		return new World(tiles, generator);
 	}
 
 	private static List<RenderableObject> extractEntities(World world) {
@@ -111,7 +113,7 @@ public class MainGameLoop {
 			int y = random.nextInt(world.getSizeZ());
 			Tile tile = (Tile) world.getChunk(x, y);
 			if (tile != null && !tile.contains(EntityTypes.FOOD))
-				tile.addEntity(new Food(new Vector3f((x+.5f)* Chunk.SIZE, 0, (y+.5f)*Chunk.SIZE), 0, 0, 0));
+				tile.addEntity(new Food(new Vector3f(x+.5f, world.getHeight(x+.5f, y+.5f), y+.5f), 0, 0, 0));
 		}
 	}
 }

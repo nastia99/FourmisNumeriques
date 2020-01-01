@@ -55,11 +55,6 @@ public class WorldRenderer {
 		GL20.glEnableVertexAttribArray(0);
 		GL20.glEnableVertexAttribArray(1);
 		GL20.glEnableVertexAttribArray(2);
-		ModelTexture texture = chunk.getTexture();
-		shader.shineDamper.loadFloat(texture.getShineDamper());
-		shader.reflectivity.loadFloat(texture.getReflectivity());
-		GL13.glActiveTexture(GL13.GL_TEXTURE0);
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getID());
 	}
 
 	/**

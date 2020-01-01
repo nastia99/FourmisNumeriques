@@ -2,6 +2,7 @@ package entity;
 
 import openGL.entities.RenderableObject;
 import openGL.world.Chunk;
+import openGL.world.HeightsGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,8 @@ public class Tile extends Chunk {
 
     private List<RenderableObject> entities;
 
-    public Tile(int gridX, int gridZ) {
-        super(gridX, gridZ);
+    public Tile(int gridX, int gridZ, HeightsGenerator generator) {
+        super(gridX, gridZ, generator);
         entities = new ArrayList<RenderableObject>();
     }
 
