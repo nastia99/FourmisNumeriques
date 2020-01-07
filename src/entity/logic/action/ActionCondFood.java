@@ -13,7 +13,6 @@ public class ActionCondFood extends Action {
 
     @Override
     public void execute(Ant a, World world) {
-        //Do nothing
         return;
     }
 

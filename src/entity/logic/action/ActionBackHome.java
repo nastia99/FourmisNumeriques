@@ -15,7 +15,7 @@ public class ActionBackHome extends Action {
 
     @Override
     public void execute(Ant a, World world) {
-        Vector2f end = new Vector2f(0, 0);
+        Vector2f end = (a.getHome() == null ? new Vector2f(0, 0) : new Vector2f(a.getHome().getPosition().x - .5f, a.getHome().getPosition().z - .5f));
         Vector2f path = aStar(new Vector2f(a.getPosition().x - .5f, a.getPosition().z - .5f), end, world);
 
         if (path != null) {

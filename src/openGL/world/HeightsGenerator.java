@@ -8,9 +8,9 @@ import java.util.Random;
 
 public class HeightsGenerator {
 
-    private static final float AMPLITUDE = 5f;
+    private static final float AMPLITUDE = 4f;
     private static final int OCTAVES = 3;
-    private static final float ROUGHNESS = 0.6f;
+    private static final float ROUGHNESS = 0.75f;
 
     private Random random = new Random();
     private int seed;

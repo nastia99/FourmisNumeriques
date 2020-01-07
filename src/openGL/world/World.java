@@ -1,6 +1,8 @@
 package openGL.world;
 
 import engineTester.MainGameLoop;
+import entity.EntityTypes;
+import entity.Tile;
 import openGL.entities.RenderableObject;
 import openGL.textures.ModelTexture;
 import org.lwjgl.util.vector.Vector2f;
@@ -95,5 +97,18 @@ public class World extends RenderableObject {
         int gridX = (int) Math.floor(x);
         int gridZ = (int) Math.floor(z);
         return chunks[gridX][gridZ].getNormal((x - gridX) * (Chunk.VERTEX_COUNT - 1), (z - gridZ) * (Chunk.VERTEX_COUNT - 1));
+    }
+
+    public List<RenderableObject> extractEntities() {
+        List<RenderableObject> list = new ArrayList<RenderableObject>();
+        for (int i = 0; i < getSizeX(); i++) {
+            for (int j = 0; j < getSizeZ(); j++) {
+                Tile tile = (Tile) getChunk(i, j);
+                if (tile != null && (tile.contains(EntityTypes.FOOD) || tile.contains(EntityTypes.ANTHIL))) {
+                    list.addAll(tile.getEntities());
+                }
+            }
+        }
+        return list;
     }
 }

@@ -13,7 +13,6 @@ public class ActionCondAntHil extends Action {
 
     @Override
     public void execute(Ant a, World world) {
-        //Do nothing
         return;
     }
 
@@ -23,6 +22,6 @@ public class ActionCondAntHil extends Action {
         if (tile == null)
             return false;
         else
-            return tile.contains(EntityTypes.ANTHILL);
+            return tile.contains(EntityTypes.ANTHIL);
     }
 }

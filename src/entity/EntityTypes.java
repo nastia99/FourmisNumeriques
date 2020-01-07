@@ -4,6 +4,6 @@ public enum EntityTypes {
 
     FOOD,
     ANT,
-    ANTHILL,
+    ANTHIL,
     OBSTACLE
 }

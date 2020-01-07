@@ -36,7 +36,7 @@ public class Tile extends Chunk {
                         return ro;
                     }
                 break;
-            case ANTHILL:
+            case ANTHIL:
                 //Todo
                 break;
         }
@@ -55,8 +55,10 @@ public class Tile extends Chunk {
                     if (ro instanceof Food)
                         return true;
                 break;
-            case ANTHILL:
-                //Todo
+            case ANTHIL:
+                for (RenderableObject ro : entities)
+                    if (ro instanceof AntHil)
+                        return true;
                 break;
         }
         return false;

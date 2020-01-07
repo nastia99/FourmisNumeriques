@@ -34,7 +34,7 @@ public class Camera {
 		float hDist = calculateHorizontalDistance();
 		float vDist = calculateVerticalDistance();
 		calculateCameraPosition(hDist, vDist);
-		this.yaw = 180 - (focus.getRotY() + angleAroundFocus);
+		this.yaw = 180 - (angleAroundFocus);
 	}
 
 	/**
@@ -138,8 +138,8 @@ public class Camera {
 	 */
 	private void calculateCameraPosition(float hDist, float vDist) {
 		position.y = focus.getPosition().y + vDist + Y_OFFSET;
-		float xOffset = (float) (hDist * Math.sin(Math.toRadians(focus.getRotY() + angleAroundFocus)));
-		float zOffset = (float) (hDist * Math.cos(Math.toRadians(focus.getRotY() + angleAroundFocus)));
+		float xOffset = (float) (hDist * Math.sin(Math.toRadians(angleAroundFocus)));
+		float zOffset = (float) (hDist * Math.cos(Math.toRadians(angleAroundFocus)));
 		position.x = focus.getPosition().x - xOffset;
 		position.z = focus.getPosition().z - zOffset;
 	}

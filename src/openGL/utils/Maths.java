@@ -1,6 +1,7 @@
 package openGL.utils;
 
 import openGL.world.Chunk;
+import openGL.world.World;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
@@ -132,5 +133,13 @@ public class Maths {
 	{
 		Vector2f tmp = new Vector2f(-u.y, u.x);
 		return (float) Math.atan2(Vector2f.dot(tmp, v), Vector2f.dot(u, v));
+	}
+
+	public static Vector2f calculateXZRotations(World world, float x, float z) {
+		Vector3f normal = world.getNormal(x, z);
+		float rotX = 1.618f * (float) Math.toDegrees(Maths.signedAngle(new Vector2f(normal.z, normal.y), new Vector2f(0, 1)));
+		float rotZ = 1.618f * (float) Math.toDegrees(Maths.signedAngle(new Vector2f(0, 1), new Vector2f(normal.x, normal.y)));
+
+		return new Vector2f(rotX, rotZ);
 	}
 }

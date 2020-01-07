@@ -11,7 +11,6 @@ public class ActionCondLoaded extends Action {
 
     @Override
     public void execute(Ant a, World world) {
-        //Do nothing
         return;
     }
 

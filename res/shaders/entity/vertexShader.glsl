@@ -5,7 +5,7 @@ in vec2 textureCoordinates;
 in vec3 normal;
 
 out vec2 pass_textureCoordinates;
-flat out vec3 surfaceNormal;
+out vec3 surfaceNormal;
 out vec3 toLightVector;
 out vec3 toCameraVector;
 flat out float visibility;

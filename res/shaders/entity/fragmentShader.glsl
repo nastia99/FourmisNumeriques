@@ -1,7 +1,7 @@
 #version 400 core
 
 in vec2 pass_textureCoordinates;
-flat in vec3 surfaceNormal;
+in vec3 surfaceNormal;
 in vec3 toLightVector;
 in vec3 color;
 in vec3 toCameraVector;
@@ -21,7 +21,7 @@ void main(void){
 	vec3 unitLightVector = normalize(toLightVector);
 	
 	float nDotl = dot(unitNormal,unitLightVector);
-	float brightness = max(nDotl,0.2);
+	float brightness = max(nDotl,0.3);
 	vec3 diffuse = brightness * lightColour;
 	
 	vec3 unitVectorToCamera = normalize(toCameraVector);
