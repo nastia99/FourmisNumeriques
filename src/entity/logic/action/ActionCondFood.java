@@ -24,4 +24,9 @@ public class ActionCondFood extends Action {
         else
             return tile.contains(EntityTypes.FOOD);
     }
+
+    @Override
+    public String toString() {
+        return "food";
+    }
 }

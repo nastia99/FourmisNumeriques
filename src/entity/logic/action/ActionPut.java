@@ -29,4 +29,9 @@ public class ActionPut extends Action {
             a.setFood(null);
         }
     }
+
+    @Override
+    public String toString() {
+        return "put";
+    }
 }

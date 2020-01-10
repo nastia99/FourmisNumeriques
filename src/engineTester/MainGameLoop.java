@@ -90,7 +90,7 @@ public class MainGameLoop {
             }
         }
         World world = new World(tiles, generator);
-        addFood(world, 200);
+        addFood(world, nbFood);
         return world;
     }
 

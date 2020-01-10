@@ -18,4 +18,9 @@ public class ActionCondLoaded extends Action {
     public boolean isConditionSatisfied(Ant a, World world) {
         return a.isCarryingFood();
     }
+
+    @Override
+    public String toString() {
+        return "isLoaded";
+    }
 }

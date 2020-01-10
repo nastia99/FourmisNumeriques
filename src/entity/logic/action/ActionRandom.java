@@ -28,4 +28,9 @@ public class ActionRandom extends Action {
 
         a.setTargetPosition(new Vector3f((float)(a.getPosition().x + Math.cos(Math.toRadians(a.getTargetRot()))), 0, (float)(a.getPosition().z - Math.sin(Math.toRadians(a.getTargetRot())))));
     }
+
+    @Override
+    public String toString() {
+        return "random";
+    }
 }

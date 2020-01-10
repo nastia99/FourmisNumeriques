@@ -19,6 +19,13 @@ public abstract class Action {
         return true;
     }
 
+    public boolean equals(Object o) {
+        if (o instanceof Action) {
+            return o.toString().equals(toString());
+        }
+        return false;
+    }
+
     public static Action getRandomAction() {
         Random random = new Random();
         int val = random.nextInt(10);
@@ -77,6 +84,31 @@ public abstract class Action {
                 return new ActionCondFood();
             default:
                 return new ActionCondLoaded();
+        }
+    }
+
+    public static Action getAction(String name) {
+        switch (name) {
+            case "right":
+                return new ActionRight();
+            case "left":
+                return new ActionLeft();
+            case "get":
+                return new ActionGet();
+            case "put":
+                return new ActionPut();
+            case "random":
+                return new ActionRandom();
+            case "home":
+                return new ActionBackHome();
+            case "anthil":
+                return new ActionCondAntHil();
+            case "food":
+                return new ActionCondFood();
+            case "isLoaded":
+                return new ActionCondLoaded();
+            default:
+                return new ActionForward();
         }
     }
 }

@@ -18,6 +18,11 @@ public class ActionRight extends Action {
     public boolean isConditionSatisfied(Ant a, World world) {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "right";
+    }
 }
 
 

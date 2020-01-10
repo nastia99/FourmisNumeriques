@@ -3,6 +3,23 @@ package entity.logic;
 import entity.Ant;
 import entity.logic.action.*;
 import openGL.world.World;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 public class Tree {
 
@@ -16,16 +33,78 @@ public class Tree {
         head.execute(a, world);
     }
 
-    public void simplify() {
+    private Element toXMLElement(Document document) {
+        Element treeNode = document.createElement("tree");
+        document.appendChild(treeNode);
 
+        Element headElement = head.getAsElement(document, "head", 0);
+        treeNode.appendChild(headElement);
+        return treeNode;
+    }
+
+    public void simplify() {
+        Map<String, Boolean> encounteredActions = new HashMap<>();
+        head.simplify(encounteredActions);
+    }
+
+    public int getLevel() {
+        return head.getLevel();
+    }
+
+    public Node getHead() {
+        return head;
     }
 
     public static Tree crossBread(Tree t1, Tree t2, boolean mutation) {
         return null;
     }
 
-    public static Tree loadFromString(String text) {
-        return null;
+    public static void saveAsXML(String path, List<Tree> trees) {
+        try {
+            Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+            for (Tree tree : trees) {
+                Element treeNode = tree.toXMLElement(document);
+                document.appendChild(treeNode);
+            }
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+
+            DOMSource domSource = new DOMSource(document);
+            StreamResult streamResult = new StreamResult(new File(path));
+
+            transformer.transform(domSource, streamResult);
+
+        } catch (ParserConfigurationException | TransformerException pce) {
+            pce.printStackTrace();
+        }
+    }
+
+    public static List<Tree> loadFromXML(String path) {
+        List<Tree> trees = new ArrayList<Tree>();
+
+        try {
+            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            File fileXML = new File(path);
+            Document xml;
+
+            xml = builder.parse(fileXML);
+            NodeList treeNodes = xml.getElementsByTagName("tree");
+            for (int i = 0; i < treeNodes.getLength(); i++) {
+                Element element = (Element)treeNodes.item(i);
+                NodeList nodes = element.getChildNodes();
+                Tree tree = new Tree();
+                for (int j = 0; j < nodes.getLength(); j++) {
+                    org.w3c.dom.Node node = nodes.item(j);
+                    if (node.getNodeName().equals("node")) {
+                        tree.head = Node.createFromElement((Element) node, null);
+                    }
+                }
+                trees.add(tree);
+            }
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            e.printStackTrace();
+        }
+        return trees;
     }
 
     public static Tree generateRandomTree(int minLevel, int maxLevel) {
@@ -37,7 +116,7 @@ public class Tree {
 
     private static void generateSubTree(Node current, int currentLevel, int minLevel, int maxLevel) {
         if (current.getAction().isConditional()) {
-            if (currentLevel < maxLevel && currentLevel >= minLevel) {
+            if (currentLevel <= maxLevel && currentLevel >= minLevel) {
                 current.setLeft(new Node(current, Action.getRandomAction()));
                 current.setRight(new Node(current, Action.getRandomAction()));
             } else if (currentLevel < minLevel){

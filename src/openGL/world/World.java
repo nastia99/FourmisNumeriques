@@ -14,8 +14,6 @@ import java.util.List;
 
 public class World extends RenderableObject {
 
-    private static final int SEED = 876753264;
-
     private int sizeX;
     private int sizeZ;
     private Chunk[][] chunks;

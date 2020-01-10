@@ -24,4 +24,9 @@ public class ActionCondAntHil extends Action {
         else
             return tile.contains(EntityTypes.ANTHIL);
     }
+
+    @Override
+    public String toString() {
+        return "anthil";
+    }
 }
