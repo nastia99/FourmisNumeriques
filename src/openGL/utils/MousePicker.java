@@ -1,4 +1,5 @@
 package openGL.utils;
+import entity.Ant;
 import openGL.entities.RenderableObject;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
@@ -25,7 +26,7 @@ public class MousePicker {
     private Matrix4f viewMatrix;
     private Camera camera;
 
-    private List<RenderableObject> entities;
+    private List<Ant> entities;
 
     /**
      * Create a new instance of MousePicker, able to select entities from the passed list of entities
@@ -34,7 +35,7 @@ public class MousePicker {
      * @param projection projection matrix used for rendering
      * @param entities list of selectable entities
      */
-    public MousePicker(Camera cam, Matrix4f projection, List<RenderableObject> entities) {
+    public MousePicker(Camera cam, Matrix4f projection, List<Ant> entities) {
         camera = cam;
         projectionMatrix = projection;
         viewMatrix = Maths.createViewMatrix(camera);

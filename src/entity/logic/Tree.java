@@ -33,9 +33,8 @@ public class Tree {
         head.execute(a, world);
     }
 
-    private Element toXMLElement(Document document) {
+    public Element getAsElement(Document document) {
         Element treeNode = document.createElement("tree");
-        document.appendChild(treeNode);
 
         Element headElement = head.getAsElement(document, "head", 0);
         treeNode.appendChild(headElement);
@@ -59,11 +58,26 @@ public class Tree {
         return null;
     }
 
+    public static Tree getFromElement(Element elem) {
+        if (elem.getTagName().equals("tree")) {
+            NodeList nodes = elem.getChildNodes();
+            Tree tree = new Tree();
+            for (int j = 0; j < nodes.getLength(); j++) {
+                org.w3c.dom.Node node = nodes.item(j);
+                if (node.getNodeName().equals("node")) {
+                    tree.head = Node.createFromElement((Element) node, null);
+                }
+            }
+            return tree;
+        }
+        return null;
+    }
+
     public static void saveAsXML(String path, List<Tree> trees) {
         try {
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
             for (Tree tree : trees) {
-                Element treeNode = tree.toXMLElement(document);
+                Element treeNode = tree.getAsElement(document);
                 document.appendChild(treeNode);
             }
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
@@ -107,10 +121,17 @@ public class Tree {
         return trees;
     }
 
+    /**
+     * Return a random tree that has been simplified
+     * @param minLevel minimum level of the unsimplified tree
+     * @param maxLevel maximum level of the unsimplified tree
+     * @return a simplified random tree
+     */
     public static Tree generateRandomTree(int minLevel, int maxLevel) {
         Tree tree = new Tree();
         tree.head = new Node(null, Action.getRandomConditionalAction());
         generateSubTree(tree.head, 1, minLevel, maxLevel);
+        tree.simplify();
         return tree;
     }
 

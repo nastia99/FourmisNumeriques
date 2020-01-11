@@ -62,7 +62,7 @@ public class Node {
                 this.left = right.left;
                 this.right = right.right;
                 simplify(encounteredActions);
-            } else if (satisfied != null && !satisfied) {
+            } else if (satisfied != null) {
                 this.action = left.action;
                 this.right = left.right;
                 this.left = left.left;
@@ -86,7 +86,7 @@ public class Node {
     }
 
     public int getLevel() {
-        if (left == null)
+        if (!action.isConditional() || left == null || right == null)
             return 1;
         return Math.max(left.getLevel(), right.getLevel()) + 1;
     }
@@ -106,11 +106,11 @@ public class Node {
         element.setAttribute("action", action.toString());
         element.setAttribute("level", String.valueOf(level));
         if (right != null) {
-            Element rightElem = right.getAsElement(document, "right", level+1);
+            Element rightElem = right.getAsElement(document, "right", level + 1);
             element.appendChild(rightElem);
         }
         if (left != null) {
-            Element leftElem = left.getAsElement(document, "left", level+1);
+            Element leftElem = left.getAsElement(document, "left", level + 1);
             element.appendChild(leftElem);
         }
         return element;
@@ -120,10 +120,10 @@ public class Node {
         String action = element.getAttribute("action");
         Node node = new Node(parent, Action.getAction(action));
         NodeList nodes = element.getChildNodes();
-        for(int i = 0; i < nodes.getLength(); i++) {
+        for (int i = 0; i < nodes.getLength(); i++) {
             org.w3c.dom.Node n = nodes.item(i);
             if (n.getNodeName().equals("node")) {
-                Element elem = (Element)n;
+                Element elem = (Element) n;
                 if (elem.getAttribute("type").equals("left"))
                     node.left = createFromElement(elem, node);
                 else if (elem.getAttribute("type").equals("right"))

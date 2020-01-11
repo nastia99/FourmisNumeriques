@@ -32,33 +32,40 @@ public class MainGameLoop {
     public static void main(String[] args) {
         DisplayManager.createDisplay();
         loader = new Loader();
-        Configs.init();
+        Configs.init("res/properties.properties");
+        Configs.initModels();
 
-        World world = generateWorld(50, 200);
+        World world = World.loadFromXML("testWorld.xml");
+        List<AntHil> homes = new ArrayList<>();
 
         Vector2f rotXZ = Maths.calculateXZRotations(world, 25.5f, 25.5f);
         AntHil home = new AntHil(new Vector3f(25.5f, world.getHeight(25.5f, 25.5f), 25.5f), rotXZ.x, 0, rotXZ.y);
+        homes.add(home);
         ((Tile) world.getChunk(25, 25)).addEntity(home);
 
-        List<RenderableObject> ants = generateAnts(200, home, world);
+        Population population = new Population();
+        population.populate(Configs.nbAnts, world, homes);
+
+        world.setPopulation(population);
 
         Camera camera = new Camera(world);
         MasterRenderer renderer = new MasterRenderer(world);
         Light light = new Light(new Vector3f(20000, 20000, 20000), new Vector3f(1, 1, 1));
-        MousePicker mousePicker = new MousePicker(camera, renderer.getProjectionMatrix(), ants);
+        MousePicker mousePicker = new MousePicker(camera, renderer.getProjectionMatrix(), population.getAnts());
 
+        //world.saveToXML("testWorld.xml");
         while (!Display.isCloseRequested()) {
             if (Keyboard.isKeyDown(Keyboard.KEY_W) && renderer.canToogleWireframe())
                 renderer.toogleWireframe();
             camera.update();
             checkForFocus(world, camera, mousePicker);
             boolean newAction = DisplayManager.intervalHasPassed(Configs.ACTION_DURATION);
-            for (RenderableObject ant : ants) {
+            for (RenderableObject ant : population.getAnts()) {
                 ((Ant) ant).update(newAction, world);
             }
 
             renderer.registerRenderableObjects(world.extractEntities());
-            renderer.registerRenderableObjects(ants);
+            renderer.registerAnts(population.getAnts());
             renderer.render(light, camera, Keyboard.isKeyDown(Keyboard.KEY_H));
 
             DisplayManager.updateDisplay();
@@ -80,7 +87,8 @@ public class MainGameLoop {
         }
     }
 
-    private static World generateWorld(int size, int nbFood) {
+    private static World generateWorld(int nbFood) {
+        int size = 50;
         HeightsGenerator generator = new HeightsGenerator(100000, size * (Chunk.VERTEX_COUNT - 1), size * (Chunk.VERTEX_COUNT - 1));
         generator.generateHeight(new Vector2f(size / 2f, size / 2f));
         Tile[][] tiles = new Tile[size][size];
@@ -105,14 +113,5 @@ public class MainGameLoop {
                 tile.addEntity(new Food(new Vector3f(x + .5f, world.getHeight(x + .5f, y + .5f), y + .5f), rotXZ.x, random.nextFloat() * 360, rotXZ.y));
             }
         }
-    }
-
-    private static List<RenderableObject> generateAnts(int nbAnts, AntHil home, World world) {
-        List<RenderableObject> ants = new ArrayList<RenderableObject>();
-        Random rand = new Random();
-        for (int i = 0; i < 200; i++) {
-            ants.add(new Ant(new Vector3f(rand.nextInt(world.getSizeX()) + 0.5f, 0, rand.nextInt(world.getSizeZ()) + 0.5f), 0, home));
-        }
-        return ants;
     }
 }

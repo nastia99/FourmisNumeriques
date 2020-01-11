@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import configs.Configs;
+import entity.Ant;
 import openGL.models.TexturedModel;
 
 import openGL.shaders.HitboxShader;
@@ -108,6 +109,26 @@ public class MasterRenderer {
 				} else {
 					List<RenderableObject> newBatch = new ArrayList<RenderableObject>();
 					newBatch.add(renderableObject);
+					entities.put(entityModel, newBatch);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Register a list of ants to be rendered in the next frame
+	 * @param ants list of ants to be rendered
+	 */
+	public void registerAnts(List<Ant> ants){
+		for (Ant ant : ants) {
+			if (ant.canBeRendered()) {
+				TexturedModel entityModel = ant.getModel();
+				List<RenderableObject> batch = entities.get(entityModel);
+				if (batch != null) {
+					batch.add(ant);
+				} else {
+					List<RenderableObject> newBatch = new ArrayList<RenderableObject>();
+					newBatch.add(ant);
 					entities.put(entityModel, newBatch);
 				}
 			}
