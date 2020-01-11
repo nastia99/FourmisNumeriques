@@ -20,12 +20,17 @@ public class WorldShader extends ShaderProgram{
 	public UniformMatrix viewMatrix = new UniformMatrix("viewMatrix");
 	public UniformVec3 lightPosition = new UniformVec3("lightPosition");
 	public UniformVec3 lightColour = new UniformVec3("lightColour");
-	public UniformFloat shineDamper = new UniformFloat("shineDamper");
-	public UniformFloat reflectivity = new UniformFloat("reflectivity");
+	public UniformVec3 skyColor = new UniformVec3("skyColor");
+	public UniformVec3 worldCenter = new UniformVec3("worldCenter");
+	public UniformFloat density = new UniformFloat("density");
+	public UniformFloat gradient = new UniformFloat("gradient");
 
+	/**
+	 * Create a new WorldShader and store all of the Uniforms variables
+	 */
 	public WorldShader() {
 		super(VERTEX_SHADER, FRAGMENT_SHADER);
-		super.storeAllUniformLocations(transformationMatrix, projectionMatrix, viewMatrix, lightPosition, lightColour, shineDamper, reflectivity);
+		super.storeAllUniformLocations(transformationMatrix, projectionMatrix, viewMatrix, lightPosition, lightColour, skyColor, worldCenter, density, gradient);
 	}
 
 	@Override

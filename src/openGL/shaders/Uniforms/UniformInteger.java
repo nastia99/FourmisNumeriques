@@ -6,6 +6,10 @@ public class UniformInteger extends Uniform{
 
 	private int currentValue;
 
+	/**
+	 * Create a new Uniform of type int
+	 * @param name name of the uniform, must be the same as in the Shader program
+	 */
 	public UniformInteger(String name){
 		super(name);
 	}

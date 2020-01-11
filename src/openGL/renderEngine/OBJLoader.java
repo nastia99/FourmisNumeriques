@@ -14,6 +14,12 @@ import org.lwjgl.util.vector.Vector3f;
 
 public class OBJLoader {
 
+	/**
+	 * Return a model from a valide .obj file containing Vertex position, Faces' Normals, Texture Coords and Triangles indices
+	 * @param fileName path to the file
+	 * @param loader Loader used to convert the raw data into a VAO
+	 * @return a valide model that can be rendered using a generic Renderer
+	 */
 	public static Model loadObjModel(String fileName, Loader loader) {
 		FileReader fr = null;
 		try {
@@ -94,9 +100,16 @@ public class OBJLoader {
 
 	}
 
-	private static void processVertex(String[] vertexData, List<Integer> indices,
-			List<Vector2f> textures, List<Vector3f> normals, float[] textureArray,
-			float[] normalsArray) {
+	/**
+	 * Uses the lists of indices, texture coords and normals to populate the arrays for a passed vertex
+	 * @param vertexData string representing the vertex
+	 * @param indices list of all indices
+	 * @param textures list of all texture coords
+	 * @param normals lots of all normals
+	 * @param textureArray array of texture coords to be populated
+	 * @param normalsArray array of normals to be populated
+	 */
+	private static void processVertex(String[] vertexData, List<Integer> indices,  List<Vector2f> textures, List<Vector3f> normals, float[] textureArray,  float[] normalsArray) {
 		int currentVertexPointer = Integer.parseInt(vertexData[0]) - 1;
 		indices.add(currentVertexPointer);
 		Vector2f currentTex = textures.get(Integer.parseInt(vertexData[1])-1);

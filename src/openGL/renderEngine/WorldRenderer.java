@@ -1,7 +1,5 @@
 package openGL.renderEngine;
 
-import java.util.List;
-
 import openGL.models.Model;
 
 import openGL.world.World;
@@ -21,6 +19,11 @@ public class WorldRenderer {
 
 	private WorldShader shader;
 
+	/**
+	 * Create a new WorldRendered used to handle the world rendering
+	 * @param shader shader to be used for rendering
+	 * @param projectionMatrix projection matrix used for the field of view
+	 */
 	public WorldRenderer(WorldShader shader, Matrix4f projectionMatrix) {
 		this.shader = shader;
 		shader.start();
@@ -28,6 +31,10 @@ public class WorldRenderer {
 		shader.stop();
 	}
 
+	/**
+	 * Render the whole world onto the screen
+	 * @param world world to be rendered
+	 */
 	public void render(World world) {
 		for (Chunk chunk : world.getChunks()) {
 			prepareTerrain(chunk);
@@ -38,19 +45,21 @@ public class WorldRenderer {
 		}
 	}
 
+	/**
+	 * Bind the VAO attributes, load uniforms to the shader and set the active texture
+	 * @param chunk chunk currently being processed
+	 */
 	private void prepareTerrain(Chunk chunk) {
 		Model rawModel = chunk.getModel();
 		GL30.glBindVertexArray(rawModel.getVaoID());
 		GL20.glEnableVertexAttribArray(0);
 		GL20.glEnableVertexAttribArray(1);
 		GL20.glEnableVertexAttribArray(2);
-		ModelTexture texture = chunk.getTexture();
-		shader.shineDamper.loadFloat(texture.getShineDamper());
-		shader.reflectivity.loadFloat(texture.getReflectivity());
-		GL13.glActiveTexture(GL13.GL_TEXTURE0);
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getID());
 	}
 
+	/**
+	 * Unbind all the VAO attributes of the current model
+	 */
 	private void unbindTexturedModel() {
 		GL20.glDisableVertexAttribArray(0);
 		GL20.glDisableVertexAttribArray(1);
@@ -58,6 +67,10 @@ public class WorldRenderer {
 		GL30.glBindVertexArray(0);
 	}
 
+	/**
+	 * Load the Transformation matrix of the current chunk to the shader
+	 * @param chunk chunk currently being processed
+	 */
 	private void loadModelMatrix(Chunk chunk) {
 		Matrix4f transformationMatrix = Maths.createTransformationMatrix(
 				new Vector3f(chunk.getX(), 0, chunk.getZ()), 0, 0, 0, 1);

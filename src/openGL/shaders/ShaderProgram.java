@@ -18,6 +18,10 @@ public abstract class ShaderProgram {
 	private int vertexShaderID;
 	private int fragmentShaderID;
 
+	/**
+	 * Create a new ShaderProgram and load the appropriate programs in the GPU's RAM
+	 * before allocating the memory for VAO attributes
+	 */
 	public ShaderProgram(String vertex, String fragment) {
 		vertexShaderID = loadShader(vertex, GL20.GL_VERTEX_SHADER);
 		fragmentShaderID = loadShader(fragment, GL20.GL_FRAGMENT_SHADER);
@@ -29,20 +33,37 @@ public abstract class ShaderProgram {
 		GL20.glValidateProgram(programID);
 	}
 
+	/**
+	 * Used to bind all of the Vertex Array Object attributes to the Vertex Shader
+	 */
 	protected abstract void bindAttributes();
 
+	/**
+	 * Bind a VAO Attribute to a location
+	 * @param attribute attribute location
+	 * @param varibleName attribute name
+	 */
 	protected void bindAttribute(int attribute, String varibleName) {
 		GL20.glBindAttribLocation(programID, attribute, varibleName);
 	}
 
+	/**
+	 * Start the shader on the GPU
+	 */
 	public void start() {
 		GL20.glUseProgram(programID);
 	}
 
+	/**
+	 * Stop the shader on the GPU
+	 */
 	public void stop() {
 		GL20.glUseProgram(0);
 	}
 
+	/**
+	 * Clear the GPU memory used by the shaders
+	 */
 	public void clear() {
 		stop();
 		GL20.glDetachShader(programID, vertexShaderID);
@@ -52,6 +73,12 @@ public abstract class ShaderProgram {
 		GL20.glDeleteProgram(programID);
 	}
 
+	/**
+	 * Load a shader from a file
+	 * @param file path of the shader file
+	 * @param type indicate the type of shader (Vertex, Geometry, Tesselation, Fragment ...)
+	 * @return the shader ID given by OpenGL
+	 */
 	private static int loadShader(String file, int type) {
 		StringBuilder shaderSource = new StringBuilder();
 		try {
@@ -78,6 +105,10 @@ public abstract class ShaderProgram {
 		return shaderID;
 	}
 
+	/**
+	 * Allocate the memory on the GPU's RAM for all the Uniforms variables of this shader
+	 * @param uniforms list of all the Uniforms to be used by the shader
+	 */
 	protected void storeAllUniformLocations(Uniform... uniforms){
 		for(Uniform uniform : uniforms){
 			uniform.storeUniformLocation(programID);

@@ -6,15 +6,18 @@ import org.lwjgl.opengl.*;
 
 public class DisplayManager {
 	
-	private static final int WIDTH = 1920;
-	private static final int HEIGHT = 1080;
+	private static final int WIDTH = 1280;
+	private static final int HEIGHT = 720;
 	private static final int FPS_CAP = 120;
 
 	private static long lastFrameTime;
 	private static float delta; //Frame time in seconds
 
 	private static long intervalTimer;
-	
+
+	/**
+	 * Create a new windows and prepare it to be used as rendering target
+	 */
 	public static void createDisplay(){		
 		ContextAttribs attribs = new ContextAttribs(3,2)
 		.withForwardCompatible(true)
@@ -32,7 +35,10 @@ public class DisplayManager {
 		lastFrameTime = getCurrentTime();
 		intervalTimer = getCurrentTime();
 	}
-	
+
+	/**
+	 * Draw the GPU's FrameBuffer to the screen
+	 */
 	public static void updateDisplay(){
 		Display.sync(FPS_CAP);
 		Display.update();
@@ -42,18 +48,34 @@ public class DisplayManager {
 		Display.setTitle("Projet APO, Demo moteur graphique       FPS : " + (int)(1f/delta));
 	}
 
+	/**
+	 * return the last frame duration in seconds
+	 * @return last frame duration in seconds
+	 */
 	public static float getFrameTimeSeconds() {
 		return delta;
 	}
 
+	/**
+	 * Close the display
+	 */
 	public static void closeDisplay(){
 		Display.destroy();
 	}
 
+	/**
+	 * Return the current time in milliseconds
+	 * @return current time in milliseconds
+	 */
 	public static long getCurrentTime() {
 		return Sys.getTime() * 1000 / Sys.getTimerResolution();
 	}
 
+	/**
+	 * return whether or not a variable interval has passed since the last call of this function
+	 * @param ms the interval size in milliseconds
+	 * @return has an interval passed
+	 */
 	public static boolean intervalHasPassed(int ms) {
 		if (getCurrentTime() - intervalTimer > ms) {
 			intervalTimer = getCurrentTime();
@@ -62,6 +84,10 @@ public class DisplayManager {
 		return false;
 	}
 
+	/**
+	 * Return the time elapsed since the last call to intervalHasPassed(int ms)
+	 * @return time passed since last intervalHasPassed(int ms) call
+	 */
 	public static long timeSinceLastInterval() {
 		return getCurrentTime() - intervalTimer;
 	}

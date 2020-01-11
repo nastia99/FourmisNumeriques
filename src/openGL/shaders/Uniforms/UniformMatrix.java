@@ -10,6 +10,10 @@ public class UniformMatrix extends Uniform{
 	
 	private static FloatBuffer matrixBuffer = BufferUtils.createFloatBuffer(16);
 
+	/**
+	 * Create a new Uniform of type mat4
+	 * @param name name of the uniform, must be the same as in the Shader program
+	 */
 	public UniformMatrix(String name) {
 		super(name);
 	}

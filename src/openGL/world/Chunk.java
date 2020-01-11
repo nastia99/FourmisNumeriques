@@ -1,42 +1,38 @@
 package openGL.world;
 
-import configs.Configs;
 import engineTester.MainGameLoop;
 import openGL.models.Model;
 import openGL.renderEngine.Loader;
-import openGL.textures.ModelTexture;
+import org.lwjgl.util.vector.Vector3f;
 
 public class Chunk {
-	
-	public static final float SIZE = 1;
-	private static final int VERTEX_COUNT = 2;
-	
-	private float x;
-	private float z;
-	private Model model;
-	private ModelTexture texture;
 
-	public Chunk(int gridX, int gridZ){
-		this.x = gridX * SIZE;
-		this.z = gridZ * SIZE;
-		texture = Configs.chunkModelTexture;
+	public static final int VERTEX_COUNT = 3;
+
+	private int x;
+	private int z;
+	private float[][] height;
+	private HeightsGenerator generator;
+	private Model model;
+
+	public Chunk(int gridX, int gridZ, HeightsGenerator generator){
+		this.x = gridX;
+		this.z = gridZ;
+		this.generator = generator;
+		height = new float[VERTEX_COUNT][VERTEX_COUNT];
 		this.model = generateTerrain(MainGameLoop.loader);
 	}
-	
-	public float getX() {
+
+	public int getX() {
 		return x;
 	}
 
-	public float getZ() {
+	public int getZ() {
 		return z;
 	}
 
 	public Model getModel() {
 		return model;
-	}
-
-	public ModelTexture getTexture() {
-		return texture;
 	}
 
 	private Model generateTerrain(Loader loader){
@@ -48,12 +44,14 @@ public class Chunk {
 		int vertexPointer = 0;
 		for(int i=0;i<VERTEX_COUNT;i++){
 			for(int j=0;j<VERTEX_COUNT;j++){
-				vertices[vertexPointer*3] = (float)j/((float)VERTEX_COUNT - 1) * SIZE;
-				vertices[vertexPointer*3+1] = 0;
-				vertices[vertexPointer*3+2] = (float)i/((float)VERTEX_COUNT - 1) * SIZE;
-				normals[vertexPointer*3] = 0;
-				normals[vertexPointer*3+1] = 1;
-				normals[vertexPointer*3+2] = 0;
+				vertices[vertexPointer*3] = (float)j/((float)VERTEX_COUNT - 1);
+				vertices[vertexPointer*3+1] = getHeight(j, i);
+				vertices[vertexPointer*3+2] = (float)i/((float)VERTEX_COUNT - 1);
+				height[i][j] = vertices[vertexPointer*3+1];
+				Vector3f normal = getNormal(j, i);
+				normals[vertexPointer*3] = normal.x;
+				normals[vertexPointer*3+1] = normal.y;
+				normals[vertexPointer*3+2] = normal.z;
 				textureCoords[vertexPointer*2] = (float)j/((float)VERTEX_COUNT - 1);
 				textureCoords[vertexPointer*2+1] = (float)i/((float)VERTEX_COUNT - 1);
 				vertexPointer++;
@@ -77,4 +75,17 @@ public class Chunk {
 		return loader.loadToVAO(vertices, textureCoords, normals, indices);
 	}
 
+	private float getHeight(float x, float z) {
+		return generator.getHeightInChunk(this.x, this.z, x, z);
+	}
+
+	public Vector3f getNormal(float x, float z) {
+		float hL = getHeight(x - 1, z);
+		float hR = getHeight(x + 1, z);
+		float hD = getHeight(x, z - 1);
+		float hU = getHeight(x, z + 1);
+		Vector3f normal = new Vector3f(hL - hR, 2f, hD - hU);
+		normal.normalise();
+		return normal;
+	}
 }
