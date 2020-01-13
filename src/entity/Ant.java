@@ -121,11 +121,11 @@ public class Ant extends RenderableObject implements Comparable<Ant> {
 
         Element treeElement = decisionTree.getAsElement(document);
         antNode.appendChild(treeElement);
-        antNode.setAttribute("posX", String.valueOf(position.x - 5f));
+        antNode.setAttribute("posX", String.valueOf(Maths.clamp(position.x - 5f, 0, 49)));
         antNode.setAttribute("rotY", String.valueOf(rotY));
-        antNode.setAttribute("posZ", String.valueOf(position.z - .5f));
-        antNode.setAttribute("homeX", String.valueOf(home.x - .5f));
-        antNode.setAttribute("homeZ", String.valueOf(home.y - .5f));
+        antNode.setAttribute("posZ", String.valueOf(Maths.clamp(position.z - .5f, 0, 49)));
+        antNode.setAttribute("homeX", String.valueOf(Maths.clamp(home.x - .5f, 0, 49)));
+        antNode.setAttribute("homeZ", String.valueOf(Maths.clamp(home.y - .5f, 0, 49)));
         antNode.setAttribute("fitness", String.valueOf(fitnessScore));
         return antNode;
     }
@@ -141,6 +141,7 @@ public class Ant extends RenderableObject implements Comparable<Ant> {
             Tree tree = Tree.getFromElement(treeElem);
             Ant ant = new Ant(new Vector3f(posX, 0, posZ), rotY, new Vector2f(homeX, homeZ));
             if (tree != null)
+                tree.simplify();
                 ant.decisionTree = tree;
             return ant;
         }
@@ -150,6 +151,14 @@ public class Ant extends RenderableObject implements Comparable<Ant> {
     @Override
     public int compareTo(Ant ant) {
         return Float.compare(fitnessScore, ant.fitnessScore);
+    }
+
+    public Tree getDecisionTree() {
+        return decisionTree;
+    }
+
+    public void setDecisionTree(Tree decisionTree) {
+        this.decisionTree = decisionTree;
     }
 }
 

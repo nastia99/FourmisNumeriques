@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <world>
     <population>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="25.5" posZ="20.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="25.0" posZ="20.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -24,7 +24,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.5" posZ="33.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.0" posZ="33.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="left" level="1" type="right"/>
@@ -38,7 +38,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="35.5" posZ="31.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="35.0" posZ="31.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -52,7 +52,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="41.5" posZ="19.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="41.0" posZ="19.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -75,7 +75,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="3.5" posZ="6.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="3.0" posZ="6.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -92,7 +92,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="12.5" posZ="37.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="12.0" posZ="37.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -106,7 +106,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="32.5" posZ="9.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="32.0" posZ="9.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -126,7 +126,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="15.5" posZ="43.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="15.0" posZ="43.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -137,7 +137,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="2.5" posZ="1.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="2.0" posZ="1.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -154,7 +154,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="20.5" posZ="36.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="20.0" posZ="36.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -168,7 +168,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="26.5" posZ="19.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="26.0" posZ="19.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -182,7 +182,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.5" posZ="40.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.0" posZ="40.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -199,7 +199,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="18.5" posZ="31.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="18.0" posZ="31.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -219,7 +219,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="42.5" posZ="7.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="42.0" posZ="7.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -236,7 +236,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="18.5" posZ="25.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="18.0" posZ="25.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -259,7 +259,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="30.5" posZ="26.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="30.0" posZ="26.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -282,7 +282,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="24.5" posZ="40.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="24.0" posZ="40.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -302,7 +302,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="-0.5" posZ="23.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.0" posZ="23.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -313,7 +313,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="15.5" posZ="5.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="15.0" posZ="5.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -330,7 +330,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.5" posZ="10.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.0" posZ="10.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -344,7 +344,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="3.5" posZ="41.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="3.0" posZ="41.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -364,7 +364,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="1.5" posZ="40.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="1.0" posZ="40.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -378,7 +378,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="25.5" posZ="35.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="25.0" posZ="35.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="left" level="1" type="right"/>
@@ -386,7 +386,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.5" posZ="14.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.0" posZ="14.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -406,7 +406,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="38.5" posZ="26.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="38.0" posZ="26.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -423,7 +423,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="28.5" posZ="3.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="28.0" posZ="3.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -443,7 +443,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.5" posZ="20.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.0" posZ="20.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -463,7 +463,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="13.5" posZ="14.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="13.0" posZ="14.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -477,7 +477,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="30.5" posZ="49.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="30.0" posZ="49.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -491,7 +491,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.5" posZ="38.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.0" posZ="38.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -505,7 +505,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="6.5" posZ="39.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="6.0" posZ="39.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -519,7 +519,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="1.5" posZ="14.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="1.0" posZ="14.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -530,7 +530,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="27.5" posZ="38.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="27.0" posZ="38.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="put" level="1" type="right"/>
@@ -541,7 +541,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="22.5" posZ="12.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="22.0" posZ="12.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -561,7 +561,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.5" posZ="0.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.0" posZ="0.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -578,7 +578,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="41.5" posZ="46.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="41.0" posZ="46.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="right" level="1" type="right"/>
@@ -586,7 +586,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="33.5" posZ="18.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="33.0" posZ="18.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -603,7 +603,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="28.5" posZ="6.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="28.0" posZ="6.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -623,7 +623,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.5" posZ="3.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.0" posZ="3.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -634,7 +634,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.5" posZ="34.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.0" posZ="34.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -651,7 +651,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="14.5" posZ="47.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="14.0" posZ="47.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -662,7 +662,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.5" posZ="1.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.0" posZ="1.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="right" level="1" type="right"/>
@@ -676,7 +676,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="15.5" posZ="9.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="15.0" posZ="9.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="right" level="1" type="right"/>
@@ -690,7 +690,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="9.5" posZ="20.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="9.0" posZ="20.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="left" level="1" type="right"/>
@@ -698,7 +698,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="3.5" posZ="27.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="3.0" posZ="27.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -715,7 +715,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="24.5" posZ="16.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="24.0" posZ="16.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -741,7 +741,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.5" posZ="45.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.0" posZ="45.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="random" level="1" type="right"/>
@@ -752,7 +752,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="24.5" posZ="9.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="24.0" posZ="9.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -769,7 +769,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="-1.5" posZ="40.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="1.0" posZ="40.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -783,7 +783,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.5" posZ="22.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.0" posZ="22.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -800,7 +800,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="12.5" posZ="24.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="12.0" posZ="24.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -817,7 +817,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.5" posZ="9.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.0" posZ="9.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -831,7 +831,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.5" posZ="49.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.0" posZ="49.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -845,7 +845,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="12.5" posZ="5.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="12.0" posZ="5.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -865,7 +865,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="12.5" posZ="26.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="12.0" posZ="26.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -888,7 +888,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="19.5" posZ="42.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="19.0" posZ="42.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -905,7 +905,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="41.5" posZ="12.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="41.0" posZ="12.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -922,7 +922,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.5" posZ="13.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.0" posZ="13.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -945,7 +945,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="20.5" posZ="11.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="20.0" posZ="11.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -962,7 +962,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="19.5" posZ="24.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="19.0" posZ="24.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -982,7 +982,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.5" posZ="30.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.0" posZ="30.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="right" level="1" type="right"/>
@@ -993,7 +993,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="34.5" posZ="1.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="34.0" posZ="1.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -1013,7 +1013,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.5" posZ="1.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.0" posZ="1.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1030,7 +1030,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="44.5" posZ="15.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="44.0" posZ="15.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="put" level="1" type="right"/>
@@ -1044,7 +1044,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="44.5" posZ="5.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="44.0" posZ="5.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -1061,7 +1061,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="6.5" posZ="19.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="6.0" posZ="19.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1078,7 +1078,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="-2.5" posZ="49.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="2.0" posZ="49.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -1101,7 +1101,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.5" posZ="9.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.0" posZ="9.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1118,7 +1118,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.5" posZ="12.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.0" posZ="12.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1138,7 +1138,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.5" posZ="35.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.0" posZ="35.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1149,7 +1149,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.5" posZ="36.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.0" posZ="36.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1169,7 +1169,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="36.5" posZ="25.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="36.0" posZ="25.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1183,7 +1183,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="42.5" posZ="20.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="42.0" posZ="20.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1200,7 +1200,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="26.5" posZ="49.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="26.0" posZ="49.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -1217,7 +1217,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="8.5" posZ="16.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="8.0" posZ="16.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1234,7 +1234,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="34.5" posZ="40.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="34.0" posZ="40.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1248,7 +1248,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="14.5" posZ="20.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="14.0" posZ="20.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -1262,7 +1262,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="25.5" posZ="20.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="25.0" posZ="20.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1282,7 +1282,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="37.5" posZ="41.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="37.0" posZ="41.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -1296,7 +1296,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="-2.5" posZ="7.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="2.0" posZ="7.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1310,7 +1310,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="38.5" posZ="34.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="38.0" posZ="34.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1327,7 +1327,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="-0.5" posZ="34.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.0" posZ="34.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -1347,7 +1347,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.5" posZ="0.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.0" posZ="0.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="forward" level="1" type="right"/>
@@ -1361,7 +1361,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="38.5" posZ="26.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="38.0" posZ="26.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -1381,7 +1381,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="38.5" posZ="5.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="38.0" posZ="5.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1398,7 +1398,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="28.5" posZ="28.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="28.0" posZ="28.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1418,7 +1418,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="35.5" posZ="29.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="35.0" posZ="29.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1432,7 +1432,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="-0.5" posZ="2.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.0" posZ="2.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="return" level="1" type="right"/>
@@ -1443,7 +1443,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="13.5" posZ="31.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="13.0" posZ="31.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1457,7 +1457,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="35.5" posZ="44.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="35.0" posZ="44.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1477,7 +1477,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.5" posZ="21.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.0" posZ="21.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1497,7 +1497,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="32.5" posZ="33.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="32.0" posZ="33.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1511,7 +1511,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="28.5" posZ="35.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="28.0" posZ="35.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1525,7 +1525,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.5" posZ="11.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.0" posZ="11.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1545,7 +1545,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="40.5" posZ="27.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="40.0" posZ="27.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -1568,7 +1568,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="-0.5" posZ="29.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.0" posZ="29.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1591,7 +1591,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="5.5" posZ="38.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="5.0" posZ="38.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1608,7 +1608,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="5.5" posZ="8.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="5.0" posZ="8.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1622,7 +1622,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="37.5" posZ="27.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="37.0" posZ="27.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -1645,7 +1645,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="20.5" posZ="4.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="20.0" posZ="4.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1662,7 +1662,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="39.5" posZ="42.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="39.0" posZ="42.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1679,7 +1679,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="19.5" posZ="18.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="19.0" posZ="18.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1693,7 +1693,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="1.5" posZ="25.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="1.0" posZ="25.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -1707,7 +1707,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="4.5" posZ="44.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="4.0" posZ="44.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1724,7 +1724,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="32.5" posZ="22.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="32.0" posZ="22.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -1741,7 +1741,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="25.5" posZ="17.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="25.0" posZ="17.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -1761,7 +1761,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="25.5" posZ="44.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="25.0" posZ="44.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1778,7 +1778,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.5" posZ="45.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.0" posZ="45.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1789,7 +1789,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="27.5" posZ="40.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="27.0" posZ="40.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1809,7 +1809,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="17.5" posZ="28.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="17.0" posZ="28.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1826,7 +1826,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="28.5" posZ="4.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="28.0" posZ="4.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1843,7 +1843,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.5" posZ="6.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.0" posZ="6.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1860,7 +1860,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="38.5" posZ="37.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="38.0" posZ="37.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1877,7 +1877,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="36.5" posZ="49.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="36.0" posZ="49.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1891,7 +1891,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="1.5" posZ="9.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="1.0" posZ="9.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -1905,7 +1905,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="10.5" posZ="8.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="10.0" posZ="8.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -1919,7 +1919,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="11.5" posZ="3.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="11.0" posZ="3.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1936,7 +1936,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="2.5" posZ="19.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="2.0" posZ="19.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1953,7 +1953,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="17.5" posZ="38.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="17.0" posZ="38.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1970,7 +1970,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="-4.5" posZ="35.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="4.0" posZ="35.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -1984,7 +1984,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="21.5" posZ="37.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="21.0" posZ="37.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2004,7 +2004,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="9.5" posZ="26.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="9.0" posZ="26.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2021,7 +2021,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.5" posZ="36.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.0" posZ="36.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2041,7 +2041,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="3.5" posZ="9.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="3.0" posZ="9.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2064,7 +2064,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="-0.5" posZ="2.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.0" posZ="2.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2078,7 +2078,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="32.5" posZ="47.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="32.0" posZ="47.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="forward" level="1" type="right"/>
@@ -2092,7 +2092,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="42.5" posZ="35.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="42.0" posZ="35.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2112,7 +2112,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="14.5" posZ="26.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="14.0" posZ="26.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2126,7 +2126,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="27.5" posZ="36.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="27.0" posZ="36.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2146,7 +2146,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="-2.5" posZ="14.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="2.0" posZ="14.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2169,7 +2169,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.5" posZ="17.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.0" posZ="17.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="put" level="1" type="right"/>
@@ -2180,7 +2180,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="39.5" posZ="9.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="39.0" posZ="9.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2200,7 +2200,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="15.5" posZ="44.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="15.0" posZ="44.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2223,7 +2223,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="44.5" posZ="17.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="44.0" posZ="17.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2243,7 +2243,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="12.5" posZ="21.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="12.0" posZ="21.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2260,7 +2260,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="37.5" posZ="13.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="37.0" posZ="13.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2280,7 +2280,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="37.5" posZ="0.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="37.0" posZ="0.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2297,7 +2297,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="21.5" posZ="20.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="21.0" posZ="20.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="return" level="1" type="right"/>
@@ -2305,7 +2305,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="43.5" posZ="6.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="43.0" posZ="6.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2325,7 +2325,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="-4.5" posZ="40.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="4.0" posZ="40.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2345,7 +2345,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.5" posZ="45.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.0" posZ="45.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2362,7 +2362,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.5" posZ="15.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.0" posZ="15.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2382,7 +2382,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="5.5" posZ="3.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="5.0" posZ="3.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2402,7 +2402,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="33.5" posZ="11.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="33.0" posZ="11.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2422,7 +2422,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="10.5" posZ="8.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="10.0" posZ="8.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2436,7 +2436,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.5" posZ="15.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.0" posZ="15.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2450,7 +2450,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="18.5" posZ="18.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="18.0" posZ="18.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2467,7 +2467,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="19.5" posZ="1.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="19.0" posZ="1.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2484,7 +2484,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="26.5" posZ="15.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="26.0" posZ="15.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2501,7 +2501,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="18.5" posZ="41.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="18.0" posZ="41.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2515,7 +2515,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="23.5" posZ="47.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="23.0" posZ="47.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2538,7 +2538,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.5" posZ="28.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.0" posZ="28.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2552,7 +2552,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="41.5" posZ="35.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="41.0" posZ="35.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2575,7 +2575,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.5" posZ="20.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.0" posZ="20.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2592,7 +2592,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="1.5" posZ="42.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="1.0" posZ="42.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2606,7 +2606,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="28.5" posZ="42.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="28.0" posZ="42.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="left" level="1" type="right"/>
@@ -2617,7 +2617,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.5" posZ="31.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.0" posZ="31.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2634,7 +2634,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="8.5" posZ="7.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="8.0" posZ="7.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2651,7 +2651,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="43.5" posZ="39.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="43.0" posZ="39.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2671,7 +2671,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="8.5" posZ="1.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="8.0" posZ="1.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2688,7 +2688,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="39.5" posZ="48.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="39.0" posZ="48.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2705,7 +2705,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="38.5" posZ="38.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="38.0" posZ="38.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="return" level="1" type="right"/>
@@ -2719,7 +2719,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="10.5" posZ="39.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="10.0" posZ="39.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2739,7 +2739,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="23.5" posZ="14.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="23.0" posZ="14.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2762,7 +2762,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="44.5" posZ="25.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="44.0" posZ="25.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2773,7 +2773,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="12.5" posZ="18.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="12.0" posZ="18.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2793,7 +2793,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.5" posZ="34.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.0" posZ="34.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2810,7 +2810,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.5" posZ="41.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="7.0" posZ="41.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2827,7 +2827,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="6.5" posZ="7.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="6.0" posZ="7.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2847,7 +2847,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="19.5" posZ="10.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="19.0" posZ="10.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2867,7 +2867,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="40.5" posZ="15.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="40.0" posZ="15.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -2884,7 +2884,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="-0.5" posZ="13.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.0" posZ="13.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2901,7 +2901,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="-3.5" posZ="9.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="3.0" posZ="9.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2924,7 +2924,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="42.5" posZ="31.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="42.0" posZ="31.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -2941,7 +2941,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.5" posZ="16.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="31.0" posZ="16.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2958,7 +2958,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="37.5" posZ="37.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="37.0" posZ="37.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2972,7 +2972,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.5" posZ="38.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="16.0" posZ="38.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -2992,7 +2992,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="24.5" posZ="10.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="24.0" posZ="10.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -3012,7 +3012,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="33.5" posZ="36.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="33.0" posZ="36.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -3029,7 +3029,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="27.5" posZ="17.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="27.0" posZ="17.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -3043,7 +3043,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.5" posZ="37.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.0" posZ="37.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -3057,7 +3057,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="22.5" posZ="46.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="22.0" posZ="46.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -3074,7 +3074,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="5.5" posZ="19.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="5.0" posZ="19.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -3088,7 +3088,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="9.5" posZ="3.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="9.0" posZ="3.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -3108,7 +3108,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="14.5" posZ="1.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="14.0" posZ="1.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -3125,7 +3125,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="39.5" posZ="46.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="39.0" posZ="46.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="get" level="1" type="right"/>
@@ -3139,7 +3139,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="11.5" posZ="44.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="11.0" posZ="44.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -3150,7 +3150,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="24.5" posZ="4.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="24.0" posZ="4.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -3170,7 +3170,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="19.5" posZ="38.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="19.0" posZ="38.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -3190,7 +3190,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="15.5" posZ="38.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="15.0" posZ="38.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -3210,7 +3210,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.5" posZ="42.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="29.0" posZ="42.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -3227,7 +3227,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="35.5" posZ="46.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="35.0" posZ="46.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -3244,7 +3244,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="12.5" posZ="32.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="12.0" posZ="32.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -3261,7 +3261,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="27.5" posZ="36.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="27.0" posZ="36.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -3275,7 +3275,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="19.5" posZ="0.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="19.0" posZ="0.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -3292,7 +3292,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="35.5" posZ="49.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="35.0" posZ="49.0" rotY="0.0">
             <tree>
                 <node action="isLoaded" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -3309,7 +3309,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="13.5" posZ="44.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="13.0" posZ="44.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -3326,7 +3326,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.5" posZ="36.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="0.0" posZ="36.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="isLoaded" level="1" type="right">
@@ -3340,7 +3340,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="27.5" posZ="30.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="27.0" posZ="30.0" rotY="0.0">
             <tree>
                 <node action="anthil" level="0" type="head">
                     <node action="food" level="1" type="right">
@@ -3357,7 +3357,7 @@
                 </node>
             </tree>
         </ant>
-        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="36.5" posZ="34.0" rotY="0.0">
+        <ant fitness="0.0" homeX="25.0" homeZ="25.0" posX="36.0" posZ="34.0" rotY="0.0">
             <tree>
                 <node action="food" level="0" type="head">
                     <node action="anthil" level="1" type="right">
@@ -3379,198 +3379,198 @@
         </ant>
     </population>
     <objects>
-        <food posX="0.5" posZ="37.5" rotY="36.315224"/>
-        <food posX="0.5" posZ="46.5" rotY="165.70018"/>
-        <food posX="0.5" posZ="49.5" rotY="108.2193"/>
-        <food posX="1.5" posZ="26.5" rotY="8.849745"/>
-        <food posX="1.5" posZ="37.5" rotY="243.58463"/>
-        <food posX="2.5" posZ="1.5" rotY="98.552124"/>
-        <food posX="2.5" posZ="2.5" rotY="100.807884"/>
-        <food posX="2.5" posZ="6.5" rotY="85.22101"/>
-        <food posX="2.5" posZ="9.5" rotY="46.716915"/>
-        <food posX="2.5" posZ="17.5" rotY="139.59525"/>
-        <food posX="2.5" posZ="35.5" rotY="262.81323"/>
-        <food posX="2.5" posZ="41.5" rotY="167.40617"/>
-        <food posX="2.5" posZ="46.5" rotY="29.465202"/>
-        <food posX="2.5" posZ="49.5" rotY="336.8006"/>
-        <food posX="3.5" posZ="45.5" rotY="346.0987"/>
-        <food posX="4.5" posZ="5.5" rotY="233.03091"/>
-        <food posX="4.5" posZ="15.5" rotY="89.351036"/>
-        <food posX="4.5" posZ="16.5" rotY="287.5887"/>
-        <food posX="4.5" posZ="29.5" rotY="153.0415"/>
-        <food posX="4.5" posZ="30.5" rotY="68.63904"/>
-        <food posX="4.5" posZ="38.5" rotY="38.14245"/>
-        <food posX="5.5" posZ="9.5" rotY="130.2491"/>
-        <food posX="5.5" posZ="48.5" rotY="251.64378"/>
-        <food posX="6.5" posZ="35.5" rotY="252.51881"/>
-        <food posX="6.5" posZ="45.5" rotY="126.43843"/>
-        <food posX="7.5" posZ="21.5" rotY="4.378159"/>
-        <food posX="7.5" posZ="26.5" rotY="211.77284"/>
-        <food posX="7.5" posZ="40.5" rotY="29.394821"/>
-        <food posX="7.5" posZ="45.5" rotY="71.51241"/>
-        <food posX="8.5" posZ="11.5" rotY="76.70742"/>
-        <food posX="8.5" posZ="26.5" rotY="272.2632"/>
-        <food posX="8.5" posZ="30.5" rotY="32.413338"/>
-        <food posX="8.5" posZ="35.5" rotY="19.184574"/>
-        <food posX="8.5" posZ="40.5" rotY="29.029978"/>
-        <food posX="8.5" posZ="48.5" rotY="268.64368"/>
-        <food posX="9.5" posZ="11.5" rotY="224.97804"/>
-        <food posX="9.5" posZ="14.5" rotY="121.91771"/>
-        <food posX="9.5" posZ="27.5" rotY="53.20458"/>
-        <food posX="9.5" posZ="28.5" rotY="336.77594"/>
-        <food posX="9.5" posZ="43.5" rotY="33.64739"/>
-        <food posX="10.5" posZ="7.5" rotY="204.2021"/>
-        <food posX="10.5" posZ="14.5" rotY="117.5306"/>
-        <food posX="10.5" posZ="24.5" rotY="36.846878"/>
-        <food posX="11.5" posZ="0.5" rotY="6.089258"/>
-        <food posX="11.5" posZ="5.5" rotY="132.71483"/>
-        <food posX="11.5" posZ="12.5" rotY="219.40907"/>
-        <food posX="11.5" posZ="44.5" rotY="231.86195"/>
-        <food posX="12.5" posZ="2.5" rotY="63.258354"/>
-        <food posX="12.5" posZ="3.5" rotY="246.20668"/>
-        <food posX="12.5" posZ="10.5" rotY="242.61302"/>
-        <food posX="12.5" posZ="12.5" rotY="79.23586"/>
-        <food posX="12.5" posZ="28.5" rotY="176.21283"/>
-        <food posX="12.5" posZ="33.5" rotY="309.28156"/>
-        <food posX="13.5" posZ="16.5" rotY="264.77075"/>
-        <food posX="13.5" posZ="40.5" rotY="338.96884"/>
-        <food posX="14.5" posZ="3.5" rotY="160.40816"/>
-        <food posX="14.5" posZ="15.5" rotY="335.9704"/>
-        <food posX="14.5" posZ="16.5" rotY="322.04822"/>
-        <food posX="14.5" posZ="22.5" rotY="296.7167"/>
-        <food posX="14.5" posZ="30.5" rotY="283.02295"/>
-        <food posX="14.5" posZ="45.5" rotY="38.277634"/>
-        <food posX="15.5" posZ="10.5" rotY="209.24638"/>
-        <food posX="15.5" posZ="23.5" rotY="289.2681"/>
-        <food posX="16.5" posZ="12.5" rotY="66.39886"/>
-        <food posX="16.5" posZ="30.5" rotY="122.30094"/>
-        <food posX="17.5" posZ="1.5" rotY="114.62139"/>
-        <food posX="17.5" posZ="5.5" rotY="223.84523"/>
-        <food posX="17.5" posZ="22.5" rotY="244.72432"/>
-        <food posX="17.5" posZ="41.5" rotY="70.25218"/>
-        <food posX="18.5" posZ="7.5" rotY="202.2272"/>
-        <food posX="18.5" posZ="16.5" rotY="274.14688"/>
-        <food posX="18.5" posZ="19.5" rotY="270.80084"/>
-        <food posX="18.5" posZ="20.5" rotY="27.817513"/>
-        <food posX="18.5" posZ="23.5" rotY="139.97516"/>
-        <food posX="18.5" posZ="42.5" rotY="326.64056"/>
-        <food posX="18.5" posZ="44.5" rotY="57.96095"/>
-        <food posX="19.5" posZ="3.5" rotY="286.1404"/>
-        <food posX="19.5" posZ="4.5" rotY="54.761353"/>
-        <food posX="19.5" posZ="10.5" rotY="31.079979"/>
-        <food posX="19.5" posZ="13.5" rotY="149.77513"/>
-        <food posX="19.5" posZ="15.5" rotY="266.30878"/>
-        <food posX="19.5" posZ="20.5" rotY="120.03145"/>
-        <food posX="19.5" posZ="23.5" rotY="316.91635"/>
-        <food posX="19.5" posZ="31.5" rotY="27.97057"/>
-        <food posX="19.5" posZ="33.5" rotY="135.23483"/>
-        <food posX="19.5" posZ="36.5" rotY="338.8353"/>
-        <food posX="19.5" posZ="38.5" rotY="37.020107"/>
-        <food posX="20.5" posZ="42.5" rotY="119.38064"/>
-        <food posX="20.5" posZ="46.5" rotY="266.42587"/>
-        <food posX="21.5" posZ="2.5" rotY="286.32266"/>
-        <food posX="21.5" posZ="3.5" rotY="270.15976"/>
-        <food posX="21.5" posZ="31.5" rotY="339.621"/>
-        <food posX="21.5" posZ="43.5" rotY="296.13065"/>
-        <food posX="21.5" posZ="46.5" rotY="70.914734"/>
-        <food posX="21.5" posZ="47.5" rotY="68.63453"/>
-        <food posX="22.5" posZ="21.5" rotY="183.96533"/>
-        <food posX="22.5" posZ="32.5" rotY="301.62057"/>
-        <food posX="22.5" posZ="35.5" rotY="309.1681"/>
-        <food posX="22.5" posZ="43.5" rotY="217.64665"/>
-        <food posX="22.5" posZ="45.5" rotY="250.73637"/>
-        <food posX="23.5" posZ="5.5" rotY="138.76245"/>
-        <food posX="23.5" posZ="36.5" rotY="187.33223"/>
-        <food posX="23.5" posZ="39.5" rotY="160.24689"/>
-        <food posX="23.5" posZ="41.5" rotY="342.31888"/>
-        <food posX="23.5" posZ="48.5" rotY="121.42689"/>
-        <food posX="24.5" posZ="12.5" rotY="135.53502"/>
-        <food posX="24.5" posZ="39.5" rotY="277.64233"/>
-        <food posX="24.5" posZ="46.5" rotY="49.89982"/>
-        <food posX="25.5" posZ="8.5" rotY="173.26358"/>
-        <food posX="25.5" posZ="10.5" rotY="13.232367"/>
-        <food posX="25.5" posZ="16.5" rotY="314.99582"/>
-        <food posX="25.5" posZ="17.5" rotY="107.065094"/>
-        <anthil id="0" posX="25.5" posZ="25.5" rotY="0.0"/>
-        <food posX="25.5" posZ="46.5" rotY="56.97415"/>
-        <food posX="26.5" posZ="28.5" rotY="286.97348"/>
-        <food posX="26.5" posZ="32.5" rotY="61.30148"/>
-        <food posX="27.5" posZ="1.5" rotY="60.633953"/>
-        <food posX="27.5" posZ="22.5" rotY="210.39168"/>
-        <food posX="27.5" posZ="48.5" rotY="328.18658"/>
-        <food posX="28.5" posZ="19.5" rotY="232.3613"/>
-        <food posX="28.5" posZ="23.5" rotY="332.83533"/>
-        <food posX="28.5" posZ="36.5" rotY="149.82198"/>
-        <food posX="28.5" posZ="40.5" rotY="275.30374"/>
-        <food posX="29.5" posZ="8.5" rotY="131.99335"/>
-        <food posX="29.5" posZ="14.5" rotY="177.51714"/>
-        <food posX="29.5" posZ="27.5" rotY="198.57295"/>
-        <food posX="29.5" posZ="37.5" rotY="105.19802"/>
-        <food posX="29.5" posZ="44.5" rotY="298.91635"/>
-        <food posX="29.5" posZ="49.5" rotY="138.06908"/>
-        <food posX="30.5" posZ="20.5" rotY="268.8806"/>
-        <food posX="30.5" posZ="23.5" rotY="92.12873"/>
-        <food posX="30.5" posZ="34.5" rotY="114.87665"/>
-        <food posX="31.5" posZ="5.5" rotY="210.8583"/>
-        <food posX="31.5" posZ="29.5" rotY="74.61942"/>
-        <food posX="31.5" posZ="42.5" rotY="188.01411"/>
-        <food posX="31.5" posZ="44.5" rotY="241.96744"/>
-        <food posX="33.5" posZ="0.5" rotY="44.338245"/>
-        <food posX="33.5" posZ="7.5" rotY="342.61453"/>
-        <food posX="33.5" posZ="21.5" rotY="267.21268"/>
-        <food posX="34.5" posZ="16.5" rotY="82.03442"/>
-        <food posX="34.5" posZ="21.5" rotY="55.72989"/>
-        <food posX="34.5" posZ="27.5" rotY="249.35162"/>
-        <food posX="35.5" posZ="2.5" rotY="189.4441"/>
-        <food posX="35.5" posZ="4.5" rotY="258.09015"/>
-        <food posX="35.5" posZ="14.5" rotY="221.42982"/>
-        <food posX="35.5" posZ="29.5" rotY="71.5905"/>
-        <food posX="35.5" posZ="32.5" rotY="156.32361"/>
-        <food posX="35.5" posZ="46.5" rotY="153.0762"/>
-        <food posX="36.5" posZ="34.5" rotY="32.237858"/>
-        <food posX="36.5" posZ="38.5" rotY="279.73514"/>
-        <food posX="36.5" posZ="42.5" rotY="219.57327"/>
-        <food posX="36.5" posZ="45.5" rotY="64.79932"/>
-        <food posX="37.5" posZ="26.5" rotY="276.81638"/>
-        <food posX="38.5" posZ="14.5" rotY="316.50726"/>
-        <food posX="38.5" posZ="16.5" rotY="131.25708"/>
-        <food posX="38.5" posZ="32.5" rotY="19.350399"/>
-        <food posX="39.5" posZ="13.5" rotY="98.831055"/>
-        <food posX="40.5" posZ="28.5" rotY="271.25925"/>
-        <food posX="40.5" posZ="40.5" rotY="268.7422"/>
-        <food posX="41.5" posZ="0.5" rotY="246.61385"/>
-        <food posX="41.5" posZ="4.5" rotY="200.91643"/>
-        <food posX="41.5" posZ="38.5" rotY="95.35225"/>
-        <food posX="42.5" posZ="10.5" rotY="98.96109"/>
-        <food posX="42.5" posZ="22.5" rotY="63.57256"/>
-        <food posX="42.5" posZ="39.5" rotY="59.848194"/>
-        <food posX="42.5" posZ="40.5" rotY="195.16763"/>
-        <food posX="43.5" posZ="0.5" rotY="348.14853"/>
-        <food posX="43.5" posZ="31.5" rotY="78.58106"/>
-        <food posX="43.5" posZ="48.5" rotY="156.2372"/>
-        <food posX="44.5" posZ="9.5" rotY="283.76837"/>
-        <food posX="44.5" posZ="18.5" rotY="159.04865"/>
-        <food posX="44.5" posZ="32.5" rotY="165.72864"/>
-        <food posX="44.5" posZ="37.5" rotY="24.00811"/>
-        <food posX="44.5" posZ="46.5" rotY="304.54556"/>
-        <food posX="44.5" posZ="49.5" rotY="329.1633"/>
-        <food posX="45.5" posZ="27.5" rotY="79.476944"/>
-        <food posX="45.5" posZ="38.5" rotY="80.53768"/>
-        <food posX="45.5" posZ="46.5" rotY="349.51993"/>
-        <food posX="46.5" posZ="38.5" rotY="353.919"/>
-        <food posX="46.5" posZ="44.5" rotY="17.02883"/>
-        <food posX="46.5" posZ="48.5" rotY="138.2986"/>
-        <food posX="47.5" posZ="5.5" rotY="259.12817"/>
-        <food posX="47.5" posZ="33.5" rotY="34.690445"/>
-        <food posX="47.5" posZ="35.5" rotY="351.4125"/>
-        <food posX="48.5" posZ="6.5" rotY="120.94819"/>
-        <food posX="48.5" posZ="15.5" rotY="303.89423"/>
-        <food posX="48.5" posZ="27.5" rotY="85.1676"/>
-        <food posX="48.5" posZ="41.5" rotY="53.085464"/>
-        <food posX="48.5" posZ="46.5" rotY="250.11624"/>
-        <food posX="49.5" posZ="3.5" rotY="278.44778"/>
-        <food posX="49.5" posZ="6.5" rotY="134.69412"/>
-        <food posX="49.5" posZ="19.5" rotY="127.75454"/>
-        <food posX="49.5" posZ="21.5" rotY="177.20552"/>
+        <food posX="0.0" posZ="37.0" rotY="36.315224"/>
+        <food posX="0.0" posZ="46.0" rotY="165.70018"/>
+        <food posX="0.0" posZ="49.0" rotY="108.2193"/>
+        <food posX="1.0" posZ="26.0" rotY="8.849745"/>
+        <food posX="1.0" posZ="37.0" rotY="243.58463"/>
+        <food posX="2.0" posZ="1.0" rotY="98.552124"/>
+        <food posX="2.0" posZ="2.0" rotY="100.807884"/>
+        <food posX="2.0" posZ="6.0" rotY="85.22101"/>
+        <food posX="2.0" posZ="9.0" rotY="46.716915"/>
+        <food posX="2.0" posZ="17.0" rotY="139.59525"/>
+        <food posX="2.0" posZ="35.0" rotY="262.81323"/>
+        <food posX="2.0" posZ="41.0" rotY="167.40617"/>
+        <food posX="2.0" posZ="46.0" rotY="29.465202"/>
+        <food posX="2.0" posZ="49.0" rotY="336.8006"/>
+        <food posX="3.0" posZ="45.0" rotY="346.0987"/>
+        <food posX="4.0" posZ="5.0" rotY="233.03091"/>
+        <food posX="4.0" posZ="15.0" rotY="89.351036"/>
+        <food posX="4.0" posZ="16.0" rotY="287.5887"/>
+        <food posX="4.0" posZ="29.0" rotY="153.0415"/>
+        <food posX="4.0" posZ="30.0" rotY="68.63904"/>
+        <food posX="4.0" posZ="38.0" rotY="38.14245"/>
+        <food posX="5.0" posZ="9.0" rotY="130.2491"/>
+        <food posX="5.0" posZ="48.0" rotY="251.64378"/>
+        <food posX="6.0" posZ="35.0" rotY="252.51881"/>
+        <food posX="6.0" posZ="45.0" rotY="126.43843"/>
+        <food posX="7.0" posZ="21.0" rotY="4.378159"/>
+        <food posX="7.0" posZ="26.0" rotY="211.77284"/>
+        <food posX="7.0" posZ="40.0" rotY="29.394821"/>
+        <food posX="7.0" posZ="45.0" rotY="71.51241"/>
+        <food posX="8.0" posZ="11.0" rotY="76.70742"/>
+        <food posX="8.0" posZ="26.0" rotY="272.2632"/>
+        <food posX="8.0" posZ="30.0" rotY="32.413338"/>
+        <food posX="8.0" posZ="35.0" rotY="19.184574"/>
+        <food posX="8.0" posZ="40.0" rotY="29.029978"/>
+        <food posX="8.0" posZ="48.0" rotY="268.64368"/>
+        <food posX="9.0" posZ="11.0" rotY="224.97804"/>
+        <food posX="9.0" posZ="14.0" rotY="121.91771"/>
+        <food posX="9.0" posZ="27.0" rotY="53.20458"/>
+        <food posX="9.0" posZ="28.0" rotY="336.77594"/>
+        <food posX="9.0" posZ="43.0" rotY="33.64739"/>
+        <food posX="10.0" posZ="7.0" rotY="204.2021"/>
+        <food posX="10.0" posZ="14.0" rotY="117.5306"/>
+        <food posX="10.0" posZ="24.0" rotY="36.846878"/>
+        <food posX="11.0" posZ="0.0" rotY="6.089258"/>
+        <food posX="11.0" posZ="5.0" rotY="132.71483"/>
+        <food posX="11.0" posZ="12.0" rotY="219.40907"/>
+        <food posX="11.0" posZ="44.0" rotY="231.86195"/>
+        <food posX="12.0" posZ="2.0" rotY="63.258354"/>
+        <food posX="12.0" posZ="3.0" rotY="246.20668"/>
+        <food posX="12.0" posZ="10.0" rotY="242.61302"/>
+        <food posX="12.0" posZ="12.0" rotY="79.23586"/>
+        <food posX="12.0" posZ="28.0" rotY="176.21283"/>
+        <food posX="12.0" posZ="33.0" rotY="309.28156"/>
+        <food posX="13.0" posZ="16.0" rotY="264.77075"/>
+        <food posX="13.0" posZ="40.0" rotY="338.96884"/>
+        <food posX="14.0" posZ="3.0" rotY="160.40816"/>
+        <food posX="14.0" posZ="15.0" rotY="335.9704"/>
+        <food posX="14.0" posZ="16.0" rotY="322.04822"/>
+        <food posX="14.0" posZ="22.0" rotY="296.7167"/>
+        <food posX="14.0" posZ="30.0" rotY="283.02295"/>
+        <food posX="14.0" posZ="45.0" rotY="38.277634"/>
+        <food posX="15.0" posZ="10.0" rotY="209.24638"/>
+        <food posX="15.0" posZ="23.0" rotY="289.2681"/>
+        <food posX="16.0" posZ="12.0" rotY="66.39886"/>
+        <food posX="16.0" posZ="30.0" rotY="122.30094"/>
+        <food posX="17.0" posZ="1.0" rotY="114.62139"/>
+        <food posX="17.0" posZ="5.0" rotY="223.84523"/>
+        <food posX="17.0" posZ="22.0" rotY="244.72432"/>
+        <food posX="17.0" posZ="41.0" rotY="70.25218"/>
+        <food posX="18.0" posZ="7.0" rotY="202.2272"/>
+        <food posX="18.0" posZ="16.0" rotY="274.14688"/>
+        <food posX="18.0" posZ="19.0" rotY="270.80084"/>
+        <food posX="18.0" posZ="20.0" rotY="27.817513"/>
+        <food posX="18.0" posZ="23.0" rotY="139.97516"/>
+        <food posX="18.0" posZ="42.0" rotY="326.64056"/>
+        <food posX="18.0" posZ="44.0" rotY="57.96095"/>
+        <food posX="19.0" posZ="3.0" rotY="286.1404"/>
+        <food posX="19.0" posZ="4.0" rotY="54.761353"/>
+        <food posX="19.0" posZ="10.0" rotY="31.079979"/>
+        <food posX="19.0" posZ="13.0" rotY="149.77513"/>
+        <food posX="19.0" posZ="15.0" rotY="266.30878"/>
+        <food posX="19.0" posZ="20.0" rotY="120.03145"/>
+        <food posX="19.0" posZ="23.0" rotY="316.91635"/>
+        <food posX="19.0" posZ="31.0" rotY="27.97057"/>
+        <food posX="19.0" posZ="33.0" rotY="135.23483"/>
+        <food posX="19.0" posZ="36.0" rotY="338.8353"/>
+        <food posX="19.0" posZ="38.0" rotY="37.020107"/>
+        <food posX="20.0" posZ="42.0" rotY="119.38064"/>
+        <food posX="20.0" posZ="46.0" rotY="266.42587"/>
+        <food posX="21.0" posZ="2.0" rotY="286.32266"/>
+        <food posX="21.0" posZ="3.0" rotY="270.15976"/>
+        <food posX="21.0" posZ="31.0" rotY="339.621"/>
+        <food posX="21.0" posZ="43.0" rotY="296.13065"/>
+        <food posX="21.0" posZ="46.0" rotY="70.914734"/>
+        <food posX="21.0" posZ="47.0" rotY="68.63453"/>
+        <food posX="22.0" posZ="21.0" rotY="183.96533"/>
+        <food posX="22.0" posZ="32.0" rotY="301.62057"/>
+        <food posX="22.0" posZ="35.0" rotY="309.1681"/>
+        <food posX="22.0" posZ="43.0" rotY="217.64665"/>
+        <food posX="22.0" posZ="45.0" rotY="250.73637"/>
+        <food posX="23.0" posZ="5.0" rotY="138.76245"/>
+        <food posX="23.0" posZ="36.0" rotY="187.33223"/>
+        <food posX="23.0" posZ="39.0" rotY="160.24689"/>
+        <food posX="23.0" posZ="41.0" rotY="342.31888"/>
+        <food posX="23.0" posZ="48.0" rotY="121.42689"/>
+        <food posX="24.0" posZ="12.0" rotY="135.53502"/>
+        <food posX="24.0" posZ="39.0" rotY="277.64233"/>
+        <food posX="24.0" posZ="46.0" rotY="49.89982"/>
+        <food posX="25.0" posZ="8.0" rotY="173.26358"/>
+        <food posX="25.0" posZ="10.0" rotY="13.232367"/>
+        <food posX="25.0" posZ="16.0" rotY="314.99582"/>
+        <food posX="25.0" posZ="17.0" rotY="107.065094"/>
+        <anthil id="0" posX="25.0" posZ="25.0" rotY="0.0"/>
+        <food posX="25.0" posZ="46.0" rotY="56.97415"/>
+        <food posX="26.0" posZ="28.0" rotY="286.97348"/>
+        <food posX="26.0" posZ="32.0" rotY="61.30148"/>
+        <food posX="27.0" posZ="1.0" rotY="60.633953"/>
+        <food posX="27.0" posZ="22.0" rotY="210.39168"/>
+        <food posX="27.0" posZ="48.0" rotY="328.18658"/>
+        <food posX="28.0" posZ="19.0" rotY="232.3613"/>
+        <food posX="28.0" posZ="23.0" rotY="332.83533"/>
+        <food posX="28.0" posZ="36.0" rotY="149.82198"/>
+        <food posX="28.0" posZ="40.0" rotY="275.30374"/>
+        <food posX="29.0" posZ="8.0" rotY="131.99335"/>
+        <food posX="29.0" posZ="14.0" rotY="177.51714"/>
+        <food posX="29.0" posZ="27.0" rotY="198.57295"/>
+        <food posX="29.0" posZ="37.0" rotY="105.19802"/>
+        <food posX="29.0" posZ="44.0" rotY="298.91635"/>
+        <food posX="29.0" posZ="49.0" rotY="138.06908"/>
+        <food posX="30.0" posZ="20.0" rotY="268.8806"/>
+        <food posX="30.0" posZ="23.0" rotY="92.12873"/>
+        <food posX="30.0" posZ="34.0" rotY="114.87665"/>
+        <food posX="31.0" posZ="5.0" rotY="210.8583"/>
+        <food posX="31.0" posZ="29.0" rotY="74.61942"/>
+        <food posX="31.0" posZ="42.0" rotY="188.01411"/>
+        <food posX="31.0" posZ="44.0" rotY="241.96744"/>
+        <food posX="33.0" posZ="0.0" rotY="44.338245"/>
+        <food posX="33.0" posZ="7.0" rotY="342.61453"/>
+        <food posX="33.0" posZ="21.0" rotY="267.21268"/>
+        <food posX="34.0" posZ="16.0" rotY="82.03442"/>
+        <food posX="34.0" posZ="21.0" rotY="55.72989"/>
+        <food posX="34.0" posZ="27.0" rotY="249.35162"/>
+        <food posX="35.0" posZ="2.0" rotY="189.4441"/>
+        <food posX="35.0" posZ="4.0" rotY="258.09015"/>
+        <food posX="35.0" posZ="14.0" rotY="221.42982"/>
+        <food posX="35.0" posZ="29.0" rotY="71.5905"/>
+        <food posX="35.0" posZ="32.0" rotY="156.32361"/>
+        <food posX="35.0" posZ="46.0" rotY="153.0762"/>
+        <food posX="36.0" posZ="34.0" rotY="32.237858"/>
+        <food posX="36.0" posZ="38.0" rotY="279.73514"/>
+        <food posX="36.0" posZ="42.0" rotY="219.57327"/>
+        <food posX="36.0" posZ="45.0" rotY="64.79932"/>
+        <food posX="37.0" posZ="26.0" rotY="276.81638"/>
+        <food posX="38.0" posZ="14.0" rotY="316.50726"/>
+        <food posX="38.0" posZ="16.0" rotY="131.25708"/>
+        <food posX="38.0" posZ="32.0" rotY="19.350399"/>
+        <food posX="39.0" posZ="13.0" rotY="98.831055"/>
+        <food posX="40.0" posZ="28.0" rotY="271.25925"/>
+        <food posX="40.0" posZ="40.0" rotY="268.7422"/>
+        <food posX="41.0" posZ="0.0" rotY="246.61385"/>
+        <food posX="41.0" posZ="4.0" rotY="200.91643"/>
+        <food posX="41.0" posZ="38.0" rotY="95.35225"/>
+        <food posX="42.0" posZ="10.0" rotY="98.96109"/>
+        <food posX="42.0" posZ="22.0" rotY="63.57256"/>
+        <food posX="42.0" posZ="39.0" rotY="59.848194"/>
+        <food posX="42.0" posZ="40.0" rotY="195.16763"/>
+        <food posX="43.0" posZ="0.0" rotY="348.14853"/>
+        <food posX="43.0" posZ="31.0" rotY="78.58106"/>
+        <food posX="43.0" posZ="48.0" rotY="156.2372"/>
+        <food posX="44.0" posZ="9.0" rotY="283.76837"/>
+        <food posX="44.0" posZ="18.0" rotY="159.04865"/>
+        <food posX="44.0" posZ="32.0" rotY="165.72864"/>
+        <food posX="44.0" posZ="37.0" rotY="24.00811"/>
+        <food posX="44.0" posZ="46.0" rotY="304.54556"/>
+        <food posX="44.0" posZ="49.0" rotY="329.1633"/>
+        <food posX="45.0" posZ="27.0" rotY="79.476944"/>
+        <food posX="45.0" posZ="38.0" rotY="80.53768"/>
+        <food posX="45.0" posZ="46.0" rotY="349.51993"/>
+        <food posX="46.0" posZ="38.0" rotY="353.919"/>
+        <food posX="46.0" posZ="44.0" rotY="17.02883"/>
+        <food posX="46.0" posZ="48.0" rotY="138.2986"/>
+        <food posX="47.0" posZ="5.0" rotY="259.12817"/>
+        <food posX="47.0" posZ="33.0" rotY="34.690445"/>
+        <food posX="47.0" posZ="35.0" rotY="351.4125"/>
+        <food posX="48.0" posZ="6.0" rotY="120.94819"/>
+        <food posX="48.0" posZ="15.0" rotY="303.89423"/>
+        <food posX="48.0" posZ="27.0" rotY="85.1676"/>
+        <food posX="48.0" posZ="41.0" rotY="53.085464"/>
+        <food posX="48.0" posZ="46.0" rotY="250.11624"/>
+        <food posX="49.0" posZ="3.0" rotY="278.44778"/>
+        <food posX="49.0" posZ="6.0" rotY="134.69412"/>
+        <food posX="49.0" posZ="19.0" rotY="127.75454"/>
+        <food posX="49.0" posZ="21.0" rotY="177.20552"/>
     </objects>
 </world>

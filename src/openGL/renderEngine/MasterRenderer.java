@@ -136,6 +136,24 @@ public class MasterRenderer {
 	}
 
 	/**
+	 * Register an ant to be rendered in the next frame
+	 * @param ant ant to be rendered
+	 */
+	public void registerAnt(Ant ant){
+		if (ant.canBeRendered()) {
+			TexturedModel entityModel = ant.getModel();
+			List<RenderableObject> batch = entities.get(entityModel);
+			if (batch != null) {
+				batch.add(ant);
+			} else {
+				List<RenderableObject> newBatch = new ArrayList<RenderableObject>();
+				newBatch.add(ant);
+				entities.put(entityModel, newBatch);
+			}
+		}
+	}
+
+	/**
 	 * Clear the renderer by removing the shader from GPU RAM
 	 */
 	public void clear(){

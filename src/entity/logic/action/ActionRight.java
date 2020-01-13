@@ -15,11 +15,6 @@ public class ActionRight extends Action {
     }
 
     @Override
-    public boolean isConditionSatisfied(Ant a, World world) {
-        return false;
-    }
-
-    @Override
     public String toString() {
         return "right";
     }

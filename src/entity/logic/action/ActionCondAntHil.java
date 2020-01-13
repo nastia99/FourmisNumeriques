@@ -18,6 +18,8 @@ public class ActionCondAntHil extends Action {
 
     @Override
     public boolean isConditionSatisfied(Ant a, World world) {
+        if (world == null)
+            System.out.println(world);
         Tile tile = (Tile) world.getChunkInWorldCoords(a.getPosition().x, a.getPosition().z);
         if (tile == null)
             return false;

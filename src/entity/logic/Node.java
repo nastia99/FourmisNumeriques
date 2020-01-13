@@ -95,9 +95,9 @@ public class Node {
         if (!action.isConditional())
             action.execute(a, world);
         else if (action.isConditionSatisfied(a, world))
-            left.execute(a, world);
-        else
             right.execute(a, world);
+        else
+            left.execute(a, world);
     }
 
     public Element getAsElement(Document document, String type, int level) {
@@ -119,15 +119,17 @@ public class Node {
     public static Node createFromElement(Element element, Node parent) {
         String action = element.getAttribute("action");
         Node node = new Node(parent, Action.getAction(action));
-        NodeList nodes = element.getChildNodes();
-        for (int i = 0; i < nodes.getLength(); i++) {
-            org.w3c.dom.Node n = nodes.item(i);
-            if (n.getNodeName().equals("node")) {
-                Element elem = (Element) n;
-                if (elem.getAttribute("type").equals("left"))
-                    node.left = createFromElement(elem, node);
-                else if (elem.getAttribute("type").equals("right"))
-                    node.right = createFromElement(elem, node);
+        if (node.getAction().isConditional()) {
+            NodeList nodes = element.getChildNodes();
+            for (int i = 0; i < nodes.getLength(); i++) {
+                org.w3c.dom.Node n = nodes.item(i);
+                if (n.getNodeName().equals("node")) {
+                    Element elem = (Element) n;
+                    if (elem.getAttribute("type").equals("left"))
+                        node.left = createFromElement(elem, node);
+                    else if (elem.getAttribute("type").equals("right"))
+                        node.right = createFromElement(elem, node);
+                }
             }
         }
         return node;
