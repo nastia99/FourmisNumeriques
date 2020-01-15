@@ -39,7 +39,7 @@ public class Configs {
     public static TexturedModel foodTexturedModel;
     public static TexturedModel antHilTexturedModel;
 
-    public static final int ACTION_DURATION = 250;
+    public static final int ACTION_DURATION = 1000;
     public static final int ANT_ANIMATION_DURATION = ACTION_DURATION/3;
 
 

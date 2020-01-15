@@ -1,7 +1,6 @@
 package openGL.world;
 
 import entity.*;
-import entity.logic.Tree;
 import openGL.entities.RenderableObject;
 import openGL.utils.Maths;
 import org.lwjgl.util.vector.Vector2f;
@@ -47,6 +46,18 @@ public class World extends RenderableObject {
         }
     }
 
+    public World(int seed) {
+        super(null, new Vector3f(sizeX / 2.0f, 0, sizeZ / 2.0f), 0, 0, 0, 0);
+        generator = new HeightsGenerator(seed, sizeX * (Chunk.VERTEX_COUNT - 1), sizeZ * (Chunk.VERTEX_COUNT - 1));
+        generator.generateHeight(new Vector2f(sizeX/2f, sizeZ/2f));
+        chunks = new Tile[sizeX][sizeZ];
+        for (int i = 0; i < sizeX; i++) {
+            for (int j = 0; j < sizeZ; j++) {
+                chunks[i][j] = new Tile(i, j, generator);
+            }
+        }
+    }
+
     public Population getPopulation() {
         return population;
     }
@@ -71,12 +82,6 @@ public class World extends RenderableObject {
         if (tile != null && entity instanceof AntHil &&!tile.contains(EntityTypes.ANTHIL)) {
             tile.addEntity(entity);
         }
-    }
-
-    public World(Chunk[][] chunks, HeightsGenerator generator) {
-        super(null, new Vector3f(chunks.length / 2.0f, 0, chunks[0].length / 2.0f), 0, 0, 0, 0);
-        this.chunks = chunks;
-        this.generator = generator;
     }
 
     public List<Chunk> getChunks() {
@@ -141,6 +146,40 @@ public class World extends RenderableObject {
     }
 
     /**
+     * Get the world as a DOM element
+     * @param document the Document used to generate the elements
+     * @return a DOM element representing the world
+     */
+    public Element getAsElement(Document document) {
+        Element worldNode = document.createElement("world");
+        worldNode.setAttribute("seed", String.valueOf(generator.getSeed()));
+
+        Element populationNode = population.getAsElement(document);
+        worldNode.appendChild(populationNode);
+
+        Element objectsNode = document.createElement("objects");
+        for (RenderableObject obj : extractEntities()) {
+            if (obj instanceof AntHil) {
+                Element elem = document.createElement("anthil");
+                elem.setAttribute("id", String.valueOf(((AntHil)obj).getId()));
+                elem.setAttribute("posX", String.valueOf(obj.getPosition().x));
+                elem.setAttribute("rotY", String.valueOf(obj.getRotY()));
+                elem.setAttribute("posZ", String.valueOf(obj.getPosition().z));
+                objectsNode.appendChild(elem);
+            }
+            if (obj instanceof Food) {
+                Element elem = document.createElement("food");
+                elem.setAttribute("posX", String.valueOf(obj.getPosition().x));
+                elem.setAttribute("rotY", String.valueOf(obj.getRotY()));
+                elem.setAttribute("posZ", String.valueOf(obj.getPosition().z));
+                objectsNode.appendChild(elem);
+            }
+        }
+        worldNode.appendChild(objectsNode);
+        return worldNode;
+    }
+
+    /**
      * Save the current world to an XML file
      * containing the world seed, the population and the objects
      * basically save the current simulation
@@ -149,31 +188,7 @@ public class World extends RenderableObject {
     public void saveToXML(String path) {
         try {
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-            Element worldNode = document.createElement("world");
-
-            Element populationNode = population.getAsElement(document);
-            worldNode.appendChild(populationNode);
-
-            Element objectsNode = document.createElement("objects");
-            for (RenderableObject obj : extractEntities()) {
-                if (obj instanceof AntHil) {
-                    Element elem = document.createElement("anthil");
-                    elem.setAttribute("id", String.valueOf(((AntHil)obj).getId()));
-                    elem.setAttribute("posX", String.valueOf(obj.getPosition().x));
-                    elem.setAttribute("rotY", String.valueOf(obj.getRotY()));
-                    elem.setAttribute("posZ", String.valueOf(obj.getPosition().z));
-                    objectsNode.appendChild(elem);
-                }
-                if (obj instanceof Food) {
-                    Element elem = document.createElement("food");
-                    elem.setAttribute("posX", String.valueOf(obj.getPosition().x));
-                    elem.setAttribute("rotY", String.valueOf(obj.getRotY()));
-                    elem.setAttribute("posZ", String.valueOf(obj.getPosition().z));
-                    objectsNode.appendChild(elem);
-                }
-            }
-            worldNode.appendChild(objectsNode);
-
+            Element worldNode = getAsElement(document);
             document.appendChild(worldNode);
 
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
@@ -203,40 +218,96 @@ public class World extends RenderableObject {
 
             xml = builder.parse(fileXML);
             Element worldNode = (Element) xml.getElementsByTagName("world").item(0);
-            if (worldNode == null)
-                return null;
-            Node objectNode = xml.getElementsByTagName("objects").item(0);
-            Node populationNode = xml.getElementsByTagName("population").item(0);
-            if (objectNode == null)
-                return null;
-            if (populationNode == null)
-                return null;
-            world.population = Population.getFromElement((Element) populationNode);
-            NodeList objects = objectNode.getChildNodes();
-            for (int i = 0; i < objects.getLength(); i++) {
-                org.w3c.dom.Node node = objects.item(i);
-                if (node.getNodeName().equals("food") || node.getNodeName().equals("anthil")) {
-                    Element elem = (Element)node;
-                    float posX = Float.parseFloat(elem.getAttribute("posX"));
-                    float posZ = Float.parseFloat(elem.getAttribute("posZ"));
-                    float rotY = Float.parseFloat(elem.getAttribute("rotY"));
-                    if (elem.getTagName().equals("food")) {
-                        Vector2f rotXZ = Maths.calculateXZRotations(world, posX, posZ);
-                        Food food = new Food(new Vector3f(posX, world.getHeight(posX, posZ), posZ), rotXZ.x, rotY, rotXZ.y);
-                        world.addEntity(food);
-                    }
-                    if (elem.getTagName().equals("anthil")) {
-                        int id = Integer.parseInt(elem.getAttribute("id"));
-                        Vector2f rotXZ = Maths.calculateXZRotations(world, posX, posZ);
-                        AntHil antHil = new AntHil(new Vector3f(posX, world.getHeight(posX, posZ), posZ), rotXZ.x, rotY, rotXZ.y);
-                        antHil.setId(id);
-                        world.addEntity(antHil);
-                    }
-                }
-            }
+            world = getFromElement(worldNode);
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
         return world;
+    }
+
+    /**
+     * Get a world from an DOM element
+     * @param element DOM element representing the world
+     * @return a world characterized by the DOM element
+     */
+    public static World getFromElement(Element element) {
+
+        if (element == null)
+            return null;
+        if (!element.getTagName().equals("world"))
+            return null;
+        int seed = Integer.parseInt(element.getAttribute("seed"));
+        Node objectNode = element.getElementsByTagName("objects").item(0);
+        Node populationNode = element.getElementsByTagName("population").item(0);
+        if (objectNode == null)
+            return null;
+        if (populationNode == null)
+            return null;
+        World world = new World(seed);
+        world.population = Population.getFromElement((Element) populationNode);
+        NodeList objects = objectNode.getChildNodes();
+        for (int i = 0; i < objects.getLength(); i++) {
+            Node node = objects.item(i);
+            if (node.getNodeName().equals("food") || node.getNodeName().equals("anthil")) {
+                Element elem = (Element) node;
+                float posX = Float.parseFloat(elem.getAttribute("posX"));
+                float posZ = Float.parseFloat(elem.getAttribute("posZ"));
+                float rotY = Float.parseFloat(elem.getAttribute("rotY"));
+                if (elem.getTagName().equals("food")) {
+                    Vector2f rotXZ = Maths.calculateXZRotations(world, posX, posZ);
+                    Food food = new Food(new Vector3f(posX, world.getHeight(posX, posZ), posZ), rotXZ.x, rotY, rotXZ.y);
+                    world.addEntity(food);
+                }
+                if (elem.getTagName().equals("anthil")) {
+                    int id = Integer.parseInt(elem.getAttribute("id"));
+                    Vector2f rotXZ = Maths.calculateXZRotations(world, posX, posZ);
+                    AntHil antHil = new AntHil(new Vector3f(posX, world.getHeight(posX, posZ), posZ), rotXZ.x, rotY, rotXZ.y);
+                    antHil.setId(id);
+                    world.addEntity(antHil);
+                }
+            }
+        }
+        return world;
+    }
+
+    /**
+     * Repopulate a world from an DOM element
+     * @param element DOM element representing the world
+     * @return a world characterized by the DOM element
+     */
+    public void loadFromElement(Element element) {
+        if (element == null)
+            return;
+        if (!element.getTagName().equals("world"))
+            return;
+        Node objectNode = element.getElementsByTagName("objects").item(0);
+        Node populationNode = element.getElementsByTagName("population").item(0);
+        if (objectNode == null)
+            return;
+        if (populationNode == null)
+            return;
+        population = Population.getFromElement((Element) populationNode);
+        NodeList objects = objectNode.getChildNodes();
+        for (int i = 0; i < objects.getLength(); i++) {
+            Node node = objects.item(i);
+            if (node.getNodeName().equals("food") || node.getNodeName().equals("anthil")) {
+                Element elem = (Element) node;
+                float posX = Float.parseFloat(elem.getAttribute("posX"));
+                float posZ = Float.parseFloat(elem.getAttribute("posZ"));
+                float rotY = Float.parseFloat(elem.getAttribute("rotY"));
+                if (elem.getTagName().equals("food")) {
+                    Vector2f rotXZ = Maths.calculateXZRotations(this, posX, posZ);
+                    Food food = new Food(new Vector3f(posX, this.getHeight(posX, posZ), posZ), rotXZ.x, rotY, rotXZ.y);
+                    this.addEntity(food);
+                }
+                if (elem.getTagName().equals("anthil")) {
+                    int id = Integer.parseInt(elem.getAttribute("id"));
+                    Vector2f rotXZ = Maths.calculateXZRotations(this, posX, posZ);
+                    AntHil antHil = new AntHil(new Vector3f(posX, this.getHeight(posX, posZ), posZ), rotXZ.x, rotY, rotXZ.y);
+                    antHil.setId(id);
+                    this.addEntity(antHil);
+                }
+            }
+        }
     }
 }

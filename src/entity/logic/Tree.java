@@ -73,7 +73,26 @@ public class Tree {
         return null;
     }
 
-    public static void saveAsXML(String path, List<Tree> trees) {
+    public void saveToXML(String file) {
+        try {
+            Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+            Element antNode = getAsElement(document);
+            document.appendChild(antNode);
+
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+
+            DOMSource domSource = new DOMSource(document);
+            StreamResult streamResult = new StreamResult(file);
+
+            transformer.transform(domSource, streamResult);
+
+        } catch (ParserConfigurationException | TransformerException pce) {
+            pce.printStackTrace();
+        }
+    }
+
+    public static void saveListtoXML(String path, List<Tree> trees) {
         try {
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
             for (Tree tree : trees) {
@@ -93,7 +112,24 @@ public class Tree {
         }
     }
 
-    public static List<Tree> loadFromXML(String path) {
+    public static Tree loadFromXML(String file) {
+        Tree tree = new Tree();
+        try {
+            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document xml;
+
+            xml = builder.parse(file);
+            Element treeNode = (Element) xml.getElementsByTagName("tree").item(0);
+            if (treeNode == null)
+                return null;
+            tree = Tree.getFromElement(treeNode);
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            e.printStackTrace();
+        }
+        return tree;
+    }
+
+    public static List<Tree> loadListFromXML(String path) {
         List<Tree> trees = new ArrayList<Tree>();
 
         try {

@@ -49,6 +49,7 @@ public class MainGameLoop {
         simulation.cleanUp();
         loader.cleanUp();
         DisplayManager.closeDisplay();
+        System.exit(0);
     }
 
     private static void InitGUI() {

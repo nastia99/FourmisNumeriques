@@ -1,6 +1,7 @@
 package entity;
 
 import configs.Configs;
+import engineTester.MainGameLoop;
 import openGL.world.World;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
@@ -8,11 +9,21 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+import simulation.Score;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 public class Population {
 
@@ -67,8 +78,18 @@ public class Population {
     /**
      * Generate the next generation of ants using the best ants of the current generation
      */
-    public void nextGeneration() {
+    public Score nextGeneration() {
         //Todo
+
+        int generation = MainGameLoop.simulation.getGeneration() + 1;
+        double max = getBest().getFitnessScore();
+        double average = 0;
+        for (Ant ant : ants) {
+            average += ant.getFitnessScore() / ants.size();
+        }
+        Collections.sort(ants);
+        double min =  ants.get(ants.size() - 1).getFitnessScore();
+        return new Score(generation, max, average, min);
     }
 
     /**
@@ -115,5 +136,51 @@ public class Population {
             populationNode.appendChild(antNode);
         }
         return populationNode;
+    }
+
+    public void saveBestAntsToXML(String file) {
+        try {
+            Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+
+            Element antsNode = document.createElement("ants");
+            Collections.sort(ants);
+            for (int i = 0; i < Configs.generationConservationRatio * ants.size(); i++) {
+                Element antElem = ants.get(i).getAsElement(document);
+                antsNode.appendChild(antElem);
+            }
+            document.appendChild(antsNode);
+
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+
+            DOMSource domSource = new DOMSource(document);
+            StreamResult streamResult = new StreamResult(new File(file));
+
+            transformer.transform(domSource, streamResult);
+
+        } catch (ParserConfigurationException | TransformerException pce) {
+            pce.printStackTrace();
+        }
+    }
+
+    public void loadBestAntsFromXML(String file) {
+        try {
+            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            File fileXML = new File(file);
+            Document xml;
+
+            xml = builder.parse(fileXML);
+            Element antsNode = (Element) xml.getElementsByTagName("ants").item(0);
+            NodeList ants = antsNode.getElementsByTagName("ant");
+            Collections.sort(this.ants);
+            for (int i = 0; i < ants.getLength(); i++) {
+                Element elem = (Element)ants.item(i);
+                Ant ant = Ant.getFromElement(elem);
+                if (ant != null)
+                    this.ants.set(i, ant);
+            }
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }

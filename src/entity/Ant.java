@@ -11,8 +11,13 @@ import openGL.renderEngine.DisplayManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 
 public class Ant extends RenderableObject implements Comparable<Ant> {
+
+    private static final NumberFormat FORMATTER = new DecimalFormat("#00.0");
 
     private Vector3f targetPosition;
     private float targetRot;
@@ -121,9 +126,9 @@ public class Ant extends RenderableObject implements Comparable<Ant> {
 
         Element treeElement = decisionTree.getAsElement(document);
         antNode.appendChild(treeElement);
-        antNode.setAttribute("posX", String.valueOf(Maths.clamp(position.x - 5f, 0, 49)));
-        antNode.setAttribute("rotY", String.valueOf(rotY));
-        antNode.setAttribute("posZ", String.valueOf(Maths.clamp(position.z - .5f, 0, 49)));
+        antNode.setAttribute("posX", String.valueOf(Maths.clamp(targetPosition.x - .5f, 0, 49)));
+        antNode.setAttribute("rotY", String.valueOf(targetRot));
+        antNode.setAttribute("posZ", String.valueOf(Maths.clamp(targetPosition.z - .5f, 0, 49)));
         antNode.setAttribute("homeX", String.valueOf(Maths.clamp(home.x - .5f, 0, 49)));
         antNode.setAttribute("homeZ", String.valueOf(Maths.clamp(home.y - .5f, 0, 49)));
         antNode.setAttribute("fitness", String.valueOf(fitnessScore));
@@ -137,9 +142,11 @@ public class Ant extends RenderableObject implements Comparable<Ant> {
             float rotY = Float.parseFloat(elem.getAttribute("rotY"));
             float homeX = Float.parseFloat(elem.getAttribute("homeX")) + .5f;
             float homeZ = Float.parseFloat(elem.getAttribute("homeZ")) + .5f;
+            float fitnessScore = Float.parseFloat(elem.getAttribute("fitness"));
             Element treeElem = (Element) elem.getElementsByTagName("tree").item(0);
             Tree tree = Tree.getFromElement(treeElem);
             Ant ant = new Ant(new Vector3f(posX, 0, posZ), rotY, new Vector2f(homeX, homeZ));
+            ant.fitnessScore = fitnessScore;
             if (tree != null)
                 tree.simplify();
                 ant.decisionTree = tree;
@@ -150,7 +157,7 @@ public class Ant extends RenderableObject implements Comparable<Ant> {
 
     @Override
     public int compareTo(Ant ant) {
-        return Float.compare(fitnessScore, ant.fitnessScore);
+        return Float.compare(ant.fitnessScore, fitnessScore);
     }
 
     public Tree getDecisionTree() {
@@ -159,6 +166,11 @@ public class Ant extends RenderableObject implements Comparable<Ant> {
 
     public void setDecisionTree(Tree decisionTree) {
         this.decisionTree = decisionTree;
+    }
+
+    @Override
+    public String toString() {
+        return FORMATTER.format(fitnessScore) + " : Ant (" + (int)position.x + "; " + (int)position.z + ")";
     }
 }
 

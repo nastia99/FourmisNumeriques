@@ -220,4 +220,12 @@ public class MasterRenderer {
 	public boolean canToogleWireframe() {
 		return canToogleWireframe;
 	}
+
+	/**
+	 * Set the world to be rendered
+	 * @param world the world to render
+	 */
+	public void setWorld(World world) {
+		this.world = world;
+	}
 }
