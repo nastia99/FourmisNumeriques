@@ -19,7 +19,9 @@ import java.util.Random;
 
 public class Ant extends RenderableObject implements Comparable<Ant> {
 
-    private static final NumberFormat FORMATTER = new DecimalFormat("#00.0");
+    private static final NumberFormat SCORE_FORMATTER = new DecimalFormat("#00.0");
+    private static final NumberFormat POS_FORMATTER = new DecimalFormat("00");
+    private static final NumberFormat DEFAULT_FORMATTER = new DecimalFormat("00");
 
     private Vector3f targetPosition;
     private float targetRot;
@@ -283,7 +285,7 @@ public class Ant extends RenderableObject implements Comparable<Ant> {
      */
     @Override
     public String toString() {
-        return FORMATTER.format(fitnessScore) + " : Ant (" + (int)position.x + "; " + (int)position.z + ")";
+        return SCORE_FORMATTER.format(fitnessScore) + " : Ant (" + POS_FORMATTER.format((int)position.x) + "; " + POS_FORMATTER.format((int)position.z) + ") : " + DEFAULT_FORMATTER.format(nbFoodToHome) + " foods";
     }
 }
 

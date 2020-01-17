@@ -53,6 +53,7 @@ public class Configs {
     public static boolean renderSimulation;
     public static int generationTime;
     public static int anthillEntrance;
+    public static float maxNbFoodPerAnt;
 
     /**
      * Load every models and textures into memroy
@@ -63,7 +64,6 @@ public class Configs {
         sphereTexturedModel = new TexturedModel(OBJLoader.loadObjModel(SPHERE_MODEL, MainGameLoop.loader), new ModelTexture(MainGameLoop.loader.loadTexture(SPHERE_TEXTURE)));
         foodTexturedModel = new TexturedModel(OBJLoader.loadObjModel(FOOD_MODEL, MainGameLoop.loader), new ModelTexture(MainGameLoop.loader.loadTexture(FOOD_TEXTURE)));
         antHilTexturedModel = new TexturedModel(OBJLoader.loadObjModel(ANTHIL_MODEL, MainGameLoop.loader), new ModelTexture(MainGameLoop.loader.loadTexture(ANTHIL_TEXTURE)));
-
     }
 
     /**
@@ -83,6 +83,7 @@ public class Configs {
             renderSimulation = Boolean.parseBoolean(prop.getProperty("renderSimulation"));
             generationTime = Integer.parseInt(prop.getProperty("generationTime"));
             anthillEntrance = Integer.parseInt(prop.getProperty("anthillEntrance"));
+            maxNbFoodPerAnt = Float.parseFloat(prop.getProperty("maxNbFoodPerAnt"));
         } catch (Exception e) {
             System.err.println("Error : " + e.getMessage());
         }

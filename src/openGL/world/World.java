@@ -46,7 +46,7 @@ public class World extends RenderableObject {
                 chunks[i][j] = new Tile(i, j, generator);
             }
         }
-        fertilize((int) (Configs.nbAnts * 2));
+        fertilize((int) (Configs.nbAnts * Configs.maxNbFoodPerAnt));
     }
 
     public void regenerate(List<AntHill> homes) {
@@ -56,7 +56,7 @@ public class World extends RenderableObject {
                 chunks[i][j] = new Tile(i, j, generator);
             }
         }
-        fertilize((int) (Configs.nbAnts * 2));
+        fertilize((int) (Configs.nbAnts * Configs.maxNbFoodPerAnt));
         for (AntHill anthil : homes)
             addEntity(anthil);
     }

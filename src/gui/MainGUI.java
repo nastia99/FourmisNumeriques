@@ -13,6 +13,8 @@ import org.knowm.xchart.style.markers.SeriesMarkers;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,13 +30,11 @@ public class MainGUI {
     private JButton saveSelected;
     private JButton loadSelected;
     private JButton isolateSelected;
-    private JButton editSelected;
     private JPanel selectedControlPanel;
     private JPanel selectedTreeSubPanel;
     private JButton saveBest;
     private JButton loadBest;
     private JButton isolateBest;
-    private JButton editBest;
     private JPanel bestControlPanel;
     private JPanel bestTreeSubPanel;
     private JButton saveWorld;
@@ -60,6 +60,8 @@ public class MainGUI {
     private XChartPanel<XYChart> bestChartPane;
     private XChartPanel<XYChart> averageChartPane;
 
+    private boolean antListCanTrigger = false;
+
     public MainGUI() {
         Toolkit.getDefaultToolkit().setDynamicLayout(false);
 
@@ -73,8 +75,8 @@ public class MainGUI {
         bestTreePanel.setBorder(BorderFactory.createRaisedBevelBorder());
         bestTreeSubPanel.add(bestTreePanel);
 
-        /**
-         * Listeners
+        /*
+          Listeners
          */
         saveSelected.addActionListener(actionEvent -> {
             pauseSimAndUpdateButton();
@@ -119,14 +121,15 @@ public class MainGUI {
             }
         });
         antList.addListSelectionListener(listSelectionEvent -> {
-            if (antList.getSelectedValue() != null) {
-                pauseSimAndUpdateButton();
-                selectedAnt = antList.getSelectedValue();
-                selectedTreePanel.setAnt(selectedAnt);
-                selectedTreePanel.updateUI();
-                MainGameLoop.simulation.setSelectedAnt(selectedAnt);
-                antList.setSelectedValue(selectedAnt, true);
-                MainGameLoop.simulation.resume();
+            if (antListCanTrigger) {
+                if (antList.getSelectedValue() != null) {
+                    pauseSimAndUpdateButton();
+                    selectedAnt = antList.getSelectedValue();
+                    selectedTreePanel.setAnt(selectedAnt);
+                    selectedTreePanel.updateUI();
+                    MainGameLoop.simulation.setSelectedAnt(selectedAnt);
+                    resumeSimAndUpdateButton();
+                }
             }
         });
         pauseSimulation.addActionListener(actionEvent -> {
@@ -167,7 +170,7 @@ public class MainGUI {
         });
 
         antList.setModel(new DefaultListModel<Ant>());
-        antList.setFixedCellWidth(150);
+        antList.setFixedCellWidth(200);
         antList.setIgnoreRepaint(true);
 
         bestChart = new XYChartBuilder().width(650).height(300).title(getClass().getSimpleName()).xAxisTitle("Génération").yAxisTitle("Score").title("Meilleur score par générations").build();
@@ -188,6 +191,17 @@ public class MainGUI {
         graphPane.add(bestChartPane);
         graphPane.add(averageChartPane);
         graphPane.setBorder(BorderFactory.createRaisedBevelBorder());
+        antList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                antListCanTrigger = true;
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                antListCanTrigger = false;
+            }
+        });
     }
 
     private void pauseSimAndUpdateButton() {
@@ -333,7 +347,7 @@ public class MainGUI {
         SwingUtilities.invokeLater(() -> {
             ((DefaultListModel<Ant>)antList.getModel()).clear();
             ((DefaultListModel<Ant>)antList.getModel()).addAll(ants);
-            antList.setSelectedValue(selectedAnt, true);
+            antList.setSelectedValue(selectedAnt, false);
             antList.repaint();
         });
     }

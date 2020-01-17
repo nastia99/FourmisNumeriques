@@ -1,12 +1,10 @@
 package entity.logic.action;
 
 import entity.Ant;
-import entity.AntHill;
 import entity.EntityTypes;
 import openGL.entities.RenderableObject;
 import openGL.utils.Maths;
 import openGL.world.World;
-import org.lwjgl.util.Renderable;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -54,7 +52,6 @@ public class ActionBackHome extends Action {
                 a.setTargetRot(a.getTargetRot() - theta);
                 a.setTargetPosition(new Vector3f(path.x + .5f, 0, path.y + .5f));
             }
-            a.addFitness(.1f);
         }
     }
 

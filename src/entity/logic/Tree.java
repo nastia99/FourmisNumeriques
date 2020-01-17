@@ -84,16 +84,20 @@ public class Tree {
      */
     public static Tree crossBread(Tree t1, Tree t2, float mutationRate) {
         Tree child = new Tree();
-        child.head = t1.head.cloneNode(0);
-        Random random = new Random();
-        if (random.nextBoolean()) {
-            child.head.setLeft(t2.head.getLeft().cloneNode(mutationRate));
-            child.head.getLeft().setParent(child.head);
-        } else {
-            child.head.setRight(t2.head.getRight().cloneNode(mutationRate));
-            child.head.getRight().setParent(child.head);
+        if (t1.head.getAction().isConditional() && t2.head.getAction().isConditional()) {
+            child.head = t1.head.cloneNode(0);
+            Random random = new Random();
+            if (random.nextBoolean()) {
+                child.head.setLeft(t2.head.getLeft().cloneNode(mutationRate));
+                child.head.getLeft().setParent(child.head);
+            } else {
+                child.head.setRight(t2.head.getRight().cloneNode(mutationRate));
+                child.head.getRight().setParent(child.head);
+            }
+            child.simplify();
+            return child;
         }
-        child.simplify();
+        child.head = t1.head.cloneNode(mutationRate);
         return child;
     }
 

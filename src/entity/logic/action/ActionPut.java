@@ -43,7 +43,7 @@ public class ActionPut extends Action {
                 a.addFitness(-.1f);
             }
         } else {
-            a.addFitness(-.1f);
+            a.addFitness(-1f);
         }
     }
 
