@@ -6,12 +6,13 @@ import org.lwjgl.opengl.*;
 
 public class DisplayManager {
 	
-	private static final int WIDTH = 1280;
-	private static final int HEIGHT = 720;
+	private static final int WIDTH = 1920/2;
+	private static final int HEIGHT = 800;
 	private static final int FPS_CAP = 120;
 
 	private static long lastFrameTime;
 	private static float delta; //Frame time in seconds
+	private static long deltaMS; //Frame time in milliseconds
 
 	private static long intervalTimer;
 
@@ -34,6 +35,7 @@ public class DisplayManager {
 		GL11.glViewport(0,0, WIDTH, HEIGHT);
 		lastFrameTime = getCurrentTime();
 		intervalTimer = getCurrentTime();
+		Display.setLocation(WIDTH, 0);
 	}
 
 	/**
@@ -43,7 +45,8 @@ public class DisplayManager {
 		Display.sync(FPS_CAP);
 		Display.update();
 		long currentTime = getCurrentTime();
-		delta = (float)(currentTime - lastFrameTime) / 1000.0f;
+		deltaMS = currentTime - lastFrameTime;
+		delta = (float)(deltaMS)/ 1000.0f;
 		lastFrameTime = getCurrentTime();
 		Display.setTitle("Projet APO, Demo moteur graphique       FPS : " + (int)(1f/delta));
 	}
@@ -55,6 +58,15 @@ public class DisplayManager {
 	public static float getFrameTimeSeconds() {
 		return delta;
 	}
+
+	/**
+	 * return the last frame duration in seconds
+	 * @return last frame duration in seconds
+	 */
+	public static float getFrameTimeMS() {
+		return deltaMS;
+	}
+
 
 	/**
 	 * Close the display

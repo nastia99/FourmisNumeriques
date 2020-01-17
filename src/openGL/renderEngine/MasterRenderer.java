@@ -7,6 +7,7 @@ import java.util.Map;
 
 import configs.Configs;
 import entity.Ant;
+import entity.Food;
 import openGL.models.TexturedModel;
 
 import openGL.shaders.HitboxShader;
@@ -101,7 +102,7 @@ public class MasterRenderer {
 	 */
 	public void registerRenderableObjects(List<RenderableObject> renderableObjects){
 		for (RenderableObject renderableObject : renderableObjects) {
-			if (renderableObject.canBeRendered()) {
+			if (renderableObject != null && renderableObject.canBeRendered()) {
 				TexturedModel entityModel = renderableObject.getModel();
 				List<RenderableObject> batch = entities.get(entityModel);
 				if (batch != null) {
@@ -121,7 +122,7 @@ public class MasterRenderer {
 	 */
 	public void registerAnts(List<Ant> ants){
 		for (Ant ant : ants) {
-			if (ant.canBeRendered()) {
+			if (ant != null && ant.canBeRendered()) {
 				TexturedModel entityModel = ant.getModel();
 				List<RenderableObject> batch = entities.get(entityModel);
 				if (batch != null) {
@@ -140,7 +141,7 @@ public class MasterRenderer {
 	 * @param ant ant to be rendered
 	 */
 	public void registerAnt(Ant ant){
-		if (ant.canBeRendered()) {
+		if (ant != null && ant.canBeRendered()) {
 			TexturedModel entityModel = ant.getModel();
 			List<RenderableObject> batch = entities.get(entityModel);
 			if (batch != null) {
@@ -148,6 +149,24 @@ public class MasterRenderer {
 			} else {
 				List<RenderableObject> newBatch = new ArrayList<RenderableObject>();
 				newBatch.add(ant);
+				entities.put(entityModel, newBatch);
+			}
+		}
+	}
+
+	/**
+	 * Register a food to be rendered in the next frame
+	 * @param food food to be rendered
+	 */
+	public void registerFood(Food food){
+		if (food != null && food.canBeRendered()) {
+			TexturedModel entityModel = food.getModel();
+			List<RenderableObject> batch = entities.get(entityModel);
+			if (batch != null) {
+				batch.add(food);
+			} else {
+				List<RenderableObject> newBatch = new ArrayList<RenderableObject>();
+				newBatch.add(food);
 				entities.put(entityModel, newBatch);
 			}
 		}

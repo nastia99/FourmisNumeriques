@@ -36,6 +36,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Simulation {
 
@@ -51,29 +52,48 @@ public class Simulation {
     private boolean renderSelectedOnly = false;
     private boolean renderBestOnly = false;
     private boolean running = true;
-    private boolean needToLoad = false;
-    private String fileToLoadFrom = "";
-    private boolean needToSave = false;
-    private String fileToSaveTo = "";
+
+    private boolean needToLoadSim = false;
+    private String fileToLoadSimFrom = "";
+    private boolean needToSaveSim = false;
+    private String fileToSaveSimTo = "";
+
+    private boolean needToLoadWorld = false;
+    private String fileToLoadWorldFrom = "";
+    private boolean needToSaveWorld = false;
+    private String fileToSaveWorldTo = "";
+
+    private boolean needToPassToNextGen = false;
 
     private Ant selectedAnt = null;
     private Ant bestAnt = null;
 
+    private List<AntHill> antHillEntrances;
+
     private int generation = 1;
     private List<Score> scores;
+
+    private long timeSinceLastGen = 0;
 
     public Simulation(String file, MainGUI gui) {
         world = World.loadFromXML(file);
         scores = new ArrayList<Score>();
+        antHillEntrances = new ArrayList<AntHill>();
         if (world == null) {
             world = new World();
-            List<AntHil> homes = new ArrayList<>();
-            Vector2f rotXZ = Maths.calculateXZRotations(world, 25.5f, 25.5f);
-            AntHil home = new AntHil(new Vector3f(25.5f, world.getHeight(25.5f, 25.5f), 25.5f), rotXZ.x, 0, rotXZ.y);
-            homes.add(home);
-            ((Tile) world.getChunk(25, 25)).addEntity(home);
+
+            Random rand = new Random();
+            for (int i = 0; i < Configs.anthillEntrance; i++) {
+                float x = rand.nextInt(world.getSizeX()) +.5f;
+                float z = rand.nextInt(world.getSizeZ()) +.5f;
+                Vector2f rotXZ = Maths.calculateXZRotations(world, x, z);
+                AntHill antHill = new AntHill(new Vector3f(x, world.getHeight(x, z), z), rotXZ.x, rand.nextInt(360), rotXZ.y);
+                antHillEntrances.add(antHill);
+                ((Tile) world.getChunk((int)(x -.5f), (int) (z -.5f))).addEntity(antHill);
+            }
+
             Population population = new Population();
-            population.populate(Configs.nbAnts, world, homes);
+            population.populate(Configs.nbAnts, world);
             world.setPopulation(population);
         }
         camera = new Camera(world);
@@ -82,19 +102,26 @@ public class Simulation {
         mousePicker = new MousePicker(camera, renderer.getProjectionMatrix(), world.getPopulation().getAnts());
         this.gui = gui;
         gui.setWorld(world);
-        scores.add(new Score(0, 0, 0, 0));
+        scores.add(new Score(0, 0, 0));
     }
 
     public Simulation(MainGUI gui) {
         world = new World();
         scores = new ArrayList<Score>();
-        List<AntHil> homes = new ArrayList<>();
-        Vector2f rotXZ = Maths.calculateXZRotations(world, 25.5f, 25.5f);
-        AntHil home = new AntHil(new Vector3f(25.5f, world.getHeight(25.5f, 25.5f), 25.5f), rotXZ.x, 0, rotXZ.y);
-        homes.add(home);
-        ((Tile) world.getChunk(25, 25)).addEntity(home);
+        antHillEntrances = new ArrayList<AntHill>();
+
+        Random rand = new Random();
+        for (int i = 0; i < Configs.anthillEntrance; i++) {
+            float x = rand.nextInt(world.getSizeX()) +.5f;
+            float z = rand.nextInt(world.getSizeZ()) +.5f;
+            Vector2f rotXZ = Maths.calculateXZRotations(world, x, z);
+            AntHill antHill = new AntHill(new Vector3f(x, world.getHeight(x, z), z), rotXZ.x, rand.nextInt(360), rotXZ.y);
+            antHillEntrances.add(antHill);
+            ((Tile) world.getChunk((int)(x -.5f), (int) (z -.5f))).addEntity(antHill);
+        }
+
         Population population = new Population();
-        population.populate(Configs.nbAnts, world, homes);
+        population.populate(Configs.nbAnts, world);
         world.setPopulation(population);
         camera = new Camera(world);
         renderer = new MasterRenderer(world);
@@ -102,35 +129,49 @@ public class Simulation {
         mousePicker = new MousePicker(camera, renderer.getProjectionMatrix(), world.getPopulation().getAnts());
         this.gui = gui;
         gui.setWorld(world);
-        scores.add(new Score(0, 0, 0, 0));
+        scores.add(new Score(0, 0, 0));
     }
 
+    /**
+     * Run the simumation
+     * Effectively the main loop
+     */
     public void run() {
         while (!Display.isCloseRequested()) {
-            if (needToLoad && !fileToLoadFrom.equals("")) {
-                loadFromXML(fileToLoadFrom);
-                needToLoad = false;
-                fileToLoadFrom = "";
+            if (running && !renderBestOnly && !renderSelectedOnly) {
+                timeSinceLastGen += DisplayManager.getFrameTimeMS();
+                MainGameLoop.frame.setTitle("Génération : " + generation + " / Next génération in " + (Configs.generationTime - timeSinceLastGen / 1000) + "s");
+                if (timeSinceLastGen >= Configs.generationTime * 1000)
+                    dispatchNewGenerationEvent();
             }
-            if (needToSave && !fileToSaveTo.equals("")) {
-                saveToXML(fileToSaveTo);
-                needToSave = false;
-                fileToSaveTo = "";
-            }
+            handleSimIO();
+            handleWorldIO();
+            handleNextGen();
             if (Keyboard.isKeyDown(Keyboard.KEY_W) && renderer.canToogleWireframe())
                 renderer.toogleWireframe();
             camera.update();
             checkForFocus();
             if (running) {
                 boolean newAction = DisplayManager.intervalHasPassed(Configs.ACTION_DURATION);
-                if (renderSelectedOnly)
+                if (!Configs.renderSimulation)
+                    newAction = true;
+                if (renderSelectedOnly) {
+                    selectedAnt.setFitnessEvalPossible(false);
                     selectedAnt.update(newAction, world);
-                else if (renderBestOnly)
+                    if (selectedAnt.isCarryingFood() && Configs.renderSimulation)
+                        renderer.registerFood(selectedAnt.getFood());
+                } else if (renderBestOnly) {
+                    bestAnt.setFitnessEvalPossible(false);
                     bestAnt.update(newAction, world);
-                else {
+                    if (bestAnt.isCarryingFood() && Configs.renderSimulation)
+                        renderer.registerFood(bestAnt.getFood());
+                } else {
                     bestAnt = world.getPopulation().getAnts().get(0);
                     for (Ant ant : world.getPopulation().getAnts()) {
+                        ant.setFitnessEvalPossible(true);
                         ant.update(newAction, world);
+                        if (ant.isCarryingFood() && Configs.renderSimulation)
+                            renderer.registerFood(ant.getFood());
                         if (ant.getFitnessScore() > bestAnt.getFitnessScore())
                             bestAnt = ant;
                     }
@@ -139,18 +180,23 @@ public class Simulation {
                 gui.updateCanvas();
                 gui.setAntList(world.getPopulation().getAnts());
             }
-            if (renderSelectedOnly)
+            if (renderSelectedOnly && Configs.renderSimulation)
                 renderer.registerAnt(selectedAnt);
-            else if (renderBestOnly)
+            else if (renderBestOnly && Configs.renderSimulation)
                 renderer.registerAnt(bestAnt);
-            else
+            else if (Configs.renderSimulation)
                 renderer.registerAnts(world.getPopulation().getAnts());
-            renderer.registerRenderableObjects(world.extractEntities());
-            renderer.render(light, camera, Keyboard.isKeyDown(Keyboard.KEY_H));
+            if (Configs.renderSimulation) {
+                renderer.registerRenderableObjects(world.extractEntities());
+                renderer.render(light, camera, Keyboard.isKeyDown(Keyboard.KEY_H));
+            }
             DisplayManager.updateDisplay();
         }
     }
 
+    /**
+     * Update to ray casting util, the camera target antity ant the GUI attributes
+     */
     private void checkForFocus() {
         mousePicker.update();
         if (Mouse.isButtonDown(0) && mousePicker.canSelectEntity()) {
@@ -172,30 +218,116 @@ public class Simulation {
         }
     }
 
+    /**
+     * Get the simulation's population
+     * @return the simulation's population
+     */
     public Population getPopulation() {
         if (world != null)
             return world.getPopulation();
         return null;
     }
 
+    /**
+     * Called when the simumlation need to be saved or loaded
+     */
+    private void handleSimIO() {
+        if (needToLoadSim && !fileToLoadSimFrom.equals("")) {
+            loadFromXML(fileToLoadSimFrom);
+            needToLoadSim = false;
+            fileToLoadSimFrom = "";
+            timeSinceLastGen = 0;
+        }
+        if (needToSaveSim && !fileToSaveSimTo.equals("")) {
+            saveToXML(fileToSaveSimTo);
+            needToSaveSim = false;
+            fileToSaveSimTo = "";
+            timeSinceLastGen = 0;
+        }
+    }
+
+    /**
+     * Called when the simulation need to save or load a world map
+     */
+    private void handleWorldIO()  {
+        if (needToLoadWorld && !fileToLoadWorldFrom.equals("")) {
+            world = World.loadFromXML(fileToLoadWorldFrom);
+            needToLoadWorld = false;
+            fileToLoadWorldFrom = "";
+            renderer.setWorld(world);
+        }
+        if (needToSaveWorld && !fileToSaveWorldTo.equals("")) {
+            world.saveToXML(fileToSaveWorldTo);
+            needToSaveWorld = false;
+            fileToSaveWorldTo = "";
+        }
+
+    }
+
+    /**
+     * Called when the simulation need to advance to the next generation of ant
+     */
+    private void handleNextGen() {
+        if (needToPassToNextGen) {
+            Score currentGenScore = getPopulation().nextGeneration(world);
+            generation++;
+            bestAnt = null;
+            selectedAnt = null;
+            camera.setFocus(world);
+            gui.setSelectedAnt(null);
+            gui.setBestAnt(null);
+            scores.add(currentGenScore);
+            gui.setScore(convertToLists());
+            needToPassToNextGen = false;
+            renderSelectedOnly = false;
+            renderBestOnly = false;
+            running = true;
+            if (Configs.worldNeedRegeneration) {
+                world.regenerate(antHillEntrances);
+            }
+            timeSinceLastGen = 0;
+        }
+    }
+
+    /**
+     * Clean up the renderer
+     */
     public void cleanUp() {
         renderer.clear();
     }
 
+    /**
+     * Return whether or not the simumlation is running
+     * @return is the simulation running
+     */
     public boolean isRunning() {
         return running;
     }
 
+    /**
+     * Pause the simulation until resume() is called
+     */
     public void pause() {
         this.running = false;
     }
 
+    /**
+     * resume the simulation
+     */
     public void resume() { this.running = true; }
 
+    /**
+     * Return whether or not the selected ant is isolated
+     * @return is the selected ant isolated
+     */
     public boolean isRenderSelectedOnly() {
         return renderSelectedOnly;
     }
 
+    /**
+     * Set whether or not the selected ant need to be isolated
+     * @param renderSelectedOnly whether or not the selected ant need to be isolated
+     */
     public void setRenderSelectedOnly(boolean renderSelectedOnly) {
         if (renderSelectedOnly && selectedAnt == null) return;
         this.renderSelectedOnly = renderSelectedOnly;
@@ -203,10 +335,18 @@ public class Simulation {
             renderBestOnly = false;
     }
 
+    /**
+     * Return whether or not the best ant is isolated
+     * @return is the best ant isolated
+     */
     public boolean isRenderBestOnly() {
         return renderBestOnly;
     }
 
+    /**
+     * Set whether or not the best ant need to be isolated
+     * @param renderBestOnly whether or not the best ant need to be isolated
+     */
     public void setRenderBestOnly(boolean renderBestOnly) {
         if (renderBestOnly && bestAnt == null) return;
         this.renderBestOnly = renderBestOnly;
@@ -214,10 +354,18 @@ public class Simulation {
             renderSelectedOnly = false;
     }
 
+    /**
+     * Get the current generation of ant
+     * @return the current generation id
+     */
     public int getGeneration() {
         return generation;
     }
 
+    /**
+     * Set the selected ant and focus the camera on it
+     * @param ant the new selected ant
+     */
     public void setSelectedAnt(Ant ant) {
         selectedAnt = ant;
         camera.setFocus(ant);
@@ -245,7 +393,6 @@ public class Simulation {
                 elem.setAttribute("x", String.valueOf(score.getGeneration()));
                 elem.setAttribute("max", String.valueOf(score.getMax()));
                 elem.setAttribute("avg", String.valueOf(score.getAverage()));
-                elem.setAttribute("min", String.valueOf(score.getMin()));
                 graphNode.appendChild(elem);
             }
             simulationNode.appendChild(graphNode);
@@ -291,6 +438,7 @@ public class Simulation {
             world = World.getFromElement((Element)worldNode);
             generation = Integer.parseInt(simulationNode.getAttribute("generation"));
             NodeList scores = graphNode.getChildNodes();
+            this.scores.clear();
             for (int i = 0; i < scores.getLength(); i++) {
                 Node node = scores.item(i);
                 if (node.getNodeName().equals("point")) {
@@ -298,32 +446,35 @@ public class Simulation {
                     int generation = Integer.parseInt(elem.getAttribute("x"));
                     double max = Double.parseDouble(elem.getAttribute("max"));
                     double avg = Double.parseDouble(elem.getAttribute("avg"));
-                    double min = Double.parseDouble(elem.getAttribute("min"));
-                    Score score = new Score(generation, max, avg, min);
+                    Score score = new Score(generation, max, avg);
                     this.scores.add(score);
                 }
             }
-            List<double[]> listPoints = new ArrayList<>();
-            double[] x = new double[this.scores.size()];
-            double[] avg = new double[this.scores.size()];
-            double[] max = new double[this.scores.size()];
-            double[] min = new double[this.scores.size()];
-            for (int i = 0; i < this.scores.size(); i++) {
-                Score score = this.scores.get(i);
-                x[i] = score.getGeneration();
-                max[i] = score.getMax();
-                min[i] = score.getMin();
-                avg[i] = score.getAverage();
-            }
-            listPoints.add(x);
-            listPoints.add(avg);
-            listPoints.add(max);
-            listPoints.add(min);
-            gui.setScore(listPoints);
+            gui.setScore(convertToLists());
             renderer.setWorld(world);
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Convert the list of Scores to a list of double arrays that can be fed to the GUI's score graphs
+     */
+    private List<double[]> convertToLists() {
+        List<double[]> listPoints = new ArrayList<>();
+        double[] x = new double[this.scores.size()];
+        double[] avg = new double[this.scores.size()];
+        double[] max = new double[this.scores.size()];
+        for (int i = 0; i < this.scores.size(); i++) {
+            Score score = this.scores.get(i);
+            x[i] = score.getGeneration();
+            max[i] = score.getMax();
+            avg[i] = score.getAverage();
+        }
+        listPoints.add(x);
+        listPoints.add(avg);
+        listPoints.add(max);
+        return listPoints;
     }
 
     /**
@@ -333,8 +484,8 @@ public class Simulation {
      * @param file the file to be loaded from
      */
     public void dispatchLoadEvent(String file) {
-        fileToLoadFrom = file;
-        needToLoad = true;
+        fileToLoadSimFrom = file;
+        needToLoadSim = true;
     }
 
     /**
@@ -344,7 +495,37 @@ public class Simulation {
      * @param file the file to save to
      */
     public void dispatchSaveEvent(String file) {
-        fileToSaveTo = file;
-        needToSave = true;
+        fileToSaveSimTo = file;
+        needToSaveSim = true;
+    }
+
+    /**
+     * Notify the simulation that it need to load a world from a file
+     * Can be called from another thread, the reload will be executed by the main thread.
+     * This is needed because the OpenGL context is only loaded in the main thread and is required to regenerate the world model
+     * @param file the file to be loaded from
+     */
+    public void dispatchLoadWorldEvent(String file) {
+        fileToLoadWorldFrom = file;
+        needToLoadWorld = true;
+    }
+
+    /**
+     * Notify the simulation that it need to save its world to a file
+     * Can be called from another thread, the save will be executed by the main thread.
+     * this methods exist only for the sake of symmetry with the loading mechanic
+     * @param file the file to save to
+     */
+    public void dispatchSaveWorldEvent(String file) {
+        fileToSaveWorldTo = file;
+        needToSaveWorld = true;
+    }
+
+    /**
+     * Notify the simulation that it need pass to the next generation
+     * Can be called from another thread
+     */
+    public void dispatchNewGenerationEvent() {
+        needToPassToNextGen = true;
     }
 }

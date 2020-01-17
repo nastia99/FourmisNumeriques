@@ -1,5 +1,6 @@
 package openGL.world;
 
+import configs.Configs;
 import entity.*;
 import openGL.entities.RenderableObject;
 import openGL.utils.Maths;
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class World extends RenderableObject {
 
@@ -44,6 +46,39 @@ public class World extends RenderableObject {
                 chunks[i][j] = new Tile(i, j, generator);
             }
         }
+        fertilize((int) (Configs.nbAnts * 2));
+    }
+
+    public void regenerate(List<AntHill> homes) {
+        chunks = new Tile[sizeX][sizeZ];
+        for (int i = 0; i < sizeX; i++) {
+            for (int j = 0; j < sizeZ; j++) {
+                chunks[i][j] = new Tile(i, j, generator);
+            }
+        }
+        fertilize((int) (Configs.nbAnts * 2));
+        for (AntHill anthil : homes)
+            addEntity(anthil);
+    }
+
+    public void fertilize(int nbFood) {
+        Random rand = new Random();
+        for (int i = 0; i < nbFood; i++) {
+            boolean succesfullyAdded;
+            int tries = 0;
+            do {
+                tries++;
+                Vector3f pos = new Vector3f(rand.nextInt(sizeX) + .5f, 0, rand.nextInt(sizeZ) + .5f);
+                pos.y = getHeight(pos.x, pos.z);
+
+                Vector2f rotXZ = Maths.calculateXZRotations(this, pos.x, pos.z);
+                float rX = rotXZ.x;
+                float rZ = rotXZ.y;
+
+                succesfullyAdded = addEntity(new Food(pos, rX, rand.nextInt(360), rZ));
+                if (tries > 5) break;
+            } while (!succesfullyAdded);
+        }
     }
 
     public World(int seed) {
@@ -56,6 +91,7 @@ public class World extends RenderableObject {
                 chunks[i][j] = new Tile(i, j, generator);
             }
         }
+        fertilize(300);
     }
 
     public Population getPopulation() {
@@ -74,14 +110,17 @@ public class World extends RenderableObject {
         return sizeZ;
     }
 
-    public void addEntity(RenderableObject entity) {
+    public boolean addEntity(RenderableObject entity) {
         Tile tile = (Tile) getChunk((int)(entity.getPosition().x), (int) entity.getPosition().z);
         if (tile != null && entity instanceof Food &&!tile.contains(EntityTypes.FOOD)) {
             tile.addEntity(entity);
+            return true;
         }
-        if (tile != null && entity instanceof AntHil &&!tile.contains(EntityTypes.ANTHIL)) {
+        if (tile != null && entity instanceof AntHill &&!tile.contains(EntityTypes.ANTHILL)) {
             tile.addEntity(entity);
+            return true;
         }
+        return false;
     }
 
     public List<Chunk> getChunks() {
@@ -137,8 +176,21 @@ public class World extends RenderableObject {
         for (int i = 0; i < getSizeX(); i++) {
             for (int j = 0; j < getSizeZ(); j++) {
                 Tile tile = (Tile) getChunk(i, j);
-                if (tile != null && (tile.contains(EntityTypes.FOOD) || tile.contains(EntityTypes.ANTHIL))) {
+                if (tile != null && (tile.contains(EntityTypes.FOOD) || tile.contains(EntityTypes.ANTHILL))) {
                     list.addAll(tile.getEntities());
+                }
+            }
+        }
+        return list;
+    }
+
+    public List<RenderableObject> extractEntities(EntityTypes type) {
+        List<RenderableObject> list = new ArrayList<RenderableObject>();
+        for (int i = 0; i < getSizeX(); i++) {
+            for (int j = 0; j < getSizeZ(); j++) {
+                Tile tile = (Tile) getChunk(i, j);
+                if (tile != null && tile.contains(type)) {
+                    list.addAll(tile.getEntities(type));
                 }
             }
         }
@@ -159,9 +211,9 @@ public class World extends RenderableObject {
 
         Element objectsNode = document.createElement("objects");
         for (RenderableObject obj : extractEntities()) {
-            if (obj instanceof AntHil) {
+            if (obj instanceof AntHill) {
                 Element elem = document.createElement("anthil");
-                elem.setAttribute("id", String.valueOf(((AntHil)obj).getId()));
+                elem.setAttribute("id", String.valueOf(((AntHill)obj).getId()));
                 elem.setAttribute("posX", String.valueOf(obj.getPosition().x));
                 elem.setAttribute("rotY", String.valueOf(obj.getRotY()));
                 elem.setAttribute("posZ", String.valueOf(obj.getPosition().z));
@@ -261,9 +313,9 @@ public class World extends RenderableObject {
                 if (elem.getTagName().equals("anthil")) {
                     int id = Integer.parseInt(elem.getAttribute("id"));
                     Vector2f rotXZ = Maths.calculateXZRotations(world, posX, posZ);
-                    AntHil antHil = new AntHil(new Vector3f(posX, world.getHeight(posX, posZ), posZ), rotXZ.x, rotY, rotXZ.y);
-                    antHil.setId(id);
-                    world.addEntity(antHil);
+                    AntHill antHill = new AntHill(new Vector3f(posX, world.getHeight(posX, posZ), posZ), rotXZ.x, rotY, rotXZ.y);
+                    antHill.setId(id);
+                    world.addEntity(antHill);
                 }
             }
         }
@@ -303,9 +355,9 @@ public class World extends RenderableObject {
                 if (elem.getTagName().equals("anthil")) {
                     int id = Integer.parseInt(elem.getAttribute("id"));
                     Vector2f rotXZ = Maths.calculateXZRotations(this, posX, posZ);
-                    AntHil antHil = new AntHil(new Vector3f(posX, this.getHeight(posX, posZ), posZ), rotXZ.x, rotY, rotXZ.y);
-                    antHil.setId(id);
-                    this.addEntity(antHil);
+                    AntHill antHill = new AntHill(new Vector3f(posX, this.getHeight(posX, posZ), posZ), rotXZ.x, rotY, rotXZ.y);
+                    antHill.setId(id);
+                    this.addEntity(antHill);
                 }
             }
         }

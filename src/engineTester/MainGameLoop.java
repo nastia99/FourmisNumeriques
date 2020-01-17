@@ -1,30 +1,11 @@
 package engineTester;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import configs.Configs;
-import entity.*;
 
 import gui.MainGUI;
-import openGL.utils.Maths;
-import openGL.world.Chunk;
-import openGL.world.HeightsGenerator;
-import openGL.world.World;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.Display;
-import org.lwjgl.util.vector.Vector2f;
-import org.lwjgl.util.vector.Vector3f;
 
 import openGL.renderEngine.DisplayManager;
 import openGL.renderEngine.Loader;
-import openGL.renderEngine.MasterRenderer;
-import openGL.entities.Camera;
-import openGL.entities.RenderableObject;
-import openGL.entities.Light;
-import openGL.utils.MousePicker;
 import simulation.Simulation;
 
 import javax.swing.*;
@@ -43,7 +24,7 @@ public class MainGameLoop {
         Configs.initModels();
         InitGUI();
 
-        simulation = new Simulation("testWorld.xml", gui);
+        simulation = new Simulation(gui);
         simulation.run();
 
         simulation.cleanUp();
@@ -54,9 +35,11 @@ public class MainGameLoop {
 
     private static void InitGUI() {
         frame = new JFrame("GUI");
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         gui = new MainGUI();
+        frame.setSize(1920/2, 800);
+        frame.setLocation(0, 0);
         frame.setContentPane(gui.mainPanel);
-        frame.pack();
         frame.setVisible(true);
     }
 }

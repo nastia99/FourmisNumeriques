@@ -54,16 +54,20 @@ public class TreePanel extends JPanel {
                 g.setColor(Color.GREEN);
             else
                 g.setColor(Color.BLACK);
-            g.drawLine((int) middle.x - 10, (int) middle.y + 15, (int) middle.x - section.width / 4, (int) middle.y - 15 + levelHeight);
-            drawNode(node.getLeft(), 2 * x, level + 1, levelHeight, g,activeBranch && !conditionSatisfied);
+            if (node.getAction().isConditional()) {
+                g.drawLine((int) middle.x - 10, (int) middle.y + 15, (int) middle.x - section.width / 4, (int) middle.y - 15 + levelHeight);
+                drawNode(node.getLeft(), 2 * x, level + 1, levelHeight, g, activeBranch && !conditionSatisfied);
+            }
         }
         if (node.getRight() != null) {
             if (conditionSatisfied && activeBranch)
                 g.setColor(Color.GREEN);
             else
                 g.setColor(Color.BLACK);
-            g.drawLine((int) middle.x + 10, (int) middle.y + 15, (int) middle.x + section.width / 4, (int) middle.y - 15 + levelHeight);
-            drawNode(node.getRight(), 2 * x + 1, level + 1, levelHeight, g, activeBranch && conditionSatisfied);
+            if (node.getAction().isConditional()) {
+                g.drawLine((int) middle.x + 10, (int) middle.y + 15, (int) middle.x + section.width / 4, (int) middle.y - 15 + levelHeight);
+                drawNode(node.getRight(), 2 * x + 1, level + 1, levelHeight, g, activeBranch && conditionSatisfied);
+            }
         }
     }
 
@@ -87,6 +91,7 @@ public class TreePanel extends JPanel {
     public void paintComponent(Graphics g) {
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, getWidth(), getHeight());
-        drawTree(g);
+        if (ant != null && world != null)
+            drawTree(g);
     }
 }

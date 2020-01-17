@@ -43,7 +43,7 @@ public abstract class Action {
             case 6:
                 return new ActionBackHome();
             case 7:
-                return new ActionCondAntHil();
+                return new ActionCondAntHill();
             case 8:
                 return new ActionCondFood();
             case 9:
@@ -79,7 +79,7 @@ public abstract class Action {
         int val = random.nextInt(3);
         switch (val) {
             case 1:
-                return new ActionCondAntHil();
+                return new ActionCondAntHill();
             case 2:
                 return new ActionCondFood();
             default:
@@ -102,7 +102,7 @@ public abstract class Action {
             case "home":
                 return new ActionBackHome();
             case "anthil":
-                return new ActionCondAntHil();
+                return new ActionCondAntHill();
             case "food":
                 return new ActionCondFood();
             case "isLoaded":

@@ -2,6 +2,7 @@ package entity;
 
 import configs.Configs;
 import engineTester.MainGameLoop;
+import entity.logic.Tree;
 import openGL.world.World;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
@@ -37,17 +38,15 @@ public class Population {
      * Initialize the population with random ants
      * @param nbAnts number of ants to generate
      */
-    public void populate(int nbAnts, World world, List<AntHil> anthils) {
+    public void populate(int nbAnts, World world) {
         Random rand = new Random();
-        for (int i = 0; i < 200; i++) {
-            AntHil anthil = anthils.get(rand.nextInt(anthils.size()));
-            Vector2f home = new Vector2f(anthil.getPosition().x, anthil.getPosition().z);
-            ants.add(new Ant(new Vector3f(rand.nextInt(world.getSizeX()) + 0.5f, 0, rand.nextInt(world.getSizeZ()) + 0.5f), 0, home));
+        for (int i = 0; i < nbAnts; i++) {
+            ants.add(new Ant(new Vector3f(rand.nextInt(world.getSizeX()) + 0.5f, 0, rand.nextInt(world.getSizeZ()) + 0.5f), 0));
         }
     }
 
     /**
-     * get the best ant of the population
+     * Get the best ant of the population
      * @return the ant with the best fitness score
      */
     public Ant getBest() {
@@ -77,19 +76,35 @@ public class Population {
 
     /**
      * Generate the next generation of ants using the best ants of the current generation
+     * @param world the world in which you will generate the new ants
      */
-    public Score nextGeneration() {
-        //Todo
-
-        int generation = MainGameLoop.simulation.getGeneration() + 1;
+    public Score nextGeneration(World world) {
+        int generation = MainGameLoop.simulation.getGeneration();
         double max = getBest().getFitnessScore();
         double average = 0;
         for (Ant ant : ants) {
             average += ant.getFitnessScore() / ants.size();
         }
         Collections.sort(ants);
-        double min =  ants.get(ants.size() - 1).getFitnessScore();
-        return new Score(generation, max, average, min);
+
+        List<Ant> bestAnts = getBestsAnts();
+        ants.clear();
+        ants.addAll(bestAnts);
+
+        Random random = new Random();
+        while (ants.size() < Configs.nbAnts) {
+            Ant parent1 = bestAnts.get(random.nextInt(bestAnts.size()));
+            Ant parent2 = bestAnts.get(random.nextInt(bestAnts.size()));
+            Tree tree = Tree.crossBread(parent1.getDecisionTree(), parent2.getDecisionTree(), Configs.mutationRate);
+            Ant child = new Ant(new Vector3f(random.nextInt(world.getSizeX()) + 0.5f, 0, random.nextInt(world.getSizeZ()) + 0.5f), 0);
+            child.setDecisionTree(tree);
+            ants.add(child);
+        }
+
+        for (Ant ant : ants) {
+            ant.reset(world);
+        }
+        return new Score(generation, max, average);
     }
 
     /**
@@ -124,7 +139,7 @@ public class Population {
     }
 
     /**
-     * make a complete save of the population to an XML file containing positions and decision trees
+     * Make a complete save of the population to an XML file containing positions and decision trees
      * @param document the dom element used to generate the element
      * @return an element representing the population
      */
@@ -138,6 +153,10 @@ public class Population {
         return populationNode;
     }
 
+    /**
+     * Save the best ants from the population (using the Configs.generationConservationRatio parameter) into an XML file
+     * @param file the path to the file to save to
+     */
     public void saveBestAntsToXML(String file) {
         try {
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
@@ -163,6 +182,10 @@ public class Population {
         }
     }
 
+    /**
+     * Load the best ants from an XML file (replacing the current best ants)
+     * @param file the path to the file to load from
+     */
     public void loadBestAntsFromXML(String file) {
         try {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();

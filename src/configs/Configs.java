@@ -39,7 +39,7 @@ public class Configs {
     public static TexturedModel foodTexturedModel;
     public static TexturedModel antHilTexturedModel;
 
-    public static final int ACTION_DURATION = 1000;
+    public static final int ACTION_DURATION = 50;
     public static final int ANT_ANIMATION_DURATION = ACTION_DURATION/3;
 
 
@@ -50,10 +50,13 @@ public class Configs {
     public static int nbAnts;
     public static float generationConservationRatio;
     public static float mutationRate;
-    public static int worldSeed;
     public static boolean renderSimulation;
     public static int generationTime;
+    public static int anthillEntrance;
 
+    /**
+     * Load every models and textures into memroy
+     */
     public static void initModels() {
         chunkModelTexture = new ModelTexture(0);
         antTexturedModel = new TexturedModel(OBJLoader.loadObjModel(ANT_MODEL, MainGameLoop.loader), new ModelTexture(MainGameLoop.loader.loadTexture(ANT_TEXTURE)));
@@ -63,6 +66,10 @@ public class Configs {
 
     }
 
+    /**
+     * load a properties file into memory
+     * @param propertieFilePath the path of the file to be loaded
+     */
     public static void init(String propertieFilePath) {
         try (InputStream inputStream = new FileInputStream(propertieFilePath)) {
 
@@ -73,9 +80,9 @@ public class Configs {
             nbAnts = Integer.parseInt(prop.getProperty("nbAnts"));
             generationConservationRatio = Float.parseFloat(prop.getProperty("generationConservationRatio"));
             mutationRate = Float.parseFloat(prop.getProperty("mutationRate"));
-            worldSeed = Integer.parseInt(prop.getProperty("worldSeed"));
             renderSimulation = Boolean.parseBoolean(prop.getProperty("renderSimulation"));
             generationTime = Integer.parseInt(prop.getProperty("generationTime"));
+            anthillEntrance = Integer.parseInt(prop.getProperty("anthillEntrance"));
         } catch (Exception e) {
             System.err.println("Error : " + e.getMessage());
         }

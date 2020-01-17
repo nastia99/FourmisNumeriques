@@ -8,13 +8,13 @@ import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
 import org.knowm.xchart.XYSeries;
+import org.knowm.xchart.internal.series.MarkerSeries;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -48,129 +48,158 @@ public class MainGUI {
     private JButton loadSim;
     private JList<Ant> antList;
     private JPanel infoPanel;
+    private JPanel graphPane;
     private TreePanel selectedTreePanel;
     private TreePanel bestTreePanel;
     private Ant selectedAnt;
     private Ant bestAnt;
 
-    private XYChart scoreChart;
-    private XYSeries averageScore;
-    private XYSeries bestScore;
-    private XYSeries minScore;
-    private XChartPanel<XYChart> chartPane;
+    private XYChart bestChart;
+    private XYChart averageChart;
+
+    private XChartPanel<XYChart> bestChartPane;
+    private XChartPanel<XYChart> averageChartPane;
 
     public MainGUI() {
-        Toolkit.getDefaultToolkit().setDynamicLayout( false );
+        Toolkit.getDefaultToolkit().setDynamicLayout(false);
 
         selectedTreePanel = new TreePanel();
-        selectedTreePanel.setMinimumSize(new Dimension(1000, 600));
+        selectedTreePanel.setMinimumSize(new Dimension(500, 300));
         selectedTreePanel.setBorder(BorderFactory.createRaisedBevelBorder());
         selectedTreeSubPanel.add(selectedTreePanel);
 
         bestTreePanel = new TreePanel();
-        bestTreePanel.setMinimumSize(new Dimension(1000, 600));
+        bestTreePanel.setMinimumSize(new Dimension(500, 300));
         bestTreePanel.setBorder(BorderFactory.createRaisedBevelBorder());
         bestTreeSubPanel.add(bestTreePanel);
 
+        /**
+         * Listeners
+         */
         saveSelected.addActionListener(actionEvent -> {
-            MainGameLoop.simulation.pause();
+            pauseSimAndUpdateButton();
             if (selectedAnt != null) saveTreeToFile(selectedAnt.getDecisionTree());
-            MainGameLoop.simulation.resume();
         });
         loadSelected.addActionListener(actionEvent -> {
-            MainGameLoop.simulation.pause();
+            pauseSimAndUpdateButton();
             if (selectedAnt != null) {
                 Tree tree = loadTreeFromFile();
                 if (tree != null) selectedAnt.setDecisionTree(tree);
             }
-            MainGameLoop.simulation.resume();
         });
         isolateSelected.addActionListener(actionEvent -> {
             if (selectedAnt != null) {
+                pauseSimAndUpdateButton();
                 boolean state = MainGameLoop.simulation.isRenderSelectedOnly();
                 MainGameLoop.simulation.setRenderSelectedOnly(!state);
                 if (!state) isolateSelected.setText("Show All");
                 else isolateSelected.setText("Isolate");
+                resumeSimAndUpdateButton();
             }
         });
-
         saveBest.addActionListener(actionEvent -> {
-            MainGameLoop.simulation.pause();
+            pauseSimAndUpdateButton();
             if (bestAnt != null) saveTreeToFile(bestAnt.getDecisionTree());
-            MainGameLoop.simulation.resume();
         });
         loadBest.addActionListener(actionEvent -> {
-            MainGameLoop.simulation.pause();
+            pauseSimAndUpdateButton();
             if (bestAnt != null) {
                 Tree tree = loadTreeFromFile();
                 if (tree != null) bestAnt.setDecisionTree(tree);
             }
-            MainGameLoop.simulation.resume();
         });
         isolateBest.addActionListener(actionEvent -> {
             if (bestAnt != null) {
+                pauseSimAndUpdateButton();
                 boolean state = MainGameLoop.simulation.isRenderBestOnly();
                 MainGameLoop.simulation.setRenderBestOnly(!state);
                 if (!state) isolateBest.setText("Show All");
                 else isolateBest.setText("Isolate");
+                resumeSimAndUpdateButton();
             }
         });
-
-        antList.setModel(new DefaultListModel<Ant>());
-        antList.setFixedCellWidth(200);
-        antList.setIgnoreRepaint(true);
-        scoreChart = new XYChartBuilder().width(800).height(600).title(getClass().getSimpleName()).xAxisTitle("Score").yAxisTitle("Génération").build();
-
-        averageScore = scoreChart.addSeries("Average", new double[]{0.5, .8});
-        averageScore.setMarker(SeriesMarkers.CIRCLE);
-        bestScore = scoreChart.addSeries("Best", new double[]{.8, 1});
-        bestScore.setMarker(SeriesMarkers.CIRCLE);
-        minScore = scoreChart.addSeries("Lowest", new double[]{.3, .5});
-        minScore.setMarker(SeriesMarkers.CIRCLE);
-        chartPane = new XChartPanel<>(scoreChart);
-        infoPanel.add(chartPane);
-
         antList.addListSelectionListener(listSelectionEvent -> {
             if (antList.getSelectedValue() != null) {
-                MainGameLoop.simulation.pause();
+                pauseSimAndUpdateButton();
                 selectedAnt = antList.getSelectedValue();
+                selectedTreePanel.setAnt(selectedAnt);
+                selectedTreePanel.updateUI();
                 MainGameLoop.simulation.setSelectedAnt(selectedAnt);
                 antList.setSelectedValue(selectedAnt, true);
                 MainGameLoop.simulation.resume();
             }
         });
-
         pauseSimulation.addActionListener(actionEvent -> {
             if (!MainGameLoop.simulation.isRunning()) {
-                MainGameLoop.simulation.resume();
-                pauseSimulation.setText("Pause Simulation");
+                resumeSimAndUpdateButton();
             } else {
-                MainGameLoop.simulation.pause();
-                pauseSimulation.setText("Resume Simulation");
+                pauseSimAndUpdateButton();
             }
         });
         savSim.addActionListener(actionEvent -> {
-            MainGameLoop.simulation.pause();
+            pauseSimAndUpdateButton();
             saveSimulationToFile();
-            MainGameLoop.simulation.resume();
         });
         loadSim.addActionListener(actionEvent -> {
-            MainGameLoop.simulation.pause();
+            pauseSimAndUpdateButton();
             loadSimulationFromFile();
-            MainGameLoop.simulation.resume();
         });
-
         saveBests.addActionListener(actionEvent -> {
-            MainGameLoop.simulation.pause();
+            pauseSimAndUpdateButton();
             saveBestAnts();
-            MainGameLoop.simulation.resume();
+        });
+        loadBests.addActionListener(actionEvent -> {
+            pauseSimAndUpdateButton();
+            loadBestAnts();
+        });
+        saveWorld.addActionListener(actionEvent -> {
+            pauseSimAndUpdateButton();
+            saveCurrentWorld();
+        });
+        loadWorld.addActionListener(actionEvent -> {
+            pauseSimAndUpdateButton();
+            loadCurrentWorld();
+        });
+        forceGen.addActionListener(actionEvent -> {
+            pauseSimAndUpdateButton();
+            MainGameLoop.simulation.dispatchNewGenerationEvent();
+            resumeSimAndUpdateButton();
         });
 
-        loadBests.addActionListener(actionEvent -> {
-            MainGameLoop.simulation.pause();
-            loadBestAnts();
-            MainGameLoop.simulation.resume();
-        });
+        antList.setModel(new DefaultListModel<Ant>());
+        antList.setFixedCellWidth(150);
+        antList.setIgnoreRepaint(true);
+
+        bestChart = new XYChartBuilder().width(650).height(300).title(getClass().getSimpleName()).xAxisTitle("Génération").yAxisTitle("Score").title("Meilleur score par générations").build();
+        XYSeries bestSerie = bestChart.addSeries("Best", new double[]{0});
+        bestSerie.setLineColor(Color.ORANGE);
+        bestSerie.setMarker(SeriesMarkers.NONE);
+        bestChart.getStyler().setLegendVisible(false);
+
+        averageChart = new XYChartBuilder().width(650).height(300).title(getClass().getSimpleName()).xAxisTitle("Génération").yAxisTitle("Score").title("Score moyen par génération").build();
+        XYSeries averageSerie = averageChart.addSeries("Average", new double[]{0});
+        averageSerie.setLineColor(Color.BLUE);
+        averageSerie.setMarker(SeriesMarkers.NONE);
+        averageChart.getStyler().setLegendVisible(false);
+
+        bestChartPane = new XChartPanel<>(bestChart);
+        averageChartPane = new XChartPanel<>(averageChart);
+
+        graphPane.add(bestChartPane);
+        graphPane.add(averageChartPane);
+        graphPane.setBorder(BorderFactory.createRaisedBevelBorder());
+    }
+
+    private void pauseSimAndUpdateButton() {
+        MainGameLoop.simulation.pause();
+        antList.setEnabled(false);
+        pauseSimulation.setText("Resume Simulation");
+    }
+
+    private void resumeSimAndUpdateButton() {
+        MainGameLoop.simulation.resume();
+        antList.setEnabled(true);
+        pauseSimulation.setText("Pause Simulation");
     }
 
     public void setSelectedAnt(Ant ant) {
@@ -263,6 +292,30 @@ public class MainGUI {
         MainGameLoop.simulation.dispatchSaveEvent(file.getAbsolutePath());
     }
 
+    private void saveCurrentWorld() {
+        JFileChooser fc = new JFileChooser();
+        File file = null;
+        int returnVal = fc.showOpenDialog(this.mainPanel);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION)
+            file = fc.getSelectedFile();
+        else
+            return;
+        MainGameLoop.simulation.dispatchSaveWorldEvent(file.getAbsolutePath());
+    }
+
+    private void loadCurrentWorld() {
+        JFileChooser fc = new JFileChooser();
+        File file = null;
+        int returnVal = fc.showOpenDialog(this.mainPanel);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION)
+            file = fc.getSelectedFile();
+        else
+            return;
+        MainGameLoop.simulation.dispatchLoadWorldEvent(file.getAbsolutePath());
+    }
+
     private void loadSimulationFromFile() {
         JFileChooser fc = new JFileChooser();
         File file = null;
@@ -287,10 +340,10 @@ public class MainGUI {
 
     public void setScore(List<double[]> scores) {
         SwingUtilities.invokeLater(() -> {
-            scoreChart.updateXYSeries("Average", scores.get(0), scores.get(1), null);
-            scoreChart.updateXYSeries("Best", scores.get(0), scores.get(2), null);
-            scoreChart.updateXYSeries("Lowest", scores.get(0), scores.get(3), null);
-            chartPane.repaint();
+            averageChart.updateXYSeries("Average", scores.get(0), scores.get(1), null);
+            averageChartPane.repaint();
+            bestChart.updateXYSeries("Best", scores.get(0), scores.get(2), null);
+            bestChartPane.repaint();
         });
     }
 }
