@@ -101,7 +101,7 @@ public abstract class Action {
                 return new ActionRandom();
             case "home":
                 return new ActionBackHome();
-            case "anthil":
+            case "anthill":
                 return new ActionCondAntHill();
             case "food":
                 return new ActionCondFood();

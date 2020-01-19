@@ -37,7 +37,7 @@ public class MainGameLoop {
         frame = new JFrame("GUI");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         gui = new MainGUI();
-        frame.setSize(1920/2, 800);
+        frame.setSize(1920/2, 1000);
         frame.setLocation(0, 0);
         frame.setContentPane(gui.mainPanel);
         frame.setVisible(true);

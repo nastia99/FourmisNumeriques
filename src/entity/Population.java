@@ -86,6 +86,7 @@ public class Population {
             average += ant.getFitnessScore() / ants.size();
         }
         Collections.sort(ants);
+        double min = ants.get(ants.size() - 1).getFitnessScore();
 
         List<Ant> bestAnts = getBestsAnts();
         ants.clear();
@@ -104,7 +105,7 @@ public class Population {
         for (Ant ant : ants) {
             ant.reset(world);
         }
-        return new Score(generation, max, average);
+        return new Score(generation, max, average, min);
     }
 
     /**

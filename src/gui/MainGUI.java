@@ -1,5 +1,6 @@
 package gui;
 
+import configs.Configs;
 import engineTester.MainGameLoop;
 import entity.Ant;
 import entity.logic.Tree;
@@ -16,7 +17,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -49,6 +49,13 @@ public class MainGUI {
     private JList<Ant> antList;
     private JPanel infoPanel;
     private JPanel graphPane;
+    private JLabel nbAntsLb;
+    private JLabel mutationRateLb;
+    private JLabel anthillEntrancesLabel;
+    private JLabel foodPerAntLb;
+    private JLabel generationRatioLb;
+    private JLabel generationTimeLb;
+    private JLabel rgenWorldLb;
     private TreePanel selectedTreePanel;
     private TreePanel bestTreePanel;
     private Ant selectedAnt;
@@ -74,6 +81,8 @@ public class MainGUI {
         bestTreePanel.setMinimumSize(new Dimension(500, 300));
         bestTreePanel.setBorder(BorderFactory.createRaisedBevelBorder());
         bestTreeSubPanel.add(bestTreePanel);
+
+        updateParameterLabels();
 
         /*
           Listeners
@@ -173,11 +182,14 @@ public class MainGUI {
         antList.setFixedCellWidth(200);
         antList.setIgnoreRepaint(true);
 
-        bestChart = new XYChartBuilder().width(650).height(300).title(getClass().getSimpleName()).xAxisTitle("Génération").yAxisTitle("Score").title("Meilleur score par générations").build();
+        bestChart = new XYChartBuilder().width(650).height(300).title(getClass().getSimpleName()).xAxisTitle("Génération").yAxisTitle("Score").title("Scores extremes par générations").build();
         XYSeries bestSerie = bestChart.addSeries("Best", new double[]{0});
-        bestSerie.setLineColor(Color.ORANGE);
+        XYSeries worstSerie = bestChart.addSeries("Worst", new double[]{0});
+        bestSerie.setLineColor(Color.GREEN);
         bestSerie.setMarker(SeriesMarkers.NONE);
-        bestChart.getStyler().setLegendVisible(false);
+        worstSerie.setLineColor(Color.RED);
+        worstSerie.setMarker(SeriesMarkers.NONE);
+        bestChart.getStyler().setLegendVisible(true);
 
         averageChart = new XYChartBuilder().width(650).height(300).title(getClass().getSimpleName()).xAxisTitle("Génération").yAxisTitle("Score").title("Score moyen par génération").build();
         XYSeries averageSerie = averageChart.addSeries("Average", new double[]{0});
@@ -357,7 +369,20 @@ public class MainGUI {
             averageChart.updateXYSeries("Average", scores.get(0), scores.get(1), null);
             averageChartPane.repaint();
             bestChart.updateXYSeries("Best", scores.get(0), scores.get(2), null);
+            bestChart.updateXYSeries("Worst", scores.get(0), scores.get(3), null);
             bestChartPane.repaint();
+        });
+    }
+
+    public void updateParameterLabels() {
+        SwingUtilities.invokeLater(() -> {
+            nbAntsLb.setText("Taille de la population  :  " + Configs.nbAnts);
+            mutationRateLb.setText("Taux de mutation  :  " + (int)(Configs.mutationRate * 100000) / 1000f + " %");
+            anthillEntrancesLabel.setText("Nombre de fourmillières  :  " + Configs.anthillEntrance);
+            foodPerAntLb.setText("Nombre de nourritures par fourmis  :  " + Configs.maxNbFoodPerAnt);
+            generationRatioLb.setText("Taux de convservation de la population  :  " + (int)(Configs.generationConservationRatio * 100000) / 1000f + " %");
+            generationTimeLb.setText("Durée d'une génération  :  " + Configs.generationTime + " s");
+            rgenWorldLb.setText("Regénérer le monde  :  " + (Configs.worldNeedRegeneration ? "Oui" : "Non") );
         });
     }
 }

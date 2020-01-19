@@ -102,7 +102,7 @@ public class Simulation {
         mousePicker = new MousePicker(camera, renderer.getProjectionMatrix(), world.getPopulation().getAnts());
         this.gui = gui;
         gui.setWorld(world);
-        scores.add(new Score(0, 0, 0));
+        scores.add(new Score(0, 0, 0,0));
     }
 
     public Simulation(MainGUI gui) {
@@ -129,11 +129,11 @@ public class Simulation {
         mousePicker = new MousePicker(camera, renderer.getProjectionMatrix(), world.getPopulation().getAnts());
         this.gui = gui;
         gui.setWorld(world);
-        scores.add(new Score(0, 0, 0));
+        scores.add(new Score(0, 0, 0, 0));
     }
 
     /**
-     * Run the simumation
+     * Run the simulation
      * Effectively the main loop
      */
     public void run() {
@@ -234,6 +234,7 @@ public class Simulation {
     private void handleSimIO() {
         if (needToLoadSim && !fileToLoadSimFrom.equals("")) {
             loadFromXML(fileToLoadSimFrom);
+            gui.updateParameterLabels();
             needToLoadSim = false;
             fileToLoadSimFrom = "";
             timeSinceLastGen = 0;
@@ -382,7 +383,18 @@ public class Simulation {
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 
             Element simulationNode = document.createElement("simulation");
+            Element parameterNode = document.createElement("paramaters");
+
+            parameterNode.setAttribute("nbAnts", String.valueOf(Configs.nbAnts));
+            parameterNode.setAttribute("regenerateWorld", String.valueOf(Configs.worldNeedRegeneration));
+            parameterNode.setAttribute("maxNbFoodPerAnt", String.valueOf(Configs.maxNbFoodPerAnt));
+            parameterNode.setAttribute("anthillEntrance", String.valueOf(Configs.anthillEntrance));
+            parameterNode.setAttribute("generationConservationRatio", String.valueOf(Configs.generationConservationRatio));
+            parameterNode.setAttribute("mutationRate", String.valueOf(Configs.mutationRate));
+            parameterNode.setAttribute("generationTime", String.valueOf(Configs.generationTime));
+
             simulationNode.setAttribute("generation", String.valueOf(generation));
+            simulationNode.appendChild(parameterNode);
 
             Element worldNode = world.getAsElement(document);
             simulationNode.appendChild(worldNode);
@@ -393,6 +405,7 @@ public class Simulation {
                 elem.setAttribute("x", String.valueOf(score.getGeneration()));
                 elem.setAttribute("max", String.valueOf(score.getMax()));
                 elem.setAttribute("avg", String.valueOf(score.getAverage()));
+                elem.setAttribute("min", String.valueOf(score.getMin()));
                 graphNode.appendChild(elem);
             }
             simulationNode.appendChild(graphNode);
@@ -424,6 +437,17 @@ public class Simulation {
 
             xml = builder.parse(fileXML);
             Element simulationNode = (Element) xml.getElementsByTagName("simulation").item(0);
+            Element parameterNode = (Element) simulationNode.getElementsByTagName("parameters").item(0);
+
+            if (parameterNode != null) {
+                Configs.nbAnts = Integer.parseInt(parameterNode.getAttribute("nbAnts"));
+                Configs.worldNeedRegeneration = Boolean.parseBoolean(parameterNode.getAttribute("regenerateWorld"));
+                Configs.maxNbFoodPerAnt = Float.parseFloat(parameterNode.getAttribute("maxNbFoodPerAnt"));
+                Configs.anthillEntrance = Integer.parseInt(parameterNode.getAttribute("anthillEntrance"));
+                Configs.generationConservationRatio = Float.parseFloat(parameterNode.getAttribute("generationConservationRatio"));
+                Configs.mutationRate = Float.parseFloat(parameterNode.getAttribute("mutationRate"));
+                Configs.generationTime = Integer.parseInt(parameterNode.getAttribute("generationTime"));
+            }
 
             if (simulationNode == null)
                 return;
@@ -446,7 +470,8 @@ public class Simulation {
                     int generation = Integer.parseInt(elem.getAttribute("x"));
                     double max = Double.parseDouble(elem.getAttribute("max"));
                     double avg = Double.parseDouble(elem.getAttribute("avg"));
-                    Score score = new Score(generation, max, avg);
+                    double min = Double.parseDouble(elem.getAttribute("min"));
+                    Score score = new Score(generation, max, avg, min);
                     this.scores.add(score);
                 }
             }
@@ -459,21 +484,25 @@ public class Simulation {
 
     /**
      * Convert the list of Scores to a list of double arrays that can be fed to the GUI's score graphs
+     * {generations, averages, maxValues, minValues}
      */
     private List<double[]> convertToLists() {
         List<double[]> listPoints = new ArrayList<>();
         double[] x = new double[this.scores.size()];
         double[] avg = new double[this.scores.size()];
         double[] max = new double[this.scores.size()];
+        double[] min = new double[this.scores.size()];
         for (int i = 0; i < this.scores.size(); i++) {
             Score score = this.scores.get(i);
             x[i] = score.getGeneration();
             max[i] = score.getMax();
             avg[i] = score.getAverage();
+            min[i] = score.getMin();
         }
         listPoints.add(x);
         listPoints.add(avg);
         listPoints.add(max);
+        listPoints.add(min);
         return listPoints;
     }
 

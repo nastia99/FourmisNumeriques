@@ -237,8 +237,6 @@ public class Ant extends RenderableObject implements Comparable<Ant> {
             float posX = Float.parseFloat(elem.getAttribute("posX")) + .5f;
             float posZ = Float.parseFloat(elem.getAttribute("posZ")) + .5f;
             float rotY = Float.parseFloat(elem.getAttribute("rotY"));
-            float homeX = Float.parseFloat(elem.getAttribute("homeX")) + .5f;
-            float homeZ = Float.parseFloat(elem.getAttribute("homeZ")) + .5f;
             float fitnessScore = Float.parseFloat(elem.getAttribute("fitness"));
             Element treeElem = (Element) elem.getElementsByTagName("tree").item(0);
             Tree tree = Tree.getFromElement(treeElem);
