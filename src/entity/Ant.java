@@ -130,7 +130,7 @@ public class Ant extends RenderableObject implements Comparable<Ant> {
 
     /**
      * Return whether or not the ant is carrying food
-     * @return
+     * @return whether or not the ant is carrying food
      */
     public boolean isCarryingFood() {
         return food != null;

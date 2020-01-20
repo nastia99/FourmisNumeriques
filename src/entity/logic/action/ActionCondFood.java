@@ -13,8 +13,8 @@ public class ActionCondFood extends Action {
 
     /**
      * Do nothing, the action is conditional
-     * @param a
-     * @param world
+     * @param a the ant that will be executing the action
+     * @param world the world in which the action will be executed
      */
     @Override
     public void execute(Ant a, World world) {

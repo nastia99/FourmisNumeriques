@@ -325,7 +325,6 @@ public class World extends RenderableObject {
     /**
      * Repopulate a world from an DOM element
      * @param element DOM element representing the world
-     * @return a world characterized by the DOM element
      */
     public void loadFromElement(Element element) {
         if (element == null)

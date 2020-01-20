@@ -81,6 +81,8 @@ public class Node {
 
     /**
      * Simplify the node by removing recurrent conditions from the subtree
+     * @param satisfied a List of String representing the satisfied condition
+     * @param unsatisfied a List of String representing the unsatisfied condition
      */
     public void simplifyDuplicateSubCondition(List<String> satisfied, List<String> unsatisfied) {
         if (action.isConditional()) {

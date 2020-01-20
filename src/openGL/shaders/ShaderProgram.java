@@ -21,6 +21,8 @@ public abstract class ShaderProgram {
 	/**
 	 * Create a new ShaderProgram and load the appropriate programs in the GPU's RAM
 	 * before allocating the memory for VAO attributes
+	 * @param vertex Path to the vertex shader file
+	 * @param fragment Path to the fragment shader file
 	 */
 	public ShaderProgram(String vertex, String fragment) {
 		vertexShaderID = loadShader(vertex, GL20.GL_VERTEX_SHADER);

@@ -73,6 +73,7 @@ public class Maths {
 	 * it's effectively a modulus
 	 * @param input the input vector to loop around
 	 * @param size vector representing the upper limit of each coordinates
+	 * @return a looped 3D Vector with it's input included in [0; size]
 	 */
 	public static Vector3f loopVector(Vector3f input, Vector3f size) {
 		if (input.x < 0)
@@ -95,6 +96,7 @@ public class Maths {
 	 * it's effectively a modulus
 	 * @param input the input vector to loop around
 	 * @param size vector representing the upper limit of each coordinates
+	 * @return a looped 2D Vector with it's input included in [0; size]
 	 */
 	public static Vector2f loopVector(Vector2f input, Vector2f size) {
 		if (input.x < 0)

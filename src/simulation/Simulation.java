@@ -484,7 +484,7 @@ public class Simulation {
 
     /**
      * Convert the list of Scores to a list of double arrays that can be fed to the GUI's score graphs
-     * {generations, averages, maxValues, minValues}
+     * @return return a list of double arrays formatted as followed : {generations, averages, maxValues, minValues}
      */
     private List<double[]> convertToLists() {
         List<double[]> listPoints = new ArrayList<>();

@@ -99,6 +99,7 @@ public class Tile extends Chunk {
 
     /**
      * Get all the entities contained in the tile of a certain type
+     * @param type the type of entity you want to extract
      * @return a list of the tile's entities
      */
     public List<RenderableObject> getEntities(EntityTypes type) {

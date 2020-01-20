@@ -37,6 +37,7 @@ public class Population {
     /**
      * Initialize the population with random ants
      * @param nbAnts number of ants to generate
+     * @param world the world
      */
     public void populate(int nbAnts, World world) {
         Random rand = new Random();
@@ -77,6 +78,7 @@ public class Population {
     /**
      * Generate the next generation of ants using the best ants of the current generation
      * @param world the world in which you will generate the new ants
+     * @return Return a Score object containing the information of the last generation
      */
     public Score nextGeneration(World world) {
         int generation = MainGameLoop.simulation.getGeneration();
