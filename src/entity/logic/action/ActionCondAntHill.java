@@ -1,11 +1,13 @@
 package entity.logic.action;
 
 import entity.Ant;
+import entity.EntityTypes;
+import entity.Tile;
 import openGL.world.World;
 
-public class ActionCondLoaded extends Action {
+public class ActionCondAntHill extends Action {
 
-    public ActionCondLoaded() {
+    public ActionCondAntHill() {
         isConditional = true;
     }
 
@@ -20,14 +22,18 @@ public class ActionCondLoaded extends Action {
     }
 
     /**
-     * Return whether or not the ant is carrying food
+     * Return whether or not the ant is on an anthill
      * @param a the ant testing the condition
      * @param world the world used to verify the condition
      * @return true if satified, false otherwise
      */
     @Override
     public boolean isConditionSatisfied(Ant a, World world) {
-        return a.isCarryingFood();
+        Tile tile = (Tile) world.getChunkInWorldCoords(a.getPosition().x, a.getPosition().z);
+        if (tile == null)
+            return false;
+        else
+            return tile.contains(EntityTypes.ANTHILL);
     }
 
     /**
@@ -36,6 +42,6 @@ public class ActionCondLoaded extends Action {
      */
     @Override
     public String toString() {
-        return "isLoaded";
+        return "anthill";
     }
 }

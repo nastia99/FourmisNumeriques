@@ -30,6 +30,10 @@ public class HeightsGenerator {
         return getInterpolatedHeight(x + gridX * (Chunk.VERTEX_COUNT - 1), z + gridZ * (Chunk.VERTEX_COUNT - 1));
     }
 
+    public int getSeed() {
+        return seed;
+    }
+
     public float getHeight(float x, float z) {
         return getInterpolatedHeight(x * (Chunk.VERTEX_COUNT - 1) + 1, z * (Chunk.VERTEX_COUNT - 1) + 1);
     }
