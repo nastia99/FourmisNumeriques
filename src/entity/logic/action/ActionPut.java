@@ -35,7 +35,7 @@ public class ActionPut extends Action {
             if (tile != null && tile.contains(EntityTypes.ANTHILL)) {
                 a.addFoodToHome();
                 a.addFitness(20 * a.getNbFoodToHome());
-                world.fertilize(1);
+                world.addFood(1);
                 a.setFood(null);
             } else if (tile != null && !tile.contains(EntityTypes.FOOD)){
                 tile.addEntity(a.getFood());

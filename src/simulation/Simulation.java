@@ -68,8 +68,6 @@ public class Simulation {
     private Ant selectedAnt = null;
     private Ant bestAnt = null;
 
-    private List<AntHill> antHillEntrances;
-
     private int generation = 1;
     private List<Score> scores;
 
@@ -78,23 +76,12 @@ public class Simulation {
     public Simulation(String file, MainGUI gui) {
         world = World.loadFromXML(file);
         scores = new ArrayList<Score>();
-        antHillEntrances = new ArrayList<AntHill>();
         if (world == null) {
             world = new World();
-
-            Random rand = new Random();
-            for (int i = 0; i < Configs.anthillEntrance; i++) {
-                float x = rand.nextInt(world.getSizeX()) +.5f;
-                float z = rand.nextInt(world.getSizeZ()) +.5f;
-                Vector2f rotXZ = Maths.calculateXZRotations(world, x, z);
-                AntHill antHill = new AntHill(new Vector3f(x, world.getHeight(x, z), z), rotXZ.x, rand.nextInt(360), rotXZ.y);
-                antHillEntrances.add(antHill);
-                ((Tile) world.getChunk((int)(x -.5f), (int) (z -.5f))).addEntity(antHill);
-            }
-
             Population population = new Population();
             population.populate(Configs.nbAnts, world);
             world.setPopulation(population);
+            world.fertilize((int) (Configs.nbAnts * Configs.maxNbFoodPerAnt), Configs.anthillEntrance);
         }
         camera = new Camera(world);
         renderer = new MasterRenderer(world);
@@ -107,18 +94,8 @@ public class Simulation {
 
     public Simulation(MainGUI gui) {
         world = new World();
+        world.fertilize((int) (Configs.nbAnts * Configs.maxNbFoodPerAnt), Configs.anthillEntrance);
         scores = new ArrayList<Score>();
-        antHillEntrances = new ArrayList<AntHill>();
-
-        Random rand = new Random();
-        for (int i = 0; i < Configs.anthillEntrance; i++) {
-            float x = rand.nextInt(world.getSizeX()) +.5f;
-            float z = rand.nextInt(world.getSizeZ()) +.5f;
-            Vector2f rotXZ = Maths.calculateXZRotations(world, x, z);
-            AntHill antHill = new AntHill(new Vector3f(x, world.getHeight(x, z), z), rotXZ.x, rand.nextInt(360), rotXZ.y);
-            antHillEntrances.add(antHill);
-            ((Tile) world.getChunk((int)(x -.5f), (int) (z -.5f))).addEntity(antHill);
-        }
 
         Population population = new Population();
         population.populate(Configs.nbAnts, world);
@@ -158,13 +135,9 @@ public class Simulation {
                 if (renderSelectedOnly) {
                     selectedAnt.setFitnessEvalPossible(false);
                     selectedAnt.update(newAction, world);
-                    if (selectedAnt.isCarryingFood() && Configs.renderSimulation)
-                        renderer.registerFood(selectedAnt.getFood());
                 } else if (renderBestOnly) {
                     bestAnt.setFitnessEvalPossible(false);
                     bestAnt.update(newAction, world);
-                    if (bestAnt.isCarryingFood() && Configs.renderSimulation)
-                        renderer.registerFood(bestAnt.getFood());
                 } else {
                     bestAnt = world.getPopulation().getAnts().get(0);
                     for (Ant ant : world.getPopulation().getAnts()) {
@@ -180,11 +153,15 @@ public class Simulation {
                 gui.updateCanvas();
                 gui.setAntList(world.getPopulation().getAnts());
             }
-            if (renderSelectedOnly && Configs.renderSimulation)
+            if (renderSelectedOnly && Configs.renderSimulation) {
                 renderer.registerAnt(selectedAnt);
-            else if (renderBestOnly && Configs.renderSimulation)
-                renderer.registerAnt(bestAnt);
-            else if (Configs.renderSimulation)
+                if (selectedAnt.isCarryingFood())
+                    renderer.registerFood(selectedAnt.getFood());
+            } else if (renderBestOnly && Configs.renderSimulation) {
+                    renderer.registerAnt(bestAnt);
+                if (bestAnt.isCarryingFood())
+                    renderer.registerFood(bestAnt.getFood());
+            } else if (Configs.renderSimulation)
                 renderer.registerAnts(world.getPopulation().getAnts());
             if (Configs.renderSimulation) {
                 renderer.registerRenderableObjects(world.extractEntities());
@@ -232,18 +209,20 @@ public class Simulation {
      * Called when the simumlation need to be saved or loaded
      */
     private void handleSimIO() {
-        if (needToLoadSim && !fileToLoadSimFrom.equals("")) {
-            loadFromXML(fileToLoadSimFrom);
-            gui.updateParameterLabels();
-            needToLoadSim = false;
-            fileToLoadSimFrom = "";
-            timeSinceLastGen = 0;
-        }
-        if (needToSaveSim && !fileToSaveSimTo.equals("")) {
-            saveToXML(fileToSaveSimTo);
-            needToSaveSim = false;
-            fileToSaveSimTo = "";
-            timeSinceLastGen = 0;
+        synchronized (this) {
+            if (needToLoadSim && !fileToLoadSimFrom.equals("")) {
+                loadFromXML(fileToLoadSimFrom);
+                gui.updateParameterLabels();
+                needToLoadSim = false;
+                fileToLoadSimFrom = "";
+                timeSinceLastGen = 0;
+            }
+            if (needToSaveSim && !fileToSaveSimTo.equals("")) {
+                saveToXML(fileToSaveSimTo);
+                needToSaveSim = false;
+                fileToSaveSimTo = "";
+                timeSinceLastGen = 0;
+            }
         }
     }
 
@@ -251,42 +230,50 @@ public class Simulation {
      * Called when the simulation need to save or load a world map
      */
     private void handleWorldIO()  {
-        if (needToLoadWorld && !fileToLoadWorldFrom.equals("")) {
-            world = World.loadFromXML(fileToLoadWorldFrom);
-            needToLoadWorld = false;
-            fileToLoadWorldFrom = "";
-            renderer.setWorld(world);
+        synchronized (this) {
+            if (needToLoadWorld && !fileToLoadWorldFrom.equals("")) {
+                world = World.loadFromXML(fileToLoadWorldFrom);
+                needToLoadWorld = false;
+                fileToLoadWorldFrom = "";
+                renderer.setWorld(world);
+            }
+            if (needToSaveWorld && !fileToSaveWorldTo.equals("")) {
+                world.saveToXML(fileToSaveWorldTo);
+                needToSaveWorld = false;
+                fileToSaveWorldTo = "";
+            }
         }
-        if (needToSaveWorld && !fileToSaveWorldTo.equals("")) {
-            world.saveToXML(fileToSaveWorldTo);
-            needToSaveWorld = false;
-            fileToSaveWorldTo = "";
-        }
-
     }
 
     /**
      * Called when the simulation need to advance to the next generation of ant
      */
     private void handleNextGen() {
-        if (needToPassToNextGen) {
-            Score currentGenScore = getPopulation().nextGeneration(world);
-            generation++;
-            bestAnt = null;
-            selectedAnt = null;
-            camera.setFocus(world);
-            gui.setSelectedAnt(null);
-            gui.setBestAnt(null);
-            scores.add(currentGenScore);
-            gui.setScore(convertToLists());
-            needToPassToNextGen = false;
-            renderSelectedOnly = false;
-            renderBestOnly = false;
-            running = true;
-            if (Configs.worldNeedRegeneration) {
-                world.regenerate(antHillEntrances);
+        synchronized (this) {
+            if (needToPassToNextGen) {
+                Score currentGenScore = getPopulation().nextGeneration(world);
+                generation++;
+                bestAnt = null;
+                selectedAnt = null;
+                camera.setFocus(world);
+                gui.setSelectedAnt(null);
+                gui.setBestAnt(null);
+                scores.add(currentGenScore);
+                gui.setScore(convertToLists());
+                needToPassToNextGen = false;
+                renderSelectedOnly = false;
+                renderBestOnly = false;
+                running = true;
+                if (Configs.worldNeedRegeneration) {
+                    world.fertilize((int) (Configs.nbAnts * Configs.maxNbFoodPerAnt), Configs.anthillEntrance);
+                } else {
+                    List<RenderableObject> anthills = world.extractEntities(EntityTypes.ANTHILL);
+                    world.fertilize((int) (Configs.nbAnts * Configs.maxNbFoodPerAnt), 0);
+                    for (RenderableObject anthill : anthills)
+                        world.addEntity(anthill);
+                }
+                timeSinceLastGen = 0;
             }
-            timeSinceLastGen = 0;
         }
     }
 
@@ -330,10 +317,12 @@ public class Simulation {
      * @param renderSelectedOnly whether or not the selected ant need to be isolated
      */
     public void setRenderSelectedOnly(boolean renderSelectedOnly) {
-        if (renderSelectedOnly && selectedAnt == null) return;
-        this.renderSelectedOnly = renderSelectedOnly;
-        if (renderSelectedOnly)
-            renderBestOnly = false;
+        synchronized (this) {
+            if (renderSelectedOnly && selectedAnt == null) return;
+            this.renderSelectedOnly = renderSelectedOnly;
+            if (renderSelectedOnly)
+                renderBestOnly = false;
+        }
     }
 
     /**
@@ -349,10 +338,12 @@ public class Simulation {
      * @param renderBestOnly whether or not the best ant need to be isolated
      */
     public void setRenderBestOnly(boolean renderBestOnly) {
-        if (renderBestOnly && bestAnt == null) return;
-        this.renderBestOnly = renderBestOnly;
-        if (renderBestOnly)
-            renderSelectedOnly = false;
+        synchronized (this) {
+            if (renderBestOnly && bestAnt == null) return;
+            this.renderBestOnly = renderBestOnly;
+            if (renderBestOnly)
+                renderSelectedOnly = false;
+        }
     }
 
     /**
@@ -437,7 +428,7 @@ public class Simulation {
 
             xml = builder.parse(fileXML);
             Element simulationNode = (Element) xml.getElementsByTagName("simulation").item(0);
-            Element parameterNode = (Element) simulationNode.getElementsByTagName("parameters").item(0);
+            Element parameterNode = (Element) simulationNode.getElementsByTagName("paramaters").item(0);
 
             if (parameterNode != null) {
                 Configs.nbAnts = Integer.parseInt(parameterNode.getAttribute("nbAnts"));
@@ -513,8 +504,10 @@ public class Simulation {
      * @param file the file to be loaded from
      */
     public void dispatchLoadEvent(String file) {
-        fileToLoadSimFrom = file;
-        needToLoadSim = true;
+        synchronized (this) {
+            fileToLoadSimFrom = file;
+            needToLoadSim = true;
+        }
     }
 
     /**
@@ -524,8 +517,10 @@ public class Simulation {
      * @param file the file to save to
      */
     public void dispatchSaveEvent(String file) {
-        fileToSaveSimTo = file;
-        needToSaveSim = true;
+        synchronized (this) {
+            fileToSaveSimTo = file;
+            needToSaveSim = true;
+        }
     }
 
     /**
@@ -535,8 +530,10 @@ public class Simulation {
      * @param file the file to be loaded from
      */
     public void dispatchLoadWorldEvent(String file) {
-        fileToLoadWorldFrom = file;
-        needToLoadWorld = true;
+        synchronized (this) {
+            fileToLoadWorldFrom = file;
+            needToLoadWorld = true;
+        }
     }
 
     /**
@@ -546,8 +543,10 @@ public class Simulation {
      * @param file the file to save to
      */
     public void dispatchSaveWorldEvent(String file) {
-        fileToSaveWorldTo = file;
-        needToSaveWorld = true;
+        synchronized (this) {
+            fileToSaveWorldTo = file;
+            needToSaveWorld = true;
+        }
     }
 
     /**
@@ -555,6 +554,8 @@ public class Simulation {
      * Can be called from another thread
      */
     public void dispatchNewGenerationEvent() {
-        needToPassToNextGen = true;
+        synchronized (this) {
+            needToPassToNextGen = true;
+        }
     }
 }

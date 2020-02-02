@@ -63,10 +63,10 @@ public class Loader {
 		return texture.getTextureID();
 	}
 
-	/**s
+	/**
 	 * Delete every VAO, VBO and texture from memory
 	 */
-	public void cleanUp(){
+	public void cleanUp() {
 		for(int vao:vaos){
 			GL30.glDeleteVertexArrays(vao);
 		}
@@ -82,7 +82,7 @@ public class Loader {
 	 * Create a new VAO, bind it and return it's ID
 	 * @return the VAO ID
 	 */
-	private int createVAO(){
+	private int createVAO() {
 		int vaoID = GL30.glGenVertexArrays();
 		vaos.add(vaoID);
 		GL30.glBindVertexArray(vaoID);
@@ -95,7 +95,7 @@ public class Loader {
 	 * @param coordinateSize the dimension of the data (3 for a 3D Vertex, 2 for texture coords ...)
 	 * @param data the data to store to the VBO
 	 */
-	private void storeDataInAttributeList(int attributeNumber, int coordinateSize,float[] data){
+	private void storeDataInAttributeList(int attributeNumber, int coordinateSize,float[] data) {
 		int vboID = GL15.glGenBuffers();
 		vbos.add(vboID);
 		GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vboID);

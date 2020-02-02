@@ -380,7 +380,7 @@ public class MainGUI {
             mutationRateLb.setText("Taux de mutation  :  " + (int)(Configs.mutationRate * 100000) / 1000f + " %");
             anthillEntrancesLabel.setText("Nombre de fourmillières  :  " + Configs.anthillEntrance);
             foodPerAntLb.setText("Nombre de nourritures par fourmis  :  " + Configs.maxNbFoodPerAnt);
-            generationRatioLb.setText("Taux de convservation de la population  :  " + (int)(Configs.generationConservationRatio * 100000) / 1000f + " %");
+            generationRatioLb.setText("Taux de conservation de la population  :  " + (int)(Configs.generationConservationRatio * 100000) / 1000f + " %");
             generationTimeLb.setText("Durée d'une génération  :  " + Configs.generationTime + " s");
             rgenWorldLb.setText("Regénérer le monde  :  " + (Configs.worldNeedRegeneration ? "Oui" : "Non") );
         });

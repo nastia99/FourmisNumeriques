@@ -16,14 +16,26 @@ public class TreePanel extends JPanel {
     private Ant ant;
     private World world;
 
+    /**
+     * Set the panel's world, used to know of a condition is satisfied
+     * @param world the world to be used
+     */
     public void setWorld(World world) {
         this.world = world;
     }
 
+    /**
+     * Set the panel's ant, used to know of a condition is satisfied
+     * @param ant the ant to be used
+     */
     public void setAnt(Ant ant) {
         this.ant = ant;
     }
 
+    /**
+     * Draw a tree to the panel
+     * @param g the Graphics object of the frame
+     */
     private void drawTree(Graphics g) {
         if (ant != null) {
             int level = ant.getDecisionTree().getLevel();
@@ -33,6 +45,15 @@ public class TreePanel extends JPanel {
         }
     }
 
+    /**
+     * Draw a specific Node and the links if it has childs
+     * @param node the Node to be drawn
+     * @param x the position of the Node along the x axis on the panel in pixels
+     * @param level the level of the current Node
+     * @param levelHeight the height of a level in pixels
+     * @param g the Graphics object of the frame
+     * @param activeBranch is the branch active or not
+     */
     private void drawNode(Node node, int x, int level, int levelHeight, Graphics g, boolean activeBranch) {
         int levelSection = level == 0 ? 1 : (int) Math.pow(2, level);
         int sectionWidth = getWidth() / levelSection;
@@ -71,6 +92,13 @@ public class TreePanel extends JPanel {
         }
     }
 
+    /**
+     * Draw a string centered inside a rectangle
+     * @param g the Graphics object of the frame
+     * @param r the Rectangle in which to center the string
+     * @param s the string to write
+     * @param font the font used to write
+     */
     public void centerString(Graphics g, Rectangle r, String s, Font font) {
         FontRenderContext frc = new FontRenderContext(null, true, true);
 

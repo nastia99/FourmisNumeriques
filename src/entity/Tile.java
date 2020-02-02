@@ -112,4 +112,11 @@ public class Tile extends Chunk {
         }
         return toReturn;
     }
+
+    /**
+     * Clear the chunk by deleting its entities
+     */
+    public void clear() {
+        entities.clear();
+    }
 }

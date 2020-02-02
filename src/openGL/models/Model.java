@@ -1,5 +1,7 @@
 package openGL.models;
 
+import engineTester.MainGameLoop;
+
 public class Model {
 	
 	private int vaoID;
@@ -30,7 +32,6 @@ public class Model {
 	public int getVertexCount() {
 		return vertexCount;
 	}
-	
-	
+
 
 }

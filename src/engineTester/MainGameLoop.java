@@ -18,6 +18,11 @@ public class MainGameLoop {
     public static Simulation simulation;
 
     public static void main(String[] args) {
+        if (args.length >= 1) {
+            Configs.init(args[0]);
+        } else {
+            Configs.init("res/properties.properties");
+        }
         DisplayManager.createDisplay();
         loader = new Loader();
         Configs.init("res/properties.properties");
@@ -33,6 +38,9 @@ public class MainGameLoop {
         System.exit(0);
     }
 
+    /**
+     * Initialize the GUI
+     */
     private static void InitGUI() {
         frame = new JFrame("GUI");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

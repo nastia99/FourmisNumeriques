@@ -3,7 +3,12 @@ package openGL.world;
 import engineTester.MainGameLoop;
 import openGL.models.Model;
 import openGL.renderEngine.Loader;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.opengl.*;
 import org.lwjgl.util.vector.Vector3f;
+
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 
 public class Chunk {
 
@@ -23,18 +28,35 @@ public class Chunk {
 		this.model = generateTerrain(MainGameLoop.loader);
 	}
 
+	/**
+	 * Get the X coord of the chunk
+	 * @return X coord of the chunk
+	 */
 	public int getX() {
 		return x;
 	}
 
+	/**
+	 * Get the Z coord of the chunk
+	 * @return Z coord of the chunk
+	 */
 	public int getZ() {
 		return z;
 	}
 
+	/**
+	 * Get the chunk's model
+	 * @return the chunk's model
+	 */
 	public Model getModel() {
 		return model;
 	}
 
+	/**
+	 * Generate a model for the chunk
+	 * @param loader the loader used to generate the VAO
+	 * @return a Model for the chunk
+	 */
 	private Model generateTerrain(Loader loader){
 		int count = VERTEX_COUNT * VERTEX_COUNT;
 		float[] vertices = new float[count * 3];
@@ -75,10 +97,22 @@ public class Chunk {
 		return loader.loadToVAO(vertices, textureCoords, normals, indices);
 	}
 
+	/**
+	 * Get the height of the chunk at coords (x, z)
+	 * @param x the x coord
+	 * @param z the z coord
+	 * @return the height at coords (x, z)
+	 */
 	private float getHeight(float x, float z) {
 		return generator.getHeightInChunk(this.x, this.z, x, z);
 	}
 
+	/**
+	 * Get the normal of the chunk at coords (x, z)
+	 * @param x the x coord
+	 * @param z the z coord
+	 * @return the normal at coords (x, z)
+	 */
 	public Vector3f getNormal(float x, float z) {
 		float hL = getHeight(x - 1, z);
 		float hR = getHeight(x + 1, z);
