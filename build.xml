@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="fourmisnumeriques" default="all">
-  
-  
-  <property file="build.properties"/>
-  <!-- Uncomment the following property if no tests compilation is needed -->
-  <!-- 
-  <property name="skip.tests" value="true"/>
-   -->
-  
+
   <!-- Compiler options -->
   
   <property name="compiler.debug" value="on"/>
@@ -53,82 +46,6 @@
     <exclude name="**/?*.aj"/>
   </patternset>
   
-  <!-- JDK definitions -->
-  
-  <property name="jdk.bin.11" value="${jdk.home.11}/bin"/>
-  <path id="jdk.classpath.11">
-    <fileset dir="${jdk.home.11}">
-      <include name="../jbr!/java.base"/>
-      <include name="../jbr!/java.compiler"/>
-      <include name="../jbr!/java.datatransfer"/>
-      <include name="../jbr!/java.desktop"/>
-      <include name="../jbr!/java.instrument"/>
-      <include name="../jbr!/java.logging"/>
-      <include name="../jbr!/java.management"/>
-      <include name="../jbr!/java.management.rmi"/>
-      <include name="../jbr!/java.naming"/>
-      <include name="../jbr!/java.net.http"/>
-      <include name="../jbr!/java.prefs"/>
-      <include name="../jbr!/java.rmi"/>
-      <include name="../jbr!/java.scripting"/>
-      <include name="../jbr!/java.se"/>
-      <include name="../jbr!/java.security.jgss"/>
-      <include name="../jbr!/java.security.sasl"/>
-      <include name="../jbr!/java.smartcardio"/>
-      <include name="../jbr!/java.sql"/>
-      <include name="../jbr!/java.sql.rowset"/>
-      <include name="../jbr!/java.transaction.xa"/>
-      <include name="../jbr!/java.xml"/>
-      <include name="../jbr!/java.xml.crypto"/>
-      <include name="../jbr!/javafx.base"/>
-      <include name="../jbr!/javafx.controls"/>
-      <include name="../jbr!/javafx.fxml"/>
-      <include name="../jbr!/javafx.graphics"/>
-      <include name="../jbr!/javafx.media"/>
-      <include name="../jbr!/javafx.swing"/>
-      <include name="../jbr!/javafx.web"/>
-      <include name="../jbr!/jdk.accessibility"/>
-      <include name="../jbr!/jdk.aot"/>
-      <include name="../jbr!/jdk.attach"/>
-      <include name="../jbr!/jdk.charsets"/>
-      <include name="../jbr!/jdk.compiler"/>
-      <include name="../jbr!/jdk.crypto.cryptoki"/>
-      <include name="../jbr!/jdk.crypto.ec"/>
-      <include name="../jbr!/jdk.dynalink"/>
-      <include name="../jbr!/jdk.httpserver"/>
-      <include name="../jbr!/jdk.internal.ed"/>
-      <include name="../jbr!/jdk.internal.jvmstat"/>
-      <include name="../jbr!/jdk.internal.le"/>
-      <include name="../jbr!/jdk.internal.vm.ci"/>
-      <include name="../jbr!/jdk.internal.vm.compiler"/>
-      <include name="../jbr!/jdk.internal.vm.compiler.management"/>
-      <include name="../jbr!/jdk.jdi"/>
-      <include name="../jbr!/jdk.jdwp.agent"/>
-      <include name="../jbr!/jdk.jfr"/>
-      <include name="../jbr!/jdk.jsobject"/>
-      <include name="../jbr!/jdk.localedata"/>
-      <include name="../jbr!/jdk.management"/>
-      <include name="../jbr!/jdk.management.agent"/>
-      <include name="../jbr!/jdk.management.jfr"/>
-      <include name="../jbr!/jdk.naming.dns"/>
-      <include name="../jbr!/jdk.naming.rmi"/>
-      <include name="../jbr!/jdk.net"/>
-      <include name="../jbr!/jdk.pack"/>
-      <include name="../jbr!/jdk.scripting.nashorn"/>
-      <include name="../jbr!/jdk.scripting.nashorn.shell"/>
-      <include name="../jbr!/jdk.sctp"/>
-      <include name="../jbr!/jdk.security.auth"/>
-      <include name="../jbr!/jdk.security.jgss"/>
-      <include name="../jbr!/jdk.unsupported"/>
-      <include name="../jbr!/jdk.xml.dom"/>
-      <include name="../jbr!/jdk.zipfs"/>
-    </fileset>
-  </path>
-  
-  <property name="project.jdk.home" value="${jdk.home.11}"/>
-  <property name="project.jdk.bin" value="${jdk.bin.11}"/>
-  <property name="project.jdk.classpath" value="jdk.classpath.11"/>
-  
   
   <!-- Project Libraries -->
   
@@ -162,11 +79,8 @@
   <dirname property="module.projet_apo.basedir" file="${ant.file}"/>
   
   
-  <property name="module.jdk.home.projet_apo" value="${project.jdk.home}"/>
-  <property name="module.jdk.bin.projet_apo" value="${project.jdk.bin}"/>
-  <property name="module.jdk.classpath.projet_apo" value="${project.jdk.classpath}"/>
   
-  <property name="compiler.args.projet_apo" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+  <property name="compiler.args.projet_apo" value="-encoding UTF-8 -source 13 -target 13 ${compiler.args}"/>
   
   <property name="projet_apo.output.dir" value="${module.projet_apo.basedir}/out/production/Projet APO"/>
   <property name="projet_apo.testoutput.dir" value="${module.projet_apo.basedir}/out/test/Projet APO"/>
@@ -176,24 +90,19 @@
   </path>
   
   <path id="projet_apo.module.production.classpath">
-    <path refid="${module.jdk.classpath.projet_apo}"/>
     <path refid="library.lwjgl.classpath"/>
-    <pathelement location="${path.variable.maven_repository}/org/jetbrains/annotations/17.0.0/annotations-17.0.0.jar"/>
     <path refid="library.xchart-3.6.1.classpath"/>
   </path>
   
   <path id="projet_apo.runtime.production.module.classpath">
     <pathelement location="${projet_apo.output.dir}"/>
     <path refid="library.lwjgl.classpath"/>
-    <pathelement location="${path.variable.maven_repository}/org/jetbrains/annotations/17.0.0/annotations-17.0.0.jar"/>
     <path refid="library.xchart-3.6.1.classpath"/>
   </path>
   
   <path id="projet_apo.module.classpath">
-    <path refid="${module.jdk.classpath.projet_apo}"/>
     <pathelement location="${projet_apo.output.dir}"/>
     <path refid="library.lwjgl.classpath"/>
-    <pathelement location="${path.variable.maven_repository}/org/jetbrains/annotations/17.0.0/annotations-17.0.0.jar"/>
     <path refid="library.xchart-3.6.1.classpath"/>
   </path>
   
@@ -201,7 +110,6 @@
     <pathelement location="${projet_apo.testoutput.dir}"/>
     <pathelement location="${projet_apo.output.dir}"/>
     <path refid="library.lwjgl.classpath"/>
-    <pathelement location="${path.variable.maven_repository}/org/jetbrains/annotations/17.0.0/annotations-17.0.0.jar"/>
     <path refid="library.xchart-3.6.1.classpath"/>
   </path>
   
@@ -225,7 +133,7 @@
   
   <target name="compile.module.projet_apo.production" description="Compile module Projet APO; production classes">
     <mkdir dir="${projet_apo.output.dir}"/>
-    <javac destdir="${projet_apo.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.projet_apo}/javac">
+    <javac destdir="${projet_apo.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
       <compilerarg line="${compiler.args.projet_apo}"/>
       <bootclasspath refid="projet_apo.module.bootclasspath"/>
       <classpath refid="projet_apo.module.production.classpath"/>
