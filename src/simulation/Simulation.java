@@ -117,7 +117,7 @@ public class Simulation {
         while (!Display.isCloseRequested()) {
             if (running && !renderBestOnly && !renderSelectedOnly) {
                 timeSinceLastGen += DisplayManager.getFrameTimeMS();
-                MainGameLoop.frame.setTitle("Génération : " + generation + " / Next génération in " + (Configs.generationTime - timeSinceLastGen / 1000) + "s");
+                MainGameLoop.frame.setTitle("Generation : " + generation + " / Next generation in " + (Configs.generationTime - timeSinceLastGen / 1000) + "s");
                 if (timeSinceLastGen >= Configs.generationTime * 1000)
                     dispatchNewGenerationEvent();
             }

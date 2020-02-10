@@ -49,6 +49,10 @@
   
   <!-- Project Libraries -->
   
+  <path id="library.forms_rt.classpath">
+    <pathelement location="${basedir}/libraries/forms_rt.jar"/>
+  </path>
+  
   <path id="library.lwjgl.classpath">
     <pathelement location="${basedir}/libraries/lwjgl-2.9.3/jar/AppleJavaExtensions.jar"/>
     <pathelement location="${basedir}/libraries/lwjgl-2.9.3/jar/asm-debug-all.jar"/>
@@ -92,18 +96,21 @@
   <path id="projet_apo.module.production.classpath">
     <path refid="library.lwjgl.classpath"/>
     <path refid="library.xchart-3.6.1.classpath"/>
+    <path refid="library.forms_rt.classpath"/>
   </path>
   
   <path id="projet_apo.runtime.production.module.classpath">
     <pathelement location="${projet_apo.output.dir}"/>
     <path refid="library.lwjgl.classpath"/>
     <path refid="library.xchart-3.6.1.classpath"/>
+    <path refid="library.forms_rt.classpath"/>
   </path>
   
   <path id="projet_apo.module.classpath">
     <pathelement location="${projet_apo.output.dir}"/>
     <path refid="library.lwjgl.classpath"/>
     <path refid="library.xchart-3.6.1.classpath"/>
+    <path refid="library.forms_rt.classpath"/>
   </path>
   
   <path id="projet_apo.runtime.module.classpath">
@@ -111,6 +118,7 @@
     <pathelement location="${projet_apo.output.dir}"/>
     <path refid="library.lwjgl.classpath"/>
     <path refid="library.xchart-3.6.1.classpath"/>
+    <path refid="library.forms_rt.classpath"/>
   </path>
   
   
@@ -163,6 +171,7 @@
   <target name="clean" depends="clean.module.projet_apo" description="cleanup all"/>
   
   <target name="build.modules" depends="init, clean, compile.module.projet_apo" description="build all modules"/>
+  
   
   <target name="all" depends="build.modules" description="build all"/>
 </project>
